@@ -304,7 +304,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-black via-black to-gray-900">
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
@@ -352,6 +352,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Gradient Transition Section */}
+      <div className="h-32 bg-gradient-to-b from-gray-900 via-gray-800 to-background"></div>
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
