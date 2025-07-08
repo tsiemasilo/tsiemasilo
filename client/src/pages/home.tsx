@@ -160,12 +160,12 @@ export default function Home() {
       codeUrl: "#"
     },
     {
-      title: "Analytics Dashboard",
-      description: "An interactive analytics dashboard with real-time data visualization and custom reporting features.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      technologies: ["Vue.js", "D3.js", "Python"],
+      title: "Masilo Web Solutions",
+      description: "A modern web development agency website with responsive design, service showcases, client testimonials, and portfolio integration.",
+      image: "/masilo-solutions-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "Netlify", "Responsive Design"],
       category: "WEB DESIGN",
-      liveUrl: "#",
+      liveUrl: "https://masilowebsolutions.netlify.app/",
       codeUrl: "#"
     },
     {
