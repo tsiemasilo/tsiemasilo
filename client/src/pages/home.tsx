@@ -212,7 +212,8 @@ export default function Home() {
                   >
                     {activeSection === section && (
                       <motion.div
-                        className="absolute inset-0 bg-green-primary/10 rounded-lg"
+                        className="absolute inset-0 rounded-lg"
+                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.1)' }}
                         layoutId="activeSection"
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
@@ -227,7 +228,9 @@ export default function Home() {
             <div className="md:hidden">
               <motion.button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2 text-text-secondary hover:text-green-primary transition-colors duration-200 ${mobileMenuOpen ? 'hamburger-open' : ''}`}
+                className={`p-2 text-text-secondary transition-colors duration-200 ${mobileMenuOpen ? 'hamburger-open' : ''}`}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#00ff88'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -294,14 +297,26 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 onClick={() => scrollToSection('projects')}
-                className="bg-green-primary hover:bg-green-secondary text-white px-8 py-3 font-semibold"
+                className="text-white px-8 py-3 font-semibold"
+                style={{ backgroundColor: '#00ff88' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
               >
                 View My Work
               </Button>
               <Button 
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="border-green-primary text-green-primary hover:bg-green-primary hover:text-white px-8 py-3 font-semibold"
+                className="px-8 py-3 font-semibold"
+                style={{ borderColor: '#00ff88', color: '#00ff88' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#00ff88';
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#00ff88';
+                }}
               >
                 Get In Touch
               </Button>
@@ -318,7 +333,7 @@ export default function Home() {
             {...fadeInUp}
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
-            <div className="w-20 h-1 bg-green-primary mx-auto"></div>
+            <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -336,9 +351,10 @@ export default function Home() {
                   style={{ objectPosition: '50% 20%', transform: 'scale(1.0)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
-                <div className="absolute inset-0 border border-green-primary/20 rounded-2xl"></div>
+                <div className="absolute inset-0 border rounded-2xl" style={{ borderColor: 'rgba(0, 255, 136, 0.2)' }}></div>
                 <motion.div 
-                  className="absolute -inset-1 bg-gradient-to-r from-green-primary to-green-secondary rounded-2xl opacity-0 hover:opacity-20 transition-opacity duration-300"
+                  className="absolute -inset-1 rounded-2xl opacity-0 hover:opacity-20 transition-opacity duration-300"
+                  style={{ background: 'linear-gradient(to right, #00ff88, #00dd77)' }}
                   whileHover={{ opacity: 0.2 }}
                 ></motion.div>
               </div>
@@ -355,11 +371,11 @@ export default function Home() {
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-2xl font-bold text-green-primary">15+</div>
+                  <div className="text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
                   <div className="text-sm text-text-secondary">Projects</div>
                 </div>
                 <div className="text-center p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-2xl font-bold text-green-primary">3+</div>
+                  <div className="text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
                   <div className="text-sm text-text-secondary">Years Experience</div>
                 </div>
               </div>
@@ -449,7 +465,11 @@ export default function Home() {
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-green-primary/20 text-green-primary rounded-full text-sm">
+                        <span 
+                          key={tech} 
+                          className="px-3 py-1 rounded-full text-sm"
+                          style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)', color: '#00ff88' }}
+                        >
                           {tech}
                         </span>
                       ))}
@@ -457,14 +477,20 @@ export default function Home() {
                     <div className="flex gap-4">
                       <a 
                         href={project.liveUrl} 
-                        className="text-green-primary hover:text-green-secondary transition-colors inline-flex items-center gap-2"
+                        className="transition-colors inline-flex items-center gap-2"
+                        style={{ color: '#00ff88' }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#00dd77'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = '#00ff88'}
                       >
                         <ExternalLink size={16} />
                         Live Demo
                       </a>
                       <a 
                         href={project.codeUrl} 
-                        className="text-green-primary hover:text-green-secondary transition-colors inline-flex items-center gap-2"
+                        className="transition-colors inline-flex items-center gap-2"
+                        style={{ color: '#00ff88' }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#00dd77'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = '#00ff88'}
                       >
                         <Github size={16} />
                         Code
@@ -482,7 +508,10 @@ export default function Home() {
           >
             <a 
               href="#" 
-              className="inline-flex items-center text-green-primary hover:text-green-secondary transition-colors gap-2"
+              className="inline-flex items-center transition-colors gap-2"
+              style={{ color: '#00ff88' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#00dd77'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#00ff88'}
             >
               View All Projects <ExternalLink size={16} />
             </a>
@@ -498,7 +527,7 @@ export default function Home() {
             {...fadeInUp}
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Work Together</h2>
-            <div className="w-20 h-1 bg-green-primary mx-auto mb-4"></div>
+            <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#00ff88' }}></div>
             <p className="text-text-secondary max-w-2xl mx-auto">
               Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
             </p>
@@ -549,7 +578,10 @@ export default function Home() {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-green-primary hover:bg-green-secondary text-white font-semibold py-3 px-6"
+                  className="w-full text-white font-semibold py-3 px-6"
+                  style={{ backgroundColor: '#00ff88' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
                 >
                   Send Message
                 </Button>
@@ -563,8 +595,11 @@ export default function Home() {
                   <h3 className="text-xl font-semibold mb-6 gradient-text">Get In Touch</h3>
                   <div className="space-y-4">
                     <div className="flex items-center">
-                      <div className="w-12 h-12 bg-green-primary/20 rounded-lg flex items-center justify-center mr-4">
-                        <Mail className="text-green-primary" size={20} />
+                      <div 
+                        className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
+                      >
+                        <Mail style={{ color: '#00ff88' }} size={20} />
                       </div>
                       <div>
                         <div className="font-medium">Email</div>
@@ -573,8 +608,11 @@ export default function Home() {
                     </div>
                     
                     <div className="flex items-center">
-                      <div className="w-12 h-12 bg-green-primary/20 rounded-lg flex items-center justify-center mr-4">
-                        <MapPin className="text-green-primary" size={20} />
+                      <div 
+                        className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
+                      >
+                        <MapPin style={{ color: '#00ff88' }} size={20} />
                       </div>
                       <div>
                         <div className="font-medium">Location</div>
@@ -589,19 +627,43 @@ export default function Home() {
                   <div className="flex space-x-4">
                     <a 
                       href="#" 
-                      className="w-12 h-12 bg-dark-primary hover:bg-green-primary border border-dark-accent hover:border-green-primary rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#00ff88';
+                        e.currentTarget.style.borderColor = '#00ff88';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
+                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
+                      }}
                     >
                       <Github className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                     <a 
                       href="#" 
-                      className="w-12 h-12 bg-dark-primary hover:bg-green-primary border border-dark-accent hover:border-green-primary rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#00ff88';
+                        e.currentTarget.style.borderColor = '#00ff88';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
+                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
+                      }}
                     >
                       <Linkedin className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                     <a 
                       href="#" 
-                      className="w-12 h-12 bg-dark-primary hover:bg-green-primary border border-dark-accent hover:border-green-primary rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#00ff88';
+                        e.currentTarget.style.borderColor = '#00ff88';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
+                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
+                      }}
                     >
                       <Twitter className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
