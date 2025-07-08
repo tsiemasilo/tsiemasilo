@@ -151,6 +151,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Tsie Movie Card",
+      description: "Interactive movie discovery platform featuring dynamic movie cards with detailed information, ratings, and search functionality. Modern UI with responsive design and smooth animations.",
+      image: "/tsie-movie-card.png",
+      technologies: ["React", "JavaScript", "CSS", "Movie API", "Responsive Design"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://tsiemoviecard.netlify.app",
+      codeUrl: "#"
+    },
+    {
       title: "Task Management App",
       description: "A mobile-first task management application with real-time synchronization and team collaboration features.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
