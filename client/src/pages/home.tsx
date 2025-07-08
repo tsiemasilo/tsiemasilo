@@ -7,10 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import {
-  Code,
-  Palette,
-  Smartphone,
-  Lightbulb,
   ExternalLink,
   Github,
   Mail,
@@ -20,6 +16,7 @@ import {
   Menu,
   X
 } from "lucide-react";
+import { SiHtml5, SiFigma, SiAndroidstudio, SiJava } from "react-icons/si";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -119,22 +116,22 @@ export default function Home() {
 
   const services = [
     {
-      icon: Code,
+      icon: SiHtml5,
       title: "Web Development",
       description: "Continuing to enhance my knowledge of front-end and back-end technologies like JavaScript and Node.js"
     },
     {
-      icon: Palette,
+      icon: SiFigma,
       title: "UI/UX Design",
       description: "Learning the foundations of design principles and tools like Figma to create user-friendly interfaces."
     },
     {
-      icon: Smartphone,
+      icon: SiAndroidstudio,
       title: "App Development",
       description: "Exploring mobile app development through intermediate projects and tutorials in Android Studio"
     },
     {
-      icon: Lightbulb,
+      icon: SiJava,
       title: "Problem-Solving",
       description: "Improving problem-solving skills by practicing data structures and algorithms with Java."
     }
@@ -383,7 +380,7 @@ export default function Home() {
               <span>•</span>
               <span>My Services</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: 'hsl(158, 100%, 60%)' }}>What Can I Do Best ?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#00ff88' }}>What Can I Do Best ?</h2>
           </motion.div>
           
           <motion.div 
@@ -399,12 +396,12 @@ export default function Home() {
                   <CardContent className="p-0">
                     <div 
                       className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                      style={{ backgroundColor: 'hsl(158, 100%, 60%)' }}
+                      style={{ backgroundColor: '#00ff88' }}
                     >
                       <service.icon className="text-white text-xl" size={24} />
                     </div>
                     <h3 className="text-xl font-semibold mb-4 text-white">{service.title}</h3>
-                    <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: 'hsl(158, 100%, 60%)' }}></div>
+                    <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: '#00ff88' }}></div>
                     <p className="text-gray-300 leading-relaxed">
                       {service.description}
                     </p>
