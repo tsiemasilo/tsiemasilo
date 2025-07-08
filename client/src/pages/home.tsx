@@ -16,7 +16,7 @@ import {
   Menu,
   X
 } from "lucide-react";
-import { SiHtml5, SiFigma, SiAndroidstudio, SiJava } from "react-icons/si";
+import { SiHtml5, SiFigma, SiAndroidstudio, SiOpenjdk } from "react-icons/si";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -131,7 +131,7 @@ export default function Home() {
       description: "Exploring mobile app development through intermediate projects and tutorials in Android Studio"
     },
     {
-      icon: SiJava,
+      icon: SiOpenjdk,
       title: "Problem-Solving",
       description: "Improving problem-solving skills by practicing data structures and algorithms with Java."
     }
