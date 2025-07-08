@@ -316,12 +316,25 @@ export default function Home() {
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeInUp}>
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800" 
-                alt="Professional portrait" 
-                className="rounded-2xl shadow-2xl w-full h-96 object-cover"
-              />
+            <motion.div 
+              {...fadeInUp}
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl profile-image-container">
+                <img 
+                  src="/attached_assets/home.jpg_1752002444254.jpeg" 
+                  alt="Tsie Masilo - Professional portrait" 
+                  className="w-full h-96 object-cover transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 border border-green-primary/20 rounded-2xl"></div>
+                <motion.div 
+                  className="absolute -inset-1 bg-gradient-to-r from-green-primary to-green-secondary rounded-2xl opacity-0 hover:opacity-20 transition-opacity duration-300"
+                  whileHover={{ opacity: 0.2 }}
+                ></motion.div>
+              </div>
             </motion.div>
             
             <motion.div {...fadeInUp}>

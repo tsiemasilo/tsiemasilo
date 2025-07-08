@@ -7,6 +7,9 @@ This is a full-stack web application built as a developer portfolio website. The
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+User name: Tsie Masilo
+Portfolio brand: "Hello World" 
+Personal profile image: Added user's personal photo with 3D hover effects and shimmer animations
 
 ## System Architecture
 
