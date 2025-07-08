@@ -260,8 +260,17 @@ export default function Home() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
+            {/* Matrix Background for Animation */}
+            <div className="matrix-container absolute inset-0">
+              <div className="matrix-pattern">
+                {Array.from({ length: 60 }, (_, i) => (
+                  <div key={i} className="matrix-column"></div>
+                ))}
+              </div>
+            </div>
+            
             <motion.div
-              className="brand-animation-container"
+              className="brand-animation-container relative z-10"
               initial={{ 
                 scale: 0,
                 rotateX: -90,
