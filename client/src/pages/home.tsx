@@ -595,7 +595,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <ExternalLink size={12} />
+                        <ExternalLink size={14} />
                         Live Demo
                       </a>
                       <a 
@@ -604,7 +604,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Github size={12} />
+                        <Github size={14} />
                         Code
                       </a>
                     </div>

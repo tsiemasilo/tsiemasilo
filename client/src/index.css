@@ -496,8 +496,8 @@
   box-shadow: 
     0 10px 40px rgba(0, 0, 0, 0.4),
     0 5px 20px rgba(0, 255, 136, 0.08);
-  height: 300px;
-  min-height: 300px;
+  height: 380px;
+  min-height: 380px;
 }
 
 .project-card:hover {
@@ -592,9 +592,9 @@
   background: rgba(20, 20, 20, 0.96);
   backdrop-filter: blur(15px);
   border-radius: 16px;
-  margin: 12px;
-  padding: 20px;
-  height: calc(100% - 24px);
+  margin: 16px;
+  padding: 24px;
+  height: calc(100% - 32px);
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -612,8 +612,8 @@
   overflow: hidden;
   border-radius: 12px;
   flex-shrink: 0;
-  width: 160px;
-  height: 120px;
+  width: 180px;
+  height: 140px;
 }
 
 .project-image-container::after {
@@ -660,11 +660,11 @@
 
 .project-category-badge {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 9px;
+  top: 12px;
+  right: 12px;
+  padding: 6px 10px;
+  border-radius: 14px;
+  font-size: 10px;
   font-weight: 700;
   background: rgba(0, 255, 136, 0.9);
   color: white;
@@ -681,22 +681,22 @@
 }
 
 .project-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: white;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
 .project-description {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 12px;
-  line-height: 1.4;
+  margin-bottom: 16px;
+  line-height: 1.5;
   font-weight: 400;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -704,14 +704,14 @@
 .project-tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-bottom: 12px;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
 .project-tech-tag {
-  padding: 3px 8px;
-  border-radius: 10px;
-  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
   font-weight: 600;
   background: rgba(0, 255, 136, 0.15);
   color: #00ff88;
@@ -730,17 +730,17 @@
 
 .project-links {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   margin-top: auto;
 }
 
 .project-link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 11px;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
   font-weight: 600;
   text-decoration: none;
   background: rgba(0, 255, 136, 0.1);
