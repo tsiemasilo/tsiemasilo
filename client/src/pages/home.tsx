@@ -555,64 +555,59 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                className="project-card"
               >
-                <Card className="bg-dark-secondary hover:bg-dark-accent transition-colors duration-300 overflow-hidden card-hover">
-                  <div className="relative overflow-hidden">
+                {/* Animated Blob Effect */}
+                <div className="project-card-blob"></div>
+                
+                <div className="project-card-content">
+                  <div className="project-image-container">
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                      className="project-image"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 via-transparent to-transparent"></div>
-                    <div className="absolute top-4 right-4">
-                      <span 
-                        className="px-3 py-1 rounded-full text-xs font-medium"
-                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.9)', color: 'white' }}
-                      >
-                        {project.category}
-                      </span>
+                    <div className="project-category-badge">
+                      {project.category}
                     </div>
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
-                    <p className="text-text-secondary mb-4">
+                  
+                  <div className="flex flex-col h-full">
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-description">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    
+                    <div className="project-tech-stack">
                       {project.technologies.map((tech) => (
-                        <span 
-                          key={tech} 
-                          className="px-3 py-1 rounded-full text-sm"
-                          style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)', color: '#00ff88' }}
-                        >
+                        <span key={tech} className="project-tech-tag">
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-4">
+                    
+                    <div className="project-links mt-auto">
                       <a 
                         href={project.liveUrl} 
-                        className="transition-colors inline-flex items-center gap-2"
-                        style={{ color: '#00ff88' }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = '#00dd77'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = '#00ff88'}
+                        className="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <ExternalLink size={16} />
                         Live Demo
                       </a>
                       <a 
                         href={project.codeUrl} 
-                        className="transition-colors inline-flex items-center gap-2"
-                        style={{ color: '#00ff88' }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = '#00dd77'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = '#00ff88'}
+                        className="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Github size={16} />
                         Code
                       </a>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
