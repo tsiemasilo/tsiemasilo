@@ -322,7 +322,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden mobile-section-padding">
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
@@ -334,17 +334,17 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeInUp}>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
               Hi, I'm <span className="gradient-text">Tsie Masilo</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
               Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 onClick={() => scrollToSection('projects')}
-                className="text-white px-8 py-3 font-semibold"
-                style={{ backgroundColor: '#00ff88' }}
+                className="text-white mobile-btn font-semibold"
+                style={{ backgroundColor: '#00ff88', padding: '12px 32px' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
               >
@@ -353,8 +353,8 @@ export default function Home() {
               <Button 
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 font-semibold"
-                style={{ borderColor: '#00ff88', color: '#00ff88' }}
+                className="mobile-btn font-semibold"
+                style={{ borderColor: '#00ff88', color: '#00ff88', padding: '12px 32px' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#00ff88';
                   e.currentTarget.style.color = 'white';
@@ -372,7 +372,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -382,7 +382,7 @@ export default function Home() {
             <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div 
               {...fadeInUp}
               className="relative"
@@ -431,7 +431,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary">
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -446,7 +446,7 @@ export default function Home() {
           </motion.div>
           
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -454,7 +454,7 @@ export default function Home() {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
+                <Card className="p-6 sm:p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
                   <CardContent className="p-0">
                     <div 
                       className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
@@ -476,7 +476,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -491,7 +491,7 @@ export default function Home() {
             
             {/* Project Category Navigation */}
             <motion.div 
-              className="project-nav-container flex flex-wrap justify-center gap-2 mb-8"
+              className="project-nav-container flex flex-wrap justify-center gap-2 sm:gap-3 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -503,7 +503,7 @@ export default function Home() {
                   <motion.button
                     key={category}
                     onClick={() => setActiveProjectCategory(category)}
-                    className={`project-nav-button morph-container px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 border relative overflow-hidden ${
+                    className={`project-nav-button morph-container px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 border relative overflow-hidden ${
                       isActive 
                         ? 'active text-white border-transparent' 
                         : 'text-gray-300 border-gray-600 hover:text-white hover:border-gray-500'
@@ -559,7 +559,7 @@ export default function Home() {
           </motion.div>
           
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -659,7 +659,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary">
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
         <div className="max-w-4xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -672,7 +672,7 @@ export default function Home() {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div {...fadeInUp}>
               <form onSubmit={handleFormSubmit} className="space-y-6">
