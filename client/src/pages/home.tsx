@@ -161,7 +161,7 @@ export default function Home() {
     },
     {
       title: "GovTech Competition Platform",
-      description: "Event management system with QR code registration, instant attendee access, and prize draw functionality. Features quick registration and seamless user experience.",
+      description: "Event management platform with QR code registration and prize draw functionality for seamless attendee experience.",
       image: "/govtech-competition.png",
       technologies: ["JavaScript", "QR Code API", "Event Management", "Responsive Design"],
       category: "WEB APPLICATION",
