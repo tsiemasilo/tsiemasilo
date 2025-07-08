@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -37,6 +37,7 @@ const staggerContainer = {
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -81,6 +82,7 @@ export default function Home() {
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = element.offsetTop - 80; // Account for fixed navbar
@@ -90,6 +92,30 @@ export default function Home() {
       });
     }
   };
+
+  // Add scroll listener to detect active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'services', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const height = element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const services = [
     {
@@ -144,51 +170,110 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-dark-primary text-text-primary">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-dark-primary/90 backdrop-blur-sm z-50 border-b border-dark-accent">
+      <motion.nav 
+        className="fixed top-0 left-0 right-0 bg-dark-primary/90 backdrop-blur-sm z-50 border-b border-dark-accent nav-3d"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0">
-              <span className="text-xl font-bold gradient-text">Portfolio</span>
-            </div>
+            <motion.div 
+              className="flex-shrink-0"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-xl font-bold gradient-text nav-brand-3d cursor-pointer">Portfolio</span>
+            </motion.div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <button onClick={() => scrollToSection('home')} className="text-text-secondary hover:text-green-primary transition-colors duration-200">Home</button>
-                <button onClick={() => scrollToSection('about')} className="text-text-secondary hover:text-green-primary transition-colors duration-200">About</button>
-                <button onClick={() => scrollToSection('services')} className="text-text-secondary hover:text-green-primary transition-colors duration-200">Services</button>
-                <button onClick={() => scrollToSection('projects')} className="text-text-secondary hover:text-green-primary transition-colors duration-200">Projects</button>
-                <button onClick={() => scrollToSection('contact')} className="text-text-secondary hover:text-green-primary transition-colors duration-200">Contact</button>
+              <div className="ml-10 flex items-baseline space-x-2">
+                {['home', 'about', 'services', 'projects', 'contact'].map((section, index) => (
+                  <motion.button
+                    key={section}
+                    onClick={() => scrollToSection(section)} 
+                    className={`nav-item-3d px-4 py-2 transition-colors duration-200 rounded-lg capitalize relative ${
+                      activeSection === section 
+                        ? 'text-white bg-green-primary/20' 
+                        : 'text-text-secondary hover:text-white'
+                    }`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0,
+                      boxShadow: activeSection === section 
+                        ? "0 0 20px rgba(52, 211, 153, 0.4)" 
+                        : "0 0 0px rgba(52, 211, 153, 0)"
+                    }}
+                    transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {activeSection === section && (
+                      <motion.div
+                        className="absolute inset-0 bg-green-primary/10 rounded-lg"
+                        layoutId="activeSection"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">{section}</span>
+                  </motion.button>
+                ))}
               </div>
             </div>
             
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
+              <motion.button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-text-secondary hover:text-green-primary"
+                className={`p-2 text-text-secondary hover:text-green-primary transition-colors duration-200 ${mobileMenuOpen ? 'hamburger-open' : ''}`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </Button>
+                <div className="w-6 h-6 flex flex-col justify-center">
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                </div>
+              </motion.button>
             </div>
           </div>
         </div>
         
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-dark-secondary">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <button onClick={() => { scrollToSection('home'); handleNavClick(); }} className="block px-3 py-2 text-text-secondary hover:text-green-primary transition-colors duration-200 w-full text-left">Home</button>
-              <button onClick={() => { scrollToSection('about'); handleNavClick(); }} className="block px-3 py-2 text-text-secondary hover:text-green-primary transition-colors duration-200 w-full text-left">About</button>
-              <button onClick={() => { scrollToSection('services'); handleNavClick(); }} className="block px-3 py-2 text-text-secondary hover:text-green-primary transition-colors duration-200 w-full text-left">Services</button>
-              <button onClick={() => { scrollToSection('projects'); handleNavClick(); }} className="block px-3 py-2 text-text-secondary hover:text-green-primary transition-colors duration-200 w-full text-left">Projects</button>
-              <button onClick={() => { scrollToSection('contact'); handleNavClick(); }} className="block px-3 py-2 text-text-secondary hover:text-green-primary transition-colors duration-200 w-full text-left">Contact</button>
-            </div>
-          </div>
-        )}
-      </nav>
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div 
+              className="md:hidden bg-dark-secondary"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {['home', 'about', 'services', 'projects', 'contact'].map((section, index) => (
+                  <motion.button
+                    key={section}
+                    onClick={() => { scrollToSection(section); handleNavClick(); }} 
+                    className="mobile-nav-item block px-3 py-2 text-text-secondary hover:text-green-primary transition-colors duration-200 w-full text-left rounded-lg hover:bg-dark-accent capitalize"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                    whileHover={{ x: 10, backgroundColor: "var(--dark-accent)" }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {section}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
