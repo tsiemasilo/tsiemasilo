@@ -187,6 +187,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Do You Love Me?",
+      description: "A playful interactive game featuring cute animated characters with engaging user interactions and charming visual design.",
+      image: "/do-you-love-me-game.png",
+      technologies: ["JavaScript", "HTML5", "CSS3", "Animations"],
+      category: "GAMES",
+      liveUrl: "https://tsieyouloveme.netlify.app",
+      codeUrl: "#"
+    },
+    {
       title: "Puzzle Game",
       description: "An engaging puzzle game with multiple levels, smooth animations, and progressive difficulty.",
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
