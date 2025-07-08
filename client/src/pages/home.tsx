@@ -572,30 +572,28 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="project-content-right">
-                    <div>
-                      <h3 className="project-title">{project.title}</h3>
-                      <p className="project-description">
-                        {project.description}
-                      </p>
-                      
-                      <div className="project-tech-stack">
-                        {project.technologies.map((tech) => (
-                          <span key={tech} className="project-tech-tag">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                  <div className="flex flex-col h-full">
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-description">
+                      {project.description}
+                    </p>
+                    
+                    <div className="project-tech-stack">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="project-tech-tag">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                     
-                    <div className="project-links">
+                    <div className="project-links mt-auto">
                       <a 
                         href={project.liveUrl} 
                         className="project-link"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <ExternalLink size={14} />
+                        <ExternalLink size={16} />
                         Live Demo
                       </a>
                       <a 
@@ -604,7 +602,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Github size={14} />
+                        <Github size={16} />
                         Code
                       </a>
                     </div>
