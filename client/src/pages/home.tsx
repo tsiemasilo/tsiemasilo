@@ -276,8 +276,17 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Matrix Background */}
+        <div className="matrix-container">
+          <div className="matrix-pattern">
+            {Array.from({ length: 40 }, (_, i) => (
+              <div key={i} className="matrix-column"></div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeInUp}>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
               Hi, I'm <span className="gradient-text">Tsie Masilo</span>
