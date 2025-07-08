@@ -524,17 +524,7 @@ export default function Home() {
                     {/* Energy pulse */}
                     {isActive && <div className="energy-pulse"></div>}
 
-                    {/* 4D Rotating cube */}
-                    <div className="cube-container">
-                      <div className="rotating-cube">
-                        <div className="cube-face"></div>
-                        <div className="cube-face"></div>
-                        <div className="cube-face"></div>
-                        <div className="cube-face"></div>
-                        <div className="cube-face"></div>
-                        <div className="cube-face"></div>
-                      </div>
-                    </div>
+
 
                     {/* Text with glitch effect */}
                     <span className="glitch-text relative z-10" data-text={category}>{category}</span>
