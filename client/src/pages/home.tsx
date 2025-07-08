@@ -304,7 +304,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
