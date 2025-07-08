@@ -308,7 +308,7 @@ export default function Home() {
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
-            {Array.from({ length: 40 }, (_, i) => (
+            {Array.from({ length: 100 }, (_, i) => (
               <div key={i} className="matrix-column"></div>
             ))}
           </div>
