@@ -335,7 +335,8 @@ export default function Home() {
                 <img 
                   src="/assets/profile.jpg" 
                   alt="Tsie Masilo - Professional portrait" 
-                  className="w-full h-96 object-contain transition-transform duration-300 hover:scale-105"
+                  className="w-full h-96 object-cover object-top transition-transform duration-300 hover:scale-105"
+                  style={{ objectPosition: '50% 30%' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
                 <div className="absolute inset-0 border border-green-primary/20 rounded-2xl"></div>
