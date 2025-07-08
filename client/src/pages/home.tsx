@@ -169,6 +169,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Lesedi 29 Construction",
+      description: "Professional construction company website showcasing business areas including construction services and waste removal & collection with project galleries.",
+      image: "/lesedi-construction-screenshot.png",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "PHP"],
+      category: "WEB DESIGN",
+      liveUrl: "https://lesedi29constructions.co.za/",
+      codeUrl: "#"
+    },
+    {
       title: "Puzzle Game",
       description: "An engaging puzzle game with multiple levels, smooth animations, and progressive difficulty.",
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
