@@ -142,12 +142,12 @@ export default function Home() {
   
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      technologies: ["React", "Node.js", "MongoDB"],
+      title: "No Shedding - Load Shedding Solutions",
+      description: "A comprehensive e-commerce platform for electrical equipment and UPS systems with product categories, cart functionality, and payment integration.",
+      image: "/attached_assets/image_1752005892724.png",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT"],
       category: "WEB APPLICATION",
-      liveUrl: "#",
+      liveUrl: "https://noshedding.co.za",
       codeUrl: "#"
     },
     {
