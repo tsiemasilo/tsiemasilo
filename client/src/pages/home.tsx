@@ -43,6 +43,35 @@ export default function Home() {
   });
   const { toast } = useToast();
 
+  // Track scroll position for background transition
+  const [scrollY, setScrollY] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate background transition based on scroll
+  const getBackgroundColor = () => {
+    const maxScroll = 800; // Adjust based on when transition should complete
+    const scrollProgress = Math.min(scrollY / maxScroll, 1);
+    
+    // Interpolate from black to page background
+    const blackRgb = [0, 0, 0];
+    const pageRgb = [31, 41, 55]; // Approximate RGB for hsl(210, 40%, 8%)
+    
+    const currentRgb = blackRgb.map((start, index) => {
+      const end = pageRgb[index];
+      return Math.round(start + (end - start) * scrollProgress);
+    });
+    
+    return `rgb(${currentRgb[0]}, ${currentRgb[1]}, ${currentRgb[2]})`;
+  };
+
   // Close mobile menu when clicking on links
   const handleNavClick = () => {
     setMobileMenuOpen(false);
@@ -304,7 +333,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #000000 0%, #000000 70%, #1a1a1a 85%, #0a0a0a 100%)' }}>
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: getBackgroundColor() }}>
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
@@ -353,8 +382,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gradient Transition Section */}
-      <div className="h-32" style={{ background: 'linear-gradient(to bottom, #0a0a0a 0%, #1a1a1a 20%, #2a2a2a 40%, #1f2937 60%, hsl(210, 40%, 8%) 100%)' }}></div>
+
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
