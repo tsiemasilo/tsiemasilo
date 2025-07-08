@@ -488,45 +488,79 @@
 /* Mobile Typography */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2.5rem !important;
+    font-size: 2.25rem !important;
     line-height: 1.2;
   }
   
   h2 {
-    font-size: 2rem !important;
+    font-size: 1.875rem !important;
+    line-height: 1.3;
   }
   
   h3 {
     font-size: 1.5rem !important;
+    line-height: 1.4;
+  }
+  
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
   }
 }
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 2rem !important;
-    line-height: 1.1;
+    font-size: 1.875rem !important;
+    line-height: 1.2;
   }
   
   h2 {
-    font-size: 1.75rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.3;
   }
   
   h3 {
     font-size: 1.25rem !important;
+    line-height: 1.4;
+  }
+  
+  p {
+    font-size: 0.8125rem !important;
+    line-height: 1.6 !important;
   }
 }
 
 /* Mobile Button Styles */
+@media (max-width: 768px) {
+  .mobile-btn {
+    padding: 14px 28px !important;
+    font-size: 15px !important;
+    min-height: 50px;
+    width: 100%;
+  }
+}
+
 @media (max-width: 480px) {
   .mobile-btn {
-    padding: 12px 24px !important;
+    padding: 16px 32px !important;
     font-size: 14px !important;
-    min-height: 48px;
+    min-height: 52px;
+    width: 100%;
   }
 }
 
 /* Mobile Spacing */
 @media (max-width: 768px) {
+  .mobile-spacing {
+    padding: 20px !important;
+  }
+  
+  .mobile-section-padding {
+    padding: 80px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
   .mobile-spacing {
     padding: 16px !important;
   }
@@ -536,13 +570,63 @@
   }
 }
 
-@media (max-width: 480px) {
-  .mobile-spacing {
-    padding: 12px !important;
+/* Mobile Card Improvements */
+@media (max-width: 768px) {
+  .project-card {
+    margin-bottom: 20px;
   }
   
-  .mobile-section-padding {
-    padding: 40px 0 !important;
+  .project-card img {
+    height: 200px !important;
+  }
+  
+  .project-card .p-6 {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    margin-bottom: 16px;
+  }
+  
+  .project-card img {
+    height: 180px !important;
+  }
+  
+  .project-card .p-6 {
+    padding: 12px !important;
+  }
+}
+
+/* Mobile Navigation Improvements */
+@media (max-width: 768px) {
+  .nav-item-3d {
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+  }
+  
+  .mobile-menu-3d {
+    backdrop-filter: blur(10px);
+    background: rgba(20, 20, 20, 0.95);
+  }
+}
+
+/* Mobile Contact Form */
+@media (max-width: 768px) {
+  .contact-form input,
+  .contact-form textarea {
+    padding: 16px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile Matrix Effect Optimization */
+@media (max-width: 768px) {
+  .matrix-column {
+    width: 15px;
+    font-size: 14px;
+    line-height: 16px;
   }
 }
 

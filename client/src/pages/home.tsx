@@ -413,7 +413,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden mobile-section-padding">
+      <section id="home" className="min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 relative overflow-hidden mobile-section-padding">
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
@@ -425,17 +425,17 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeInUp}>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
               Hi, I'm <span className="gradient-text">Tsie Masilo</span>
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
               Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
               <Button 
                 onClick={() => scrollToSection('projects')}
-                className="text-white mobile-btn font-semibold"
-                style={{ backgroundColor: '#00ff88', padding: '12px 32px' }}
+                className="text-white mobile-btn font-semibold w-full sm:w-auto"
+                style={{ backgroundColor: '#00ff88', padding: '14px 28px' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
               >
@@ -444,8 +444,8 @@ export default function Home() {
               <Button 
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="mobile-btn font-semibold"
-                style={{ borderColor: '#00ff88', color: '#00ff88', padding: '12px 32px' }}
+                className="mobile-btn font-semibold w-full sm:w-auto"
+                style={{ borderColor: '#00ff88', color: '#00ff88', padding: '14px 28px' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#00ff88';
                   e.currentTarget.style.color = 'white';
@@ -463,17 +463,17 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing">
+      <section id="about" className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             {...fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
-            <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+            <div className="w-16 sm:w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <motion.div 
               {...fadeInUp}
               className="relative"
@@ -484,7 +484,7 @@ export default function Home() {
                 <img 
                   src="/assets/profile.jpg" 
                   alt="Tsie Masilo - Professional portrait" 
-                  className="w-full h-[500px] object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-300 hover:scale-105"
                   style={{ objectPosition: '50% 20%', transform: 'scale(1.0)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
@@ -493,22 +493,22 @@ export default function Home() {
             </motion.div>
             
             <motion.div {...fadeInUp}>
-              <h3 className="text-2xl font-semibold mb-6 gradient-text">Crafting Digital Solutions</h3>
-              <p className="text-text-secondary mb-6 leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 gradient-text">Crafting Digital Solutions</h3>
+              <p className="text-text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                 I'm a passionate developer with expertise in modern web technologies. I love turning complex problems into simple, beautiful, and intuitive solutions. When I'm not coding, you'll find me exploring new technologies or contributing to open-source projects.
               </p>
-              <p className="text-text-secondary mb-8 leading-relaxed">
+              <p className="text-text-secondary mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
                 With a strong foundation in both front-end and back-end development, I create end-to-end solutions that are not only functional but also provide exceptional user experiences.
               </p>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
-                  <div className="text-sm text-text-secondary">Projects</div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
+                  <div className="text-xs sm:text-sm text-text-secondary">Projects</div>
                 </div>
-                <div className="text-center p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
-                  <div className="text-sm text-text-secondary">Years Experience</div>
+                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
+                  <div className="text-xs sm:text-sm text-text-secondary">Years Experience</div>
                 </div>
               </div>
             </motion.div>
@@ -645,7 +645,7 @@ export default function Home() {
           </motion.div>
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -745,20 +745,20 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
+      <section id="contact" className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-dark-secondary mobile-section-padding mobile-spacing">
         <div className="max-w-4xl mx-auto">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             {...fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Work Together</h2>
-            <div className="w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#00ff88' }}></div>
-            <p className="text-text-secondary max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+            <div className="w-16 sm:w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#00ff88' }}></div>
+            <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
               Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div {...fadeInUp}>
               <form onSubmit={handleFormSubmit} className="space-y-6">
