@@ -506,20 +506,7 @@ export default function Home() {
                     {/* Morphing background */}
                     <div className="morph-background"></div>
                     
-                    {/* Particle container */}
-                    <div className="particle-container">
-                      {isActive && Array.from({ length: 8 }, (_, i) => (
-                        <div 
-                          key={i}
-                          className="particle"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${1.5 + Math.random()}s`
-                          }}
-                        />
-                      ))}
-                    </div>
+
 
                     {/* Energy pulse */}
                     {isActive && <div className="energy-pulse"></div>}
