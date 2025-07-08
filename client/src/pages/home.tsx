@@ -35,6 +35,7 @@ const staggerContainer = {
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [activeProjectCategory, setActiveProjectCategory] = useState('All');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -137,12 +138,15 @@ export default function Home() {
     }
   ];
 
+  const projectCategories = ['All', 'WEB DESIGN', 'GAMES', 'WEB APPLICATION', 'APPS DESIGN'];
+  
   const projects = [
     {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       technologies: ["React", "Node.js", "MongoDB"],
+      category: "WEB APPLICATION",
       liveUrl: "#",
       codeUrl: "#"
     },
@@ -151,6 +155,7 @@ export default function Home() {
       description: "A mobile-first task management application with real-time synchronization and team collaboration features.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       technologies: ["React Native", "Firebase", "TypeScript"],
+      category: "APPS DESIGN",
       liveUrl: "#",
       codeUrl: "#"
     },
@@ -159,10 +164,24 @@ export default function Home() {
       description: "An interactive analytics dashboard with real-time data visualization and custom reporting features.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       technologies: ["Vue.js", "D3.js", "Python"],
+      category: "WEB DESIGN",
+      liveUrl: "#",
+      codeUrl: "#"
+    },
+    {
+      title: "Puzzle Game",
+      description: "An engaging puzzle game with multiple levels, smooth animations, and progressive difficulty.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+      technologies: ["JavaScript", "HTML5 Canvas", "CSS3"],
+      category: "GAMES",
       liveUrl: "#",
       codeUrl: "#"
     }
   ];
+
+  const filteredProjects = activeProjectCategory === 'All' 
+    ? projects 
+    : projects.filter(project => project.category === activeProjectCategory);
 
   return (
     <div className="min-h-screen bg-dark-primary text-text-primary">
@@ -436,11 +455,60 @@ export default function Home() {
             className="text-center mb-16"
             {...fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
-            <div className="w-20 h-1 bg-green-primary mx-auto mb-4"></div>
-            <p className="text-text-secondary max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and experience in web development and design.
-            </p>
+            <div className="text-white font-semibold mb-2 flex items-center justify-center gap-2">
+              <div className="w-8 h-px bg-white"></div>
+              <span>•</span>
+              <span>Portfolio</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: '#00ff88' }}>My Creative Work</h2>
+            
+            {/* Project Category Navigation */}
+            <motion.div 
+              className="flex flex-wrap justify-center gap-2 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              {projectCategories.map((category, index) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setActiveProjectCategory(category)}
+                  className={`px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 border relative overflow-hidden ${
+                    activeProjectCategory === category 
+                      ? 'text-white border-transparent' 
+                      : 'text-gray-300 border-gray-600 hover:text-white hover:border-gray-500'
+                  }`}
+                  style={{ 
+                    backgroundColor: activeProjectCategory === category ? '#00ff88' : 'transparent',
+                    boxShadow: activeProjectCategory === category ? '0 0 20px rgba(0, 255, 136, 0.3)' : 'none'
+                  }}
+                  initial={{ 
+                    opacity: 0, 
+                    y: 20,
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0,
+                  }}
+                  transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {activeProjectCategory === category && (
+                    <motion.div
+                      className="absolute inset-0 rounded-lg"
+                      style={{ backgroundColor: 'rgba(0, 255, 136, 0.1)' }}
+                      layoutId="activeProjectCategory"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{category}</span>
+                </motion.button>
+              ))}
+            </motion.div>
           </motion.div>
           
           <motion.div 
@@ -449,17 +517,35 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
+            key={activeProjectCategory}
           >
-            {projects.map((project, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="bg-dark-secondary rounded-xl overflow-hidden card-hover border-dark-accent">
-                  <img 
-                    src={project.image} 
-                    alt={`${project.title} preview`} 
-                    className="w-full h-48 object-cover"
-                  />
+            {filteredProjects.map((project, index) => (
+              <motion.div 
+                key={`${project.title}-${activeProjectCategory}`} 
+                variants={fadeInUp}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="bg-dark-secondary hover:bg-dark-accent transition-colors duration-300 overflow-hidden card-hover">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 via-transparent to-transparent"></div>
+                    <div className="absolute top-4 right-4">
+                      <span 
+                        className="px-3 py-1 rounded-full text-xs font-medium"
+                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.9)', color: 'white' }}
+                      >
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
                     <p className="text-text-secondary mb-4">
                       {project.description}
                     </p>
@@ -501,6 +587,17 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+          
+          {filteredProjects.length === 0 && (
+            <motion.div 
+              className="text-center py-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <p className="text-text-secondary text-lg">No projects found in this category.</p>
+            </motion.div>
+          )}
           
           <motion.div 
             className="text-center mt-12"
