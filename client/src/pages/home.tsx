@@ -43,35 +43,6 @@ export default function Home() {
   });
   const { toast } = useToast();
 
-  // Track scroll position for background transition
-  const [scrollY, setScrollY] = useState(0);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Calculate background transition based on scroll
-  const getBackgroundColor = () => {
-    const maxScroll = 800; // Adjust based on when transition should complete
-    const scrollProgress = Math.min(scrollY / maxScroll, 1);
-    
-    // Interpolate from black to page background
-    const blackRgb = [0, 0, 0];
-    const pageRgb = [31, 41, 55]; // Approximate RGB for hsl(210, 40%, 8%)
-    
-    const currentRgb = blackRgb.map((start, index) => {
-      const end = pageRgb[index];
-      return Math.round(start + (end - start) * scrollProgress);
-    });
-    
-    return `rgb(${currentRgb[0]}, ${currentRgb[1]}, ${currentRgb[2]})`;
-  };
-
   // Close mobile menu when clicking on links
   const handleNavClick = () => {
     setMobileMenuOpen(false);
@@ -333,11 +304,11 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: getBackgroundColor() }}>
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Matrix Background */}
         <div className="matrix-container">
           <div className="matrix-pattern">
-            {Array.from({ length: 100 }, (_, i) => (
+            {Array.from({ length: 40 }, (_, i) => (
               <div key={i} className="matrix-column"></div>
             ))}
           </div>
@@ -381,8 +352,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
