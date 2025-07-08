@@ -144,7 +144,7 @@ export default function Home() {
     {
       title: "No Shedding - Load Shedding Solutions",
       description: "A comprehensive e-commerce platform for electrical equipment and UPS systems with product categories, cart functionality, and payment integration.",
-      image: "/attached_assets/image_1752005892724.png",
+      image: "/noshedding-screenshot.png",
       technologies: ["React", "Node.js", "Express", "MongoDB", "Ozow", "PayFast", "JWT"],
       category: "WEB APPLICATION",
       liveUrl: "https://noshedding.co.za",
