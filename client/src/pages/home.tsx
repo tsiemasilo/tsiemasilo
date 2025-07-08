@@ -160,6 +160,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "GovTech Competition Platform",
+      description: "Event management system with QR code registration, instant attendee access, and prize draw functionality. Features quick registration and seamless user experience.",
+      image: "/govtech-competition.png",
+      technologies: ["JavaScript", "QR Code API", "Event Management", "Responsive Design"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://govtechcompetition.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Task Management App",
       description: "A mobile-first task management application with real-time synchronization and team collaboration features.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
