@@ -324,7 +324,7 @@ export default function Home() {
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl profile-image-container">
                 <img 
-                  src="/attached_assets/home.jpg_1752002444254.jpeg" 
+                  src="/assets/profile.jpg" 
                   alt="Tsie Masilo - Professional portrait" 
                   className="w-full h-96 object-cover transition-transform duration-300 hover:scale-105"
                 />
