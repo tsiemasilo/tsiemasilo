@@ -572,7 +572,7 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="flex flex-col h-full">
+                  <div className="flex flex-col flex-grow">
                     <h3 className="project-title">{project.title}</h3>
                     <p className="project-description">
                       {project.description}
