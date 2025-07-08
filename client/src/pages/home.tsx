@@ -372,7 +372,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'hsl(210, 30%, 12%)' }}>
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
