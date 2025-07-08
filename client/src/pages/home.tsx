@@ -420,16 +420,11 @@ export default function Home() {
                 <img 
                   src="/assets/profile.jpg" 
                   alt="Tsie Masilo - Professional portrait" 
-                  className="w-full h-96 object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-[500px] object-cover transition-transform duration-300 hover:scale-105"
                   style={{ objectPosition: '50% 20%', transform: 'scale(1.0)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
                 <div className="absolute inset-0 border rounded-2xl" style={{ borderColor: 'rgba(0, 255, 136, 0.2)' }}></div>
-                <motion.div 
-                  className="absolute -inset-1 rounded-2xl opacity-0 hover:opacity-20 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(to right, #00ff88, #00dd77)' }}
-                  whileHover={{ opacity: 0.2 }}
-                ></motion.div>
               </div>
             </motion.div>
             
