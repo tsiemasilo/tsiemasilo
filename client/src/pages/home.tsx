@@ -214,6 +214,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Ping Pong",
+      description: "Classic arcade-style ping pong game with smooth controls, real-time scoring, and responsive gameplay mechanics.",
+      image: "/ping-pong-game.png",
+      technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Game Physics"],
+      category: "GAMES",
+      liveUrl: "https://tsiepingpong.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Puzzle Game",
       description: "An engaging puzzle game with multiple levels, smooth animations, and progressive difficulty.",
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
