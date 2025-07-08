@@ -187,6 +187,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "FashionFlag.SA",
+      description: "Modern fashion showcase platform featuring curated style collections, outfit inspirations, and elegant fashion photography with interactive design elements.",
+      image: "/fashionflag-screenshot.png",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+      category: "WEB DESIGN",
+      liveUrl: "https://fashionflagza.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Do You Love Me?",
       description: "A playful interactive game featuring cute animated characters with engaging user interactions and charming visual design.",
       image: "/do-you-love-me-game.png",
