@@ -645,6 +645,8 @@
   max-width: 420px;
   height: 580px;
   margin: 0 auto;
+  background: rgba(30, 30, 30, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .project-card:hover {
