@@ -483,3 +483,242 @@
 .focus\:ring-green-primary:focus {
   --tw-ring-color: var(--green-primary);
 }
+
+/* Futuristic 3D/4D Project Navigation Animations */
+.project-nav-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.project-nav-button {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.project-nav-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.4), transparent);
+  transition: left 0.8s ease;
+  z-index: 1;
+}
+
+.project-nav-button:hover::before {
+  left: 100%;
+}
+
+.project-nav-button.active {
+  transform: translateZ(20px) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 
+    0 20px 40px rgba(0, 255, 136, 0.3),
+    0 0 80px rgba(0, 255, 136, 0.2),
+    inset 0 0 30px rgba(0, 255, 136, 0.1);
+}
+
+.project-nav-button:not(.active):hover {
+  transform: translateZ(10px) rotateX(3deg);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Holographic shimmer effect */
+.holographic-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 255, 136, 0.1) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: shimmer-holo 3s infinite;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+@keyframes shimmer-holo {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+
+/* Particle effects */
+.particle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: float 2s infinite;
+  opacity: 0;
+}
+
+@keyframes float {
+  0%, 100% { 
+    opacity: 0;
+    transform: translateY(20px) scale(0);
+  }
+  50% { 
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+}
+
+/* Morphing transition effects */
+.morph-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.morph-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+  transform: scale(0);
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: inherit;
+}
+
+.project-nav-button.active .morph-background {
+  transform: scale(1.5);
+}
+
+/* Glitch effect for category switching */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-nav-button.switching .glitch-text::before {
+  animation: glitch-1 0.3s ease;
+  color: #ff0080;
+  z-index: -1;
+}
+
+.project-nav-button.switching .glitch-text::after {
+  animation: glitch-2 0.3s ease;
+  color: #00ffff;
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0%, 14%, 15%, 49%, 50%, 99%, 100% { 
+    opacity: 0;
+    transform: translate(0);
+  }
+  1%, 13%, 16%, 48%, 51%, 98% { 
+    opacity: 1;
+    transform: translate(-2px, 1px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 20%, 21%, 62%, 63%, 99%, 100% { 
+    opacity: 0;
+    transform: translate(0);
+  }
+  1%, 19%, 22%, 61%, 64%, 98% { 
+    opacity: 1;
+    transform: translate(2px, -1px);
+  }
+}
+
+/* Energy pulse effect */
+.energy-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-expand 1.5s infinite;
+  opacity: 0;
+}
+
+@keyframes pulse-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(20);
+    opacity: 0;
+  }
+}
+
+/* 4D cube rotation effect */
+.cube-container {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  perspective: 100px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-nav-button.active .cube-container {
+  opacity: 1;
+}
+
+.rotating-cube {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate-cube 4s infinite linear;
+}
+
+.cube-face {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 255, 136, 0.3);
+  border: 1px solid #00ff88;
+}
+
+.cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(10px); }
+.cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(10px); }
+.cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(10px); }
+.cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(10px); }
+.cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(10px); }
+.cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(10px); }
+
+@keyframes rotate-cube {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}

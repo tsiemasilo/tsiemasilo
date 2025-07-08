@@ -464,50 +464,93 @@ export default function Home() {
             
             {/* Project Category Navigation */}
             <motion.div 
-              className="flex flex-wrap justify-center gap-2 mb-8"
+              className="project-nav-container flex flex-wrap justify-center gap-2 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              {projectCategories.map((category, index) => (
-                <motion.button
-                  key={category}
-                  onClick={() => setActiveProjectCategory(category)}
-                  className={`px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 border relative overflow-hidden ${
-                    activeProjectCategory === category 
-                      ? 'text-white border-transparent' 
-                      : 'text-gray-300 border-gray-600 hover:text-white hover:border-gray-500'
-                  }`}
-                  style={{ 
-                    backgroundColor: activeProjectCategory === category ? '#00ff88' : 'transparent',
-                    boxShadow: activeProjectCategory === category ? '0 0 20px rgba(0, 255, 136, 0.3)' : 'none'
-                  }}
-                  initial={{ 
-                    opacity: 0, 
-                    y: 20,
-                  }}
-                  animate={{ 
-                    opacity: 1, 
-                    y: 0,
-                  }}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {activeProjectCategory === category && (
-                    <motion.div
-                      className="absolute inset-0 rounded-lg"
-                      style={{ backgroundColor: 'rgba(0, 255, 136, 0.1)' }}
-                      layoutId="activeProjectCategory"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <span className="relative z-10">{category}</span>
-                </motion.button>
-              ))}
+              {projectCategories.map((category, index) => {
+                const isActive = activeProjectCategory === category;
+                
+                return (
+                  <motion.button
+                    key={category}
+                    onClick={() => setActiveProjectCategory(category)}
+                    className={`project-nav-button morph-container px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 border relative overflow-hidden ${
+                      isActive 
+                        ? 'active text-white border-transparent' 
+                        : 'text-gray-300 border-gray-600 hover:text-white hover:border-gray-500'
+                    }`}
+                    style={{ 
+                      backgroundColor: isActive ? '#00ff88' : 'transparent',
+                      boxShadow: isActive ? '0 0 20px rgba(0, 255, 136, 0.3)' : 'none'
+                    }}
+                    initial={{ 
+                      opacity: 0, 
+                      y: 20,
+                    }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0,
+                    }}
+                    transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {/* Holographic shimmer effect */}
+                    <div className="holographic-shimmer"></div>
+                    
+                    {/* Morphing background */}
+                    <div className="morph-background"></div>
+                    
+                    {/* Particle container */}
+                    <div className="particle-container">
+                      {isActive && Array.from({ length: 8 }, (_, i) => (
+                        <div 
+                          key={i}
+                          className="particle"
+                          style={{
+                            left: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            animationDuration: `${1.5 + Math.random()}s`
+                          }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Energy pulse */}
+                    {isActive && <div className="energy-pulse"></div>}
+
+                    {/* 4D Rotating cube */}
+                    <div className="cube-container">
+                      <div className="rotating-cube">
+                        <div className="cube-face"></div>
+                        <div className="cube-face"></div>
+                        <div className="cube-face"></div>
+                        <div className="cube-face"></div>
+                        <div className="cube-face"></div>
+                        <div className="cube-face"></div>
+                      </div>
+                    </div>
+
+                    {/* Text with glitch effect */}
+                    <span className="glitch-text relative z-10" data-text={category}>{category}</span>
+
+                    {/* Active state indicator */}
+                    {isActive && (
+                      <motion.div
+                        className="absolute inset-0 rounded-lg"
+                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.1)' }}
+                        layoutId="activeProjectCategory"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </motion.button>
+                );
+              })}
             </motion.div>
           </motion.div>
           
