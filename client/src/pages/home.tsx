@@ -183,7 +183,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-xl font-bold gradient-text nav-brand-3d cursor-pointer">Portfolio</span>
+              <span className="text-xl font-bold gradient-text nav-brand-3d cursor-pointer">Hello World</span>
             </motion.div>
             
             {/* Desktop Navigation */}
@@ -280,7 +280,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <motion.div {...fadeInUp}>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
-              Hi, I'm <span className="gradient-text">Your Name</span>
+              Hi, I'm <span className="gradient-text">Tsie Masilo</span>
             </h1>
             <p className="text-xl sm:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
               Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter.
