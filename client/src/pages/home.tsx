@@ -372,14 +372,18 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary">
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'hsl(210, 30%, 12%)' }}>
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
             {...fadeInUp}
           >
-            <div className="text-green-primary font-semibold mb-2">—— • My Services</div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 gradient-text">What Can I Do Best ?</h2>
+            <div className="text-white font-semibold mb-2 flex items-center justify-center gap-2">
+              <div className="w-8 h-px bg-white"></div>
+              <span>•</span>
+              <span>My Services</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: 'hsl(158, 100%, 60%)' }}>What Can I Do Best ?</h2>
           </motion.div>
           
           <motion.div 
@@ -391,14 +395,17 @@ export default function Home() {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="bg-dark-primary p-8 card-hover border-dark-accent">
+                <Card className="p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
                   <CardContent className="p-0">
-                    <div className="w-16 h-16 bg-green-primary rounded-full flex items-center justify-center mb-6">
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
+                      style={{ backgroundColor: 'hsl(158, 100%, 60%)' }}
+                    >
                       <service.icon className="text-white text-xl" size={24} />
                     </div>
                     <h3 className="text-xl font-semibold mb-4 text-white">{service.title}</h3>
-                    <div className="w-8 h-0.5 bg-green-primary mb-4"></div>
-                    <p className="text-text-secondary leading-relaxed">
+                    <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: 'hsl(158, 100%, 60%)' }}></div>
+                    <p className="text-gray-300 leading-relaxed">
                       {service.description}
                     </p>
                   </CardContent>

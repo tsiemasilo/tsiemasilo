@@ -32,6 +32,11 @@
   --green-secondary: hsl(158, 73%, 42%);
   --text-primary: hsl(0, 0%, 100%);
   --text-secondary: hsl(215, 15%, 65%);
+  
+  /* Services section specific colors */
+  --services-bg: hsl(210, 30%, 12%);
+  --services-card-bg: hsl(213, 27%, 8%);
+  --services-green: hsl(158, 100%, 60%);
 }
 
 .dark {
