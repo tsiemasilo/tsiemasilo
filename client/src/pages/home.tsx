@@ -463,7 +463,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing bg-dark-secondary/30 backdrop-blur-sm">
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -502,11 +502,11 @@ export default function Home() {
               </p>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-dark-secondary/30 backdrop-blur-sm rounded-lg border border-dark-accent/20">
+                <div className="text-center p-4 bg-dark-secondary rounded-lg">
                   <div className="text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
                   <div className="text-sm text-text-secondary">Projects</div>
                 </div>
-                <div className="text-center p-4 bg-dark-secondary/30 backdrop-blur-sm rounded-lg border border-dark-accent/20">
+                <div className="text-center p-4 bg-dark-secondary rounded-lg">
                   <div className="text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
                   <div className="text-sm text-text-secondary">Years Experience</div>
                 </div>
@@ -517,7 +517,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary/30 backdrop-blur-sm mobile-section-padding mobile-spacing">
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -540,7 +540,7 @@ export default function Home() {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-6 sm:p-8 card-hover border-none bg-dark-secondary/30 backdrop-blur-sm border border-dark-accent/20">
+                <Card className="p-6 sm:p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
                   <CardContent className="p-0">
                     <div 
                       className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
@@ -562,7 +562,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing bg-dark-primary/30 backdrop-blur-sm">
+      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 mobile-section-padding mobile-spacing">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -745,7 +745,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary/30 backdrop-blur-sm mobile-section-padding mobile-spacing">
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
         <div className="max-w-4xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -771,7 +771,7 @@ export default function Home() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-primary/30 backdrop-blur-sm border-dark-accent/20 focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary"
+                    className="w-full px-4 py-3 bg-dark-primary border-dark-accent focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary"
                     placeholder="Your name"
                   />
                 </div>
@@ -784,7 +784,7 @@ export default function Home() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-primary/30 backdrop-blur-sm border-dark-accent/20 focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary"
+                    className="w-full px-4 py-3 bg-dark-primary border-dark-accent focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -797,7 +797,7 @@ export default function Home() {
                     onChange={handleInputChange}
                     rows={5}
                     required
-                    className="w-full px-4 py-3 bg-dark-primary/30 backdrop-blur-sm border-dark-accent/20 focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary resize-none"
+                    className="w-full px-4 py-3 bg-dark-primary border-dark-accent focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -866,28 +866,28 @@ export default function Home() {
                     </a>
                     <a 
                       href="#" 
-                      className="w-12 h-12 bg-dark-primary/30 backdrop-blur-sm border border-dark-accent/20 rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = '#00ff88';
                         e.currentTarget.style.borderColor = '#00ff88';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
+                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
                       }}
                     >
                       <Linkedin className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                     <a 
                       href="#" 
-                      className="w-12 h-12 bg-dark-primary/30 backdrop-blur-sm border border-dark-accent/20 rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = '#00ff88';
                         e.currentTarget.style.borderColor = '#00ff88';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
+                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
                       }}
                     >
                       <Twitter className="text-text-secondary group-hover:text-white" size={20} />
