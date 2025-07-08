@@ -546,6 +546,20 @@
   }
 }
 
+/* 4D Brand Animation Styles */
+.brand-animation-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.brand-animation-container h1 {
+  text-shadow: 
+    0 0 20px rgba(0, 255, 136, 0.5),
+    0 0 40px rgba(0, 255, 136, 0.3),
+    0 0 60px rgba(0, 255, 136, 0.2);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
 /* Custom color classes */
 .bg-dark-primary {
   background-color: var(--dark-primary);

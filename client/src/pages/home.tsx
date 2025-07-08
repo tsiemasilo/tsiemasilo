@@ -36,6 +36,8 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [activeProjectCategory, setActiveProjectCategory] = useState('All');
+  const [showBrandAnimation, setShowBrandAnimation] = useState(true);
+  const [brandAnimationComplete, setBrandAnimationComplete] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,6 +49,16 @@ export default function Home() {
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
+
+  // Brand animation effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowBrandAnimation(false);
+      setBrandAnimationComplete(true);
+    }, 3000); // Show for 3 seconds total (1s animation + 2s stay)
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -239,12 +251,62 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-dark-primary text-text-primary">
+      {/* 4D Brand Animation Overlay */}
+      <AnimatePresence>
+        {showBrandAnimation && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-dark-primary"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.div
+              className="brand-animation-container"
+              initial={{ 
+                scale: 0,
+                rotateX: -90,
+                rotateY: 0,
+                z: -1000,
+                opacity: 0
+              }}
+              animate={{ 
+                scale: [0, 1.2, 1],
+                rotateX: [90, 0, 0],
+                rotateY: [0, 360, 0],
+                z: [1000, 0, 0],
+                opacity: 1
+              }}
+              exit={{
+                scale: 0.3,
+                x: typeof window !== 'undefined' && window.innerWidth < 768 ? -150 : -600,
+                y: typeof window !== 'undefined' && window.innerWidth < 768 ? -250 : -300,
+                rotateZ: 360,
+                opacity: 1
+              }}
+              transition={{ 
+                duration: 1,
+                ease: "easeOut",
+                exit: { duration: 1, ease: "easeInOut" }
+              }}
+              style={{ 
+                perspective: "1000px",
+                transformStyle: "preserve-3d"
+              }}
+            >
+              <h1 className="text-6xl sm:text-8xl font-bold gradient-text text-center">
+                Hello World
+              </h1>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Navigation */}
       <motion.nav 
         className="fixed top-0 left-0 right-0 bg-dark-primary/90 backdrop-blur-sm z-50 border-b border-dark-accent nav-3d"
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        animate={{ y: brandAnimationComplete ? 0 : -100 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: brandAnimationComplete ? 0 : 3 }}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -252,6 +314,8 @@ export default function Home() {
               className="flex-shrink-0"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: brandAnimationComplete ? 1 : 0 }}
             >
               <span className="text-xl font-bold gradient-text nav-brand-3d cursor-pointer">Hello World</span>
             </motion.div>
