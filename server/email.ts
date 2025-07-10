@@ -4,9 +4,15 @@ import nodemailer from 'nodemailer';
 const createTransporter = () => {
   return nodemailer.createTransporter({
     service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.EMAIL_USER || 'tsiemasilo@gmail.com',
-      pass: process.env.EMAIL_PASS || 'dsph dodz kajn gcbn'
+      pass: process.env.EMAIL_PASS || 'dsphdodzkajngcbn'
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 };
@@ -61,11 +67,19 @@ export const sendContactEmail = async (data: EmailData) => {
   };
 
   try {
+    // Verify connection first
+    await transporter.verify();
+    console.log('SMTP connection verified successfully');
+    
     const info = await transporter.sendMail(mailOptions);
     console.log('Email sent successfully:', info.messageId);
+    console.log('Email response:', info.response);
     return { success: true, messageId: info.messageId };
   } catch (error) {
     console.error('Error sending email:', error);
+    if (error.code === 'EAUTH') {
+      console.error('Authentication failed - check your app password');
+    }
     throw error;
   }
 };
