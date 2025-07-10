@@ -871,20 +871,7 @@ export default function Home() {
                     onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00dd77')}
                     onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00ff88')}
                   >
-                    {isSubmitting ? (
-                      <div className="flex items-center justify-center gap-3">
-                        <div className="typewriter-loader">
-                          <div className="slide">
-                            <i></i>
-                          </div>
-                          <div className="paper"></div>
-                          <div className="keyboard"></div>
-                        </div>
-                        Sending...
-                      </div>
-                    ) : (
-                      "Send Message"
-                    )}
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </motion.div>
               </form>
@@ -989,6 +976,23 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Typewriter Animation Overlay */}
+      {isSubmitting && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <div className="text-center">
+            <div className="typewriter-loader mb-6">
+              <div className="slide">
+                <i></i>
+              </div>
+              <div className="paper"></div>
+              <div className="keyboard"></div>
+            </div>
+            <h3 className="text-white text-2xl font-semibold mb-2">Typing your message...</h3>
+            <p className="text-gray-300">Please wait while I compose and send your email</p>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-accent">
