@@ -90,8 +90,8 @@ export default function Home() {
     setIsSubmitting(true);
 
     try {
-      // Send email via API
-      const response = await fetch('/api/send-email', {
+      // Send email via SMTP Netlify Function
+      const response = await fetch('/.netlify/functions/smtp-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default function Home() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: formData.message,
+          message: formData.message
         }),
       });
 
@@ -822,7 +822,7 @@ export default function Home() {
             <motion.div {...fadeInUp}>
               <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name" className="block text-sm font-medium mb-2">Name</Label>
+                  <Label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Name</Label>
                   <Input
                     type="text"
                     id="name"
@@ -830,12 +830,15 @@ export default function Home() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-primary border-dark-accent focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary"
+                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary transition-all duration-200"
+                    style={{
+                      '--tw-ring-color': '#00ff88'
+                    } as React.CSSProperties}
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="email" className="block text-sm font-medium mb-2">Email</Label>
+                  <Label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Email</Label>
                   <Input
                     type="email"
                     id="email"
@@ -843,12 +846,15 @@ export default function Home() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-primary border-dark-accent focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary"
+                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary transition-all duration-200"
+                    style={{
+                      '--tw-ring-color': '#00ff88'
+                    } as React.CSSProperties}
                     placeholder="your.email@example.com"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="message" className="block text-sm font-medium mb-2">Message</Label>
+                  <Label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Message</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -856,7 +862,10 @@ export default function Home() {
                     onChange={handleInputChange}
                     rows={5}
                     required
-                    className="w-full px-4 py-3 bg-dark-primary border-dark-accent focus:ring-green-primary focus:border-transparent text-white placeholder:text-text-secondary resize-none"
+                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary resize-none transition-all duration-200"
+                    style={{
+                      '--tw-ring-color': '#00ff88'
+                    } as React.CSSProperties}
                     placeholder="Tell me about your project..."
                   />
                 </div>
