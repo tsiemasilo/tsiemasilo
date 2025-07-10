@@ -74,8 +74,8 @@ export default function Home() {
     }
 
     try {
-      // Send email via API
-      const response = await fetch('/api/send-email', {
+      // Send email via Netlify Function
+      const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
