@@ -10,7 +10,7 @@ import {
   ExternalLink,
   Github,
   Mail,
-  MapPin,
+  Phone,
   Linkedin,
   Twitter,
   Menu,
@@ -846,7 +846,7 @@ export default function Home() {
                       </div>
                       <div>
                         <div className="font-medium">Email</div>
-                        <div className="text-text-secondary">your.email@example.com</div>
+                        <div className="text-text-secondary">tsiemasilo@gmail.com</div>
                       </div>
                     </div>
                     
@@ -855,11 +855,11 @@ export default function Home() {
                         className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
                         style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
                       >
-                        <MapPin style={{ color: '#00ff88' }} size={20} />
+                        <Phone style={{ color: '#00ff88' }} size={20} />
                       </div>
                       <div>
-                        <div className="font-medium">Location</div>
-                        <div className="text-text-secondary">Your City, Country</div>
+                        <div className="font-medium">Phone</div>
+                        <div className="text-text-secondary">082 806 9569 (WhatsApp only)</div>
                       </div>
                     </div>
                   </div>
