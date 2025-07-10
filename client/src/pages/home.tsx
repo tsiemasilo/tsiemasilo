@@ -872,12 +872,14 @@ export default function Home() {
                     onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00ff88')}
                   >
                     {isSubmitting ? (
-                      <div className="flex items-center justify-center gap-2">
-                        <motion.div
-                          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        />
+                      <div className="flex items-center justify-center gap-3">
+                        <div className="typewriter-loader">
+                          <div className="slide">
+                            <i></i>
+                          </div>
+                          <div className="paper"></div>
+                          <div className="keyboard"></div>
+                        </div>
                         Sending...
                       </div>
                     ) : (

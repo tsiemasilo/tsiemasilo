@@ -1151,4 +1151,218 @@
   }
 }
 
+/* Typewriter Loader Animation */
+.typewriter-loader {
+  --blue: #00ff88;
+  --blue-dark: #00dd77;
+  --key: #fff;
+  --paper: #EEF0FD;
+  --text: #D3D4EC;
+  --tool: #FBC56C;
+  --duration: 3s;
+  position: relative;
+  width: 30px;
+  height: 20px;
+  animation: bounce05 var(--duration) linear infinite;
+  transform-style: preserve-3d;
+}
+
+.typewriter-loader .slide {
+  width: 23px;
+  height: 5px;
+  border-radius: 3px;
+  margin-left: 3.5px;
+  transform: translateX(3.5px);
+  background: linear-gradient(var(--blue), var(--blue-dark));
+  animation: slide05 var(--duration) ease infinite;
+}
+
+.typewriter-loader .slide:before, 
+.typewriter-loader .slide:after,
+.typewriter-loader .slide i:before {
+  content: "";
+  position: absolute;
+  background: var(--tool);
+}
+
+.typewriter-loader .slide:before {
+  width: 0.5px;
+  height: 2px;
+  top: 1.5px;
+  left: 100%;
+}
+
+.typewriter-loader .slide:after {
+  left: 23.5px;
+  top: 0.75px;
+  height: 3.5px;
+  width: 1.5px;
+  border-radius: 3px;
+}
+
+.typewriter-loader .slide i {
+  display: block;
+  position: absolute;
+  right: 100%;
+  width: 1.5px;
+  height: 1px;
+  top: 1px;
+  background: var(--tool);
+}
+
+.typewriter-loader .slide i:before {
+  right: 100%;
+  top: -0.5px;
+  width: 1px;
+  border-radius: 2px;
+  height: 3.5px;
+}
+
+.typewriter-loader .paper {
+  position: absolute;
+  left: 6px;
+  top: -6.5px;
+  width: 10px;
+  height: 11.5px;
+  border-radius: 5px;
+  background: var(--paper);
+  transform: translateY(11.5px);
+  animation: paper05 var(--duration) linear infinite;
+}
+
+.typewriter-loader .paper:before {
+  content: "";
+  position: absolute;
+  left: 1.5px;
+  right: 1.5px;
+  top: 1.75px;
+  border-radius: 2px;
+  height: 1px;
+  transform: scaleY(0.8);
+  background: var(--text);
+  box-shadow: 0 3px 0 var(--text), 0 6px 0 var(--text), 0 9px 0 var(--text);
+}
+
+.typewriter-loader .keyboard {
+  width: 30px;
+  height: 14px;
+  margin-top: -2.5px;
+  z-index: 1;
+  position: relative;
+}
+
+.typewriter-loader .keyboard:before, 
+.typewriter-loader .keyboard:after {
+  content: "";
+  position: absolute;
+}
+
+.typewriter-loader .keyboard:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  transform: perspective(10px) rotateX(2deg);
+  transform-origin: 50% 100%;
+}
+
+.typewriter-loader .keyboard:after {
+  left: 0.5px;
+  top: 6.25px;
+  width: 2.75px;
+  height: 1px;
+  border-radius: 2px;
+  box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  animation: keyboard05 var(--duration) linear infinite;
+}
+
+@keyframes bounce05 {
+  85%, 92%, 100% {
+    transform: translateY(0);
+  }
+  89% {
+    transform: translateY(-1px);
+  }
+  95% {
+    transform: translateY(0.5px);
+  }
+}
+
+@keyframes slide05 {
+  5% {
+    transform: translateX(3.5px);
+  }
+  15%, 30% {
+    transform: translateX(1.5px);
+  }
+  40%, 55% {
+    transform: translateX(0);
+  }
+  65%, 70% {
+    transform: translateX(-1px);
+  }
+  80%, 89% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(3.5px);
+  }
+}
+
+@keyframes paper05 {
+  5% {
+    transform: translateY(11.5px);
+  }
+  20%, 30% {
+    transform: translateY(8.5px);
+  }
+  40%, 55% {
+    transform: translateY(5.5px);
+  }
+  65%, 70% {
+    transform: translateY(2.5px);
+  }
+  80%, 85% {
+    transform: translateY(0);
+  }
+  92%, 100% {
+    transform: translateY(11.5px);
+  }
+}
+
+@keyframes keyboard05 {
+  5%, 12%, 21%, 30%, 39%, 48%, 57%, 66%, 75%, 84% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  9% {
+    box-shadow: 3.75px 0.5px 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  18% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0.5px 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  27% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 3px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  36% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 3px 0 var(--key), 15px 3px 0 var(--key), 17px 3px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  45% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0.5px 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  54% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0.5px 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  63% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 3px 0 var(--key);
+  }
+  72% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0.5px 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 2.5px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+  81% {
+    box-shadow: 3.75px 0 0 var(--key), 7.5px 0 0 var(--key), 11.25px 0 0 var(--key), 15px 0 0 var(--key), 18.75px 0 0 var(--key), 22.5px 0 0 var(--key), 5.5px 2.5px 0 var(--key), 9.25px 3px 0 var(--key), 13px 2.5px 0 var(--key), 15px 2.5px 0 var(--key), 17px 2.5px 0 var(--key), 20.75px 2.5px 0 var(--key);
+  }
+}
+
 
