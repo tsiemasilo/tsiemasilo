@@ -309,15 +309,6 @@ export default function Home() {
       category: "GAMES",
       liveUrl: "https://tsiepingpong.netlify.app/",
       codeUrl: "#"
-    },
-    {
-      title: "Puzzle Game",
-      description: "An engaging puzzle game with multiple levels, smooth animations, and progressive difficulty.",
-      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      technologies: ["JavaScript", "HTML5 Canvas", "CSS3"],
-      category: "GAMES",
-      liveUrl: "#",
-      codeUrl: "#"
     }
   ];
 
