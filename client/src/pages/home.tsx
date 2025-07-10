@@ -44,6 +44,8 @@ export default function Home() {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+  const [showSentAnimation, setShowSentAnimation] = useState(false);
   const { toast } = useToast();
 
   // Close mobile menu when clicking on links
@@ -91,12 +93,26 @@ export default function Home() {
       });
 
       if (response.ok) {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
-        });
-        // Reset form
-        setFormData({ name: "", email: "", message: "" });
+        // Show email sent animation after typewriter finishes
+        setTimeout(() => {
+          setEmailSent(true);
+          setShowSentAnimation(true);
+          
+          // Show sent animation for 3 seconds then complete
+          setTimeout(() => {
+            setShowSentAnimation(false);
+            setEmailSent(false);
+            setIsSubmitting(false);
+            
+            toast({
+              title: "Message Sent!",
+              description: "Thank you for your message. I'll get back to you soon.",
+            });
+            
+            // Reset form
+            setFormData({ name: "", email: "", message: "" });
+          }, 3000);
+        }, 2500); // Wait for typewriter animation to complete
       } else {
         throw new Error('Failed to send message');
       }
@@ -106,7 +122,6 @@ export default function Home() {
         description: "Failed to send message. Please try again.",
         variant: "destructive"
       });
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -977,19 +992,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Typewriter Animation Overlay */}
+      {/* Email Animation Overlay */}
       {isSubmitting && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
           <div className="text-center">
-            <div className="typewriter-loader mb-6">
-              <div className="slide">
-                <i></i>
-              </div>
-              <div className="paper"></div>
-              <div className="keyboard"></div>
-            </div>
-            <h3 className="text-white text-2xl font-semibold mb-2">Typing your message...</h3>
-            <p className="text-gray-300">Please wait while I compose and send your email</p>
+            {!emailSent ? (
+              // Typewriter Animation
+              <>
+                <div className="typewriter-loader mb-6">
+                  <div className="slide">
+                    <i></i>
+                  </div>
+                  <div className="paper"></div>
+                  <div className="keyboard"></div>
+                </div>
+                <h3 className="text-white text-2xl font-semibold mb-2">Typing your message...</h3>
+                <p className="text-gray-300">Please wait while I compose and send your email</p>
+              </>
+            ) : (
+              // Email Sent Animation
+              <>
+                <div className="email-sent-loader mb-6"></div>
+                <h3 className="text-white text-2xl font-semibold mb-2">Email Sent!</h3>
+                <p className="text-gray-300">Your message has been delivered successfully</p>
+              </>
+            )}
           </div>
         </div>
       )}
