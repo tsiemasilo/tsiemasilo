@@ -104,11 +104,6 @@ export default function Home() {
             setEmailSent(false);
             setIsSubmitting(false);
             
-            toast({
-              title: "Message Sent!",
-              description: "Thank you for your message. I'll get back to you soon.",
-            });
-            
             // Reset form
             setFormData({ name: "", email: "", message: "" });
           }, 3000);
