@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npx vite build --outDir=dist/public"
+  command = "npm install && npx vite build"
   publish = "dist/public"
   functions = "netlify/functions"
 
