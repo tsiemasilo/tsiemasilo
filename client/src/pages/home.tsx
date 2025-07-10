@@ -181,6 +181,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Business LeadFinder",
+      description: "Comprehensive business discovery dashboard for finding local businesses without websites, featuring automated verification, search parameters, and lead export functionality for outreach opportunities.",
+      image: "/business-leadfinder-screenshot.png",
+      technologies: ["React", "Business APIs", "Data Analytics", "Export Tools", "Search Filters"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://businessleadfinder.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Task Management App",
       description: "A mobile-first task management application with real-time synchronization and team collaboration features.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
