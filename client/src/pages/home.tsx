@@ -247,6 +247,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "AI Call Analyzer",
+      description: "AI-powered call center quality analysis platform with comprehensive dashboard for monitoring call quality metrics, agent performance, and real-time analytics with drag-and-drop audio file processing.",
+      image: "/ai-call-analyzer-screenshot.png",
+      technologies: ["React", "AI Analytics", "Audio Processing", "Dashboard UI"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://aicallanalyzer.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Task Management App",
       description: "A mobile-first task management application with real-time synchronization and team collaboration features.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
