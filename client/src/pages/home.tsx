@@ -818,20 +818,7 @@ export default function Home() {
             </motion.div>
           )}
           
-          <motion.div 
-            className="text-center mt-12"
-            {...fadeInUp}
-          >
-            <a 
-              href="#" 
-              className="inline-flex items-center transition-colors gap-2"
-              style={{ color: '#00ff88' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#00dd77'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#00ff88'}
-            >
-              View All Projects <ExternalLink size={16} />
-            </a>
-          </motion.div>
+          
         </div>
       </section>
 
