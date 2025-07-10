@@ -61,7 +61,9 @@ exports.handler = async (event, context) => {
     }
 
     // Gmail SMTP configuration with explicit settings
-    const transporter = nodemailer.createTransporter({
+    console.log('Creating nodemailer transporter...');
+    console.log('Nodemailer object:', typeof nodemailer, Object.keys(nodemailer));
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,

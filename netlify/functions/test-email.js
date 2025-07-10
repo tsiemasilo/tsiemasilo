@@ -26,7 +26,8 @@ exports.handler = async (event, context) => {
 
   try {
     // Test nodemailer configuration
-    const transporter = nodemailer.createTransporter({
+    console.log('Nodemailer object:', typeof nodemailer, Object.keys(nodemailer));
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
