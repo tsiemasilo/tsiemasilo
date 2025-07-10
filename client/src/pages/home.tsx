@@ -13,11 +13,10 @@ import {
   Phone,
   MapPin,
   Linkedin,
-  Twitter,
   Menu,
   X
 } from "lucide-react";
-import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus } from "react-icons/si";
+import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus, SiIndeed } from "react-icons/si";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -74,14 +73,37 @@ export default function Home() {
       return;
     }
 
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    });
+    try {
+      // Send email via API
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        // Reset form
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -922,7 +944,7 @@ export default function Home() {
                         e.currentTarget.style.borderColor = 'var(--dark-accent)';
                       }}
                     >
-                      <Twitter className="text-text-secondary group-hover:text-white" size={20} />
+                      <SiIndeed className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                   </div>
                 </div>
