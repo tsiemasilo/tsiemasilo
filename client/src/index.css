@@ -1365,19 +1365,24 @@
   }
 }
 
-/* Email Sent Animation */
+/* Email Sent Animation - Envelope with floating papers effect */
 .email-sent-loader {
   position: relative;
   border-style: solid;
   box-sizing: border-box;
+  /* Creates envelope shape using different border widths */
   border-width: 40px 60px 30px 60px;
+  /* Blue gradient colors for professional look */
   border-color: #3760C9 #96DDFC #96DDFC #36BBF7;
+  /* Gentle floating animation */
   animation: envFloating 1s ease-in infinite alternate;
+  /* Fixed dimensions to prevent stretching */
   width: 120px;
   height: 70px;
   margin: 0 auto;
 }
 
+/* Paper sheets dropping from envelope animation */
 .email-sent-loader:after {
   content: "";
   position: absolute;
@@ -1385,12 +1390,16 @@
   top: -40px;
   height: 70px;
   width: 50px;
+  /* Three white paper lines using CSS gradients */
   background-image: linear-gradient(#fff 45px, transparent 0),
             linear-gradient(#fff 45px, transparent 0),
             linear-gradient(#fff 45px, transparent 0);
   background-repeat: no-repeat;
+  /* Size of each paper line */
   background-size: 30px 4px;
+  /* Initial positions of the three paper lines */
   background-position: 0px 11px, 8px 35px, 0px 60px;
+  /* Papers dropping animation */
   animation: envDropping 0.75s linear infinite;
 }
 

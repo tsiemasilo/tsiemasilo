@@ -1,11 +1,16 @@
+// React hooks for component state management
 import { useState, useEffect } from "react";
+// Framer Motion for smooth animations and transitions
 import { motion, AnimatePresence } from "framer-motion";
+// Custom UI components for consistent styling
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+// Custom toast notifications hook
 import { useToast } from "@/hooks/use-toast";
+// Icon libraries for UI elements
 import {
   ExternalLink,
   Github,
@@ -18,12 +23,14 @@ import {
 } from "lucide-react";
 import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus, SiIndeed } from "react-icons/si";
 
+// Animation configurations for smooth fade-in effects
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6 }
 };
 
+// Stagger animation for multiple elements appearing in sequence
 const staggerContainer = {
   animate: {
     transition: {
@@ -33,40 +40,50 @@ const staggerContainer = {
 };
 
 export default function Home() {
+  // Navigation state management
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [activeProjectCategory, setActiveProjectCategory] = useState('All');
+  
+  // Brand animation control states
   const [showBrandAnimation, setShowBrandAnimation] = useState(true);
   const [brandAnimationComplete, setBrandAnimationComplete] = useState(false);
+  
+  // Contact form state management
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
+  
+  // Email submission animation states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [showSentAnimation, setShowSentAnimation] = useState(false);
+  
+  // Toast notification system
   const { toast } = useToast();
 
-  // Close mobile menu when clicking on links
+  // Close mobile menu when navigation links are clicked
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
 
-  // Brand animation effect
+  // Initial brand animation controller - runs on page load
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowBrandAnimation(false);
       setBrandAnimationComplete(true);
-    }, 3000); // Show for 3 seconds total (1s animation + 2s stay)
+    }, 3000); // Display brand animation for 3 seconds
 
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle contact form submission with animation sequence
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic validation
+    // Validate all required fields are filled
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Error",
@@ -79,7 +96,7 @@ export default function Home() {
     setIsSubmitting(true);
 
     try {
-      // Send email via SMTP Netlify Function
+      // Send email via serverless function
       const response = await fetch('/.netlify/functions/smtp-email', {
         method: 'POST',
         headers: {
@@ -93,21 +110,21 @@ export default function Home() {
       });
 
       if (response.ok) {
-        // Show email sent animation after typewriter finishes
+        // Start email sent animation sequence after typewriter completes
         setTimeout(() => {
           setEmailSent(true);
           setShowSentAnimation(true);
           
-          // Show sent animation for 3 seconds then complete
+          // Complete animation sequence and reset form
           setTimeout(() => {
             setShowSentAnimation(false);
             setEmailSent(false);
             setIsSubmitting(false);
             
-            // Reset form
+            // Clear form fields after successful submission
             setFormData({ name: "", email: "", message: "" });
           }, 3000);
-        }, 2500); // Wait for typewriter animation to complete
+        }, 2500); // Allow typewriter animation to complete
       } else {
         throw new Error('Failed to send message');
       }
@@ -121,6 +138,7 @@ export default function Home() {
     }
   };
 
+  // Update form data when user types in input fields
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
@@ -128,12 +146,12 @@ export default function Home() {
     }));
   };
 
-  // Smooth scroll to section
+  // Smooth scroll navigation to different sections
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 80; // Account for fixed navbar
+      const offsetTop = element.offsetTop - 80; // Account for fixed navbar height
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
@@ -141,12 +159,13 @@ export default function Home() {
     }
   };
 
-  // Add scroll listener to detect active section
+  // Track which section is currently visible for navigation highlighting
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'services', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
+      // Check which section is currently in view
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -1026,7 +1045,7 @@ export default function Home() {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-accent">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-text-secondary">
-            © 2024 Your Name. All rights reserved. Built with passion and modern web technologies.
+            © 2024 Tsie Masilo. All rights reserved. Built with passion and modern web technologies.
           </p>
         </div>
       </footer>
