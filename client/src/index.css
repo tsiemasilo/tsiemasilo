@@ -1429,4 +1429,47 @@
   }
 }
 
+/* Coming Soon Overlay Styles */
+.coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 3;
+}
+
+.coming-soon-text {
+  color: #00ff88;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+  }
+}
+
+.coming-soon-message {
+  text-align: center;
+  padding: 12px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 8px;
+  width: 100%;
+}
+
 

@@ -154,3 +154,10 @@ Personal profile image: Added user's personal photo with 3D hover effects and sh
 - **Live URL**: https://aicallanalyzer.netlify.app/
 - **Screenshot**: Added project screenshot to public assets folder
 - **Category**: Added under "WEB APPLICATION" category with other professional web applications
+
+### July 10, 2025 - Coming Soon Feature for Apps Design
+- **Task Management Update**: Replaced Task Management App with "Mobile Apps Portfolio" coming soon message
+- **Coming Soon Overlay**: Added visual overlay with glowing "Coming Soon" text and blur effect
+- **Custom Messaging**: Added "🚀 Exciting apps in development" message instead of demo links
+- **UI Enhancement**: Implemented pulse animation and professional styling for coming soon state
+- **Portfolio Strategy**: Better positioning for future mobile app releases

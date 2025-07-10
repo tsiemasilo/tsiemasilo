@@ -256,13 +256,14 @@ export default function Home() {
       codeUrl: "#"
     },
     {
-      title: "Task Management App",
-      description: "A mobile-first task management application with real-time synchronization and team collaboration features.",
+      title: "Mobile Apps Portfolio",
+      description: "Exciting mobile applications are in development. Check back soon for innovative app solutions featuring modern design and seamless user experiences.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      technologies: ["React Native", "Firebase", "TypeScript"],
+      technologies: ["React Native", "Flutter", "Mobile UI/UX"],
       category: "APPS DESIGN",
       liveUrl: "#",
-      codeUrl: "#"
+      codeUrl: "#",
+      comingSoon: true
     },
     {
       title: "Masilo Web Solutions",
@@ -758,6 +759,11 @@ export default function Home() {
                     <div className="project-category-badge">
                       {project.category}
                     </div>
+                    {project.comingSoon && (
+                      <div className="coming-soon-overlay">
+                        <div className="coming-soon-text">Coming Soon</div>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="flex flex-col flex-grow">
@@ -775,24 +781,34 @@ export default function Home() {
                     </div>
                     
                     <div className="project-links mt-auto">
-                      <a 
-                        href={project.liveUrl} 
-                        className="project-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink size={16} />
-                        Live Demo
-                      </a>
-                      <a 
-                        href={project.codeUrl} 
-                        className="project-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github size={16} />
-                        Code
-                      </a>
+                      {project.comingSoon ? (
+                        <div className="coming-soon-message">
+                          <div className="text-sm text-text-secondary">
+                            🚀 Exciting apps in development
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <a 
+                            href={project.liveUrl} 
+                            className="project-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink size={16} />
+                            Live Demo
+                          </a>
+                          <a 
+                            href={project.codeUrl} 
+                            className="project-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github size={16} />
+                            Code
+                          </a>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
