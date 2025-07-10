@@ -21,7 +21,7 @@ import {
   Menu,
   X
 } from "lucide-react";
-import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus, SiIndeed } from "react-icons/si";
+import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus, SiIndeed, SiWhatsapp } from "react-icons/si";
 
 // Animation configurations for smooth fade-in effects
 const fadeInUp = {
@@ -1006,6 +1006,22 @@ export default function Home() {
                       }}
                     >
                       <SiIndeed className="text-text-secondary group-hover:text-white" size={20} />
+                    </a>
+                    <a 
+                      href="https://wa.me/27828069569"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#00ff88';
+                        e.currentTarget.style.borderColor = '#00ff88';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
+                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
+                      }}
+                    >
+                      <SiWhatsapp className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                   </div>
                 </div>
