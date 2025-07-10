@@ -802,53 +802,130 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div {...fadeInUp}>
-              <div className="bg-gradient-to-br from-stone-100 to-stone-200 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-2xl border border-stone-300 dark:border-gray-700">
-                <form onSubmit={handleFormSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="block text-sm font-semibold mb-3 text-gray-800 dark:text-gray-200">Full Name</Label>
-                    <Input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-200 shadow-sm"
-                      placeholder="Enter your full name"
-                    />
+              <div className="bg-white p-4 rounded-lg" style={{ 
+                maxWidth: '620px',
+                boxShadow: '0px 4px 6px rgba(32, 33, 36, 0.28)',
+                fontFamily: 'Roboto, sans-serif'
+              }}>
+                <form onSubmit={handleFormSubmit} className="space-y-3">
+                  <div className="relative">
+                    <div className="flex items-center pb-2 border-b transition-colors duration-200" style={{ 
+                      borderColor: formData.name ? '#1A73E8' : '#DADCE0' 
+                    }}>
+                      <Label 
+                        htmlFor="name" 
+                        className="text-sm font-medium mr-3" 
+                        style={{ 
+                          color: '#5F6368',
+                          fontSize: '13px',
+                          minWidth: '60px'
+                        }}
+                      >
+                        Name
+                      </Label>
+                      <Input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="flex-1 border-0 bg-transparent p-0 focus:ring-0 focus:outline-none"
+                        style={{
+                          color: '#202124',
+                          fontSize: '14px',
+                          fontFamily: 'Roboto, sans-serif'
+                        }}
+                        placeholder="Enter your name"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <Label htmlFor="email" className="block text-sm font-semibold mb-3 text-gray-800 dark:text-gray-200">Email Address</Label>
-                    <Input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-200 shadow-sm"
-                      placeholder="your.email@example.com"
-                    />
+                  
+                  <div className="relative">
+                    <div className="flex items-center pb-2 border-b transition-colors duration-200" style={{ 
+                      borderColor: formData.email ? '#1A73E8' : '#DADCE0' 
+                    }}>
+                      <Label 
+                        htmlFor="email" 
+                        className="text-sm font-medium mr-3" 
+                        style={{ 
+                          color: '#5F6368',
+                          fontSize: '13px',
+                          minWidth: '60px'
+                        }}
+                      >
+                        Email
+                      </Label>
+                      <Input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="flex-1 border-0 bg-transparent p-0 focus:ring-0 focus:outline-none"
+                        style={{
+                          color: '#202124',
+                          fontSize: '14px',
+                          fontFamily: 'Roboto, sans-serif'
+                        }}
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <Label htmlFor="message" className="block text-sm font-semibold mb-3 text-gray-800 dark:text-gray-200">Your Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={5}
-                      required
-                      className="w-full px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none transition-all duration-200 shadow-sm"
-                      placeholder="Tell me about your project or how I can help you..."
-                    />
+                  
+                  <div className="relative">
+                    <div className="flex items-start pb-2 border-b transition-colors duration-200" style={{ 
+                      borderColor: formData.message ? '#1A73E8' : '#DADCE0' 
+                    }}>
+                      <Label 
+                        htmlFor="message" 
+                        className="text-sm font-medium mr-3 pt-1" 
+                        style={{ 
+                          color: '#5F6368',
+                          fontSize: '13px',
+                          minWidth: '60px'
+                        }}
+                      >
+                        Message
+                      </Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={6}
+                        required
+                        className="flex-1 border-0 bg-transparent p-0 focus:ring-0 focus:outline-none resize-none"
+                        style={{
+                          color: '#202124',
+                          fontSize: '14px',
+                          fontFamily: 'Roboto, sans-serif'
+                        }}
+                        placeholder="Tell me about your project..."
+                      />
+                    </div>
                   </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                  >
-                    Send Message
-                  </Button>
+                  
+                  <div className="pt-4 flex justify-start">
+                    <Button
+                      type="submit"
+                      className="px-6 py-2 rounded text-white font-medium transition-all duration-200 hover:shadow-md"
+                      style={{
+                        backgroundColor: '#1A73E8',
+                        fontSize: '14px',
+                        fontFamily: 'Roboto, sans-serif'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#1557B2';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#1A73E8';
+                      }}
+                    >
+                      Send Message
+                    </Button>
+                  </div>
                 </form>
               </div>
             </motion.div>

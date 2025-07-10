@@ -1,0 +1,89 @@
+Gmail’s contact form (or email compose window) follows Google’s Material Design principles. While Gmail doesn’t use a traditional “contact form” like websites do, its email compose box effectively functions as one. Here's a detailed breakdown of the style, colors, fonts, and borders used in the Gmail compose interface as of 2025:
+
+🧾 1. Font
+Font Family: Roboto, sans-serif (default across all of Google’s UI)
+
+Font Size:
+
+To field & Subject line: 13px – 14px
+
+Message body: 14px – 16px
+
+Font Weight: Regular (400) or Medium (500) for labels like “To” or “Subject”
+
+🎨 2. Colors
+Background:
+
+Compose window: #FFFFFF (pure white)
+
+Hover background: #F1F3F4
+
+Text Color:
+
+Labels (To, Cc, Bcc): #5F6368 (a muted gray)
+
+Input text (you type): #202124 (very dark gray, nearly black)
+
+Border Color:
+
+Fields (To, Subject): #DADCE0
+
+Send Button:
+
+Background: #1A73E8 (Google Blue 500)
+
+Text: #FFFFFF
+
+🧱 3. Borders & Box Styles
+To/Subject input fields:
+
+Border Style: None visible normally (uses underlines only on focus)
+
+On focus: Bottom border shows with active color #1A73E8
+
+Compose box:
+
+Border Radius: 8px (slightly rounded corners)
+
+Shadow: Subtle shadow to give elevation (Material Design Elevation Level 4):
+
+css
+Copy
+Edit
+box-shadow: 0px 4px 6px rgba(32, 33, 36, 0.28);
+Padding: 16px all around within the compose window
+
+Spacing between fields: 12–16px
+
+🧩 4. Input Field Behavior
+Focus state:
+
+Light blue bottom border (#1A73E8)
+
+Light blue glow/shadow
+
+Placeholder text:
+
+Light gray (#80868B)
+
+Error state (e.g., invalid email):
+
+Border or underline turns red (#D93025)
+
+Helper text appears in red
+
+📱 5. Buttons (Send, Formatting, Attach, etc.)
+Icons: Material Design Icons
+
+Icon Color (default): #5F6368
+
+Hover State: Light gray background #F1F3F4
+
+Border: None (icon buttons are typically circular with no border)
+
+🧾 6. Layout
+Max Width: Around 600px – 650px (responsive, adjusts slightly by screen)
+
+Margin: Centered within the viewport
+
+Z-index: High; appears over inbox UI (z-index: 2000+)
