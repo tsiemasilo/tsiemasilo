@@ -938,7 +938,9 @@ export default function Home() {
                   <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
                   <div className="flex space-x-4">
                     <a 
-                      href="#" 
+                      href="https://github.com/tsiemasilo"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = '#00ff88';
@@ -952,7 +954,9 @@ export default function Home() {
                       <Github className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                     <a 
-                      href="#" 
+                      href="https://www.linkedin.com/in/tsie-masilo/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = '#00ff88';
@@ -966,7 +970,9 @@ export default function Home() {
                       <Linkedin className="text-text-secondary group-hover:text-white" size={20} />
                     </a>
                     <a 
-                      href="#" 
+                      href="https://profile.indeed.com/?hl=en_ZA&co=ZA&from=gnav-homepage"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = '#00ff88';
