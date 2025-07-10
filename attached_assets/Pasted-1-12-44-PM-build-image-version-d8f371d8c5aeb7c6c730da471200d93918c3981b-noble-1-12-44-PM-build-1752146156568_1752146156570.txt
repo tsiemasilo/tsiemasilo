@@ -1,0 +1,114 @@
+1:12:44 PM: build-image version: d8f371d8c5aeb7c6c730da471200d93918c3981b (noble)
+1:12:44 PM: buildbot version: c65bf567e42e193e22982edc9d9124e851448f8a
+1:12:44 PM: Fetching cached dependencies
+1:12:44 PM: Failed to fetch cache, continuing with build
+1:12:44 PM: Starting to prepare the repo for build
+1:12:44 PM: No cached dependencies found. Cloning fresh repo
+1:12:44 PM: git clone --filter=blob:none https://github.com/tsiemasilo/tsiemasilo
+1:12:44 PM: Preparing Git Reference refs/heads/main
+1:12:46 PM: Custom build command detected. Proceeding with the specified command: 'npm install && npm run build:netlify'
+1:12:47 PM: Starting to install dependencies
+1:12:47 PM: Using PHP version
+1:12:48 PM: Downloading and installing node v18.20.8...
+1:12:48 PM: Downloading https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.xz...
+1:12:48 PM: Computing checksum with sha256sum
+1:12:48 PM: Checksums matched!
+1:12:52 PM: Now using node v18.20.8 (npm v10.8.2)
+1:12:52 PM: Enabling Node.js Corepack
+1:12:52 PM: Started restoring cached build plugins
+1:12:52 PM: Finished restoring cached build plugins
+1:12:52 PM: Started restoring cached corepack dependencies
+1:12:52 PM: Finished restoring cached corepack dependencies
+1:12:52 PM: No npm workspaces detected
+1:12:52 PM: Started restoring cached node modules
+1:12:52 PM: Finished restoring cached node modules
+1:12:52 PM: Installing npm packages using npm version 10.8.2
+1:12:57 PM: npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+1:12:57 PM: npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+1:13:04 PM: added 484 packages in 11s
+1:13:04 PM: npm packages installed
+1:13:04 PM: Successfully installed dependencies
+1:13:04 PM: Starting build script
+1:13:05 PM: Detected 1 framework(s)
+1:13:05 PM: "vite" at version "5.4.19"
+1:13:05 PM: Section completed: initializing
+1:13:06 PM: ​
+1:13:06 PM: Netlify Build                                                 
+1:13:06 PM: ────────────────────────────────────────────────────────────────
+1:13:06 PM: ​
+1:13:06 PM: ❯ Version
+1:13:06 PM:   @netlify/build 34.0.0
+1:13:06 PM: ​
+1:13:06 PM: ❯ Flags
+1:13:06 PM:   accountId: 6786aa5b927658b4b62b93d6
+1:13:06 PM:   baseRelDir: true
+1:13:06 PM:   buildId: 686fa0293a94deac3ef0a7df
+1:13:06 PM:   deployId: 686fa0293a94deac3ef0a7e1
+1:13:06 PM: ​
+1:13:06 PM: ❯ Current directory
+1:13:06 PM:   /opt/build/repo
+1:13:06 PM: ​
+1:13:06 PM: ❯ Config file
+1:13:06 PM:   /opt/build/repo/netlify.toml
+1:13:06 PM: ​
+1:13:06 PM: ❯ Context
+1:13:06 PM:   production
+1:13:06 PM: ​
+1:13:06 PM: ❯ Installing extensions
+1:13:06 PM:    - neon
+1:14:07 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+1:14:03 PM: ​
+1:14:03 PM: ❯ Loading extensions
+1:14:03 PM:    - neon
+1:14:04 PM: ​
+1:14:04 PM: build.command from netlify.toml                               
+1:14:04 PM: ────────────────────────────────────────────────────────────────
+1:14:04 PM: ​
+1:14:04 PM: $ npm install && npm run build:netlify
+1:14:06 PM: up to date, audited 485 packages in 1s
+1:14:06 PM: 64 packages are looking for funding
+1:14:06 PM:   run `npm fund` for details
+1:14:06 PM: 9 vulnerabilities (1 low, 8 moderate)
+1:14:06 PM: To address issues that do not require attention, run:
+1:14:06 PM:   npm audit fix
+1:14:06 PM: To address all issues (including breaking changes), run:
+1:14:06 PM:   npm audit fix --force
+1:14:06 PM: Run `npm audit` for details.
+1:14:06 PM: npm error Missing script: "build:netlify"
+1:14:06 PM: npm error
+1:14:06 PM: npm error To see a list of scripts, run:
+1:14:06 PM: npm error   npm run
+1:14:06 PM: npm error A complete log of this run can be found in: /opt/buildhome/.npm/_logs/2025-07-10T11_14_06_221Z-debug-0.log
+1:14:06 PM: ​
+1:14:06 PM: "build.command" failed                                        
+1:14:06 PM: ────────────────────────────────────────────────────────────────
+1:14:06 PM: ​
+1:14:06 PM:   Error message
+1:14:06 PM:   Command failed with exit code 1: npm install && npm run build:netlify (https://ntl.fyi/exit-code-1)
+1:14:06 PM: ​
+1:14:06 PM:   Error location
+1:14:06 PM:   In build.command from netlify.toml:
+1:14:06 PM:   npm install && npm run build:netlify
+1:14:06 PM: ​
+1:14:06 PM:   Resolved config
+1:14:06 PM:   build:
+1:14:06 PM:     command: npm install && npm run build:netlify
+1:14:06 PM:     commandOrigin: config
+1:14:06 PM:     environment:
+1:14:06 PM:       - EMAIL_PASS
+1:14:06 PM:       - EMAIL_USER
+1:14:06 PM:       - NODE_VERSION
+1:14:06 PM:     publish: /opt/build/repo/dist/public
+1:14:06 PM:     publishOrigin: config
+1:14:06 PM:   functionsDirectory: /opt/build/repo/netlify/functions
+1:14:06 PM:   redirects:
+1:14:06 PM:     - from: /api/*
+      status: 200
+      to: /.netlify/functions/api/:splat
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+1:14:06 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+1:14:07 PM: Failing build: Failed to build site
+1:14:07 PM: Finished processing build request in 1m22.871s
