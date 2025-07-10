@@ -11,6 +11,7 @@ import {
   Github,
   Mail,
   Phone,
+  MapPin,
   Linkedin,
   Twitter,
   Menu,
@@ -860,6 +861,19 @@ export default function Home() {
                       <div>
                         <div className="font-medium">Phone</div>
                         <div className="text-text-secondary">082 806 9569 (WhatsApp only)</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <div 
+                        className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
+                      >
+                        <MapPin style={{ color: '#00ff88' }} size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium">Location</div>
+                        <div className="text-text-secondary">Johannesburg/Midrand, South Africa</div>
                       </div>
                     </div>
                   </div>
