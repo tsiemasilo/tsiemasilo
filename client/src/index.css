@@ -1373,6 +1373,9 @@
   border-width: 40px 60px 30px 60px;
   border-color: #3760C9 #96DDFC #96DDFC #36BBF7;
   animation: envFloating 1s ease-in infinite alternate;
+  width: 120px;
+  height: 70px;
+  margin: 0 auto;
 }
 
 .email-sent-loader:after {
