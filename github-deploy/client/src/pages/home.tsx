@@ -18,19 +18,6 @@ import {
 } from "lucide-react";
 import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus, SiIndeed } from "react-icons/si";
 
-// Typewriter Loader Component
-const TypewriterLoader = () => {
-  return (
-    <div className="typewriter-loader">
-      <div className="typewriter">
-        <div className="slide"><i /></div>
-        <div className="paper" />
-        <div className="keyboard" />
-      </div>
-    </div>
-  );
-};
-
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -56,7 +43,6 @@ export default function Home() {
     email: "",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   // Close mobile menu when clicking on links
@@ -86,8 +72,6 @@ export default function Home() {
       });
       return;
     }
-
-    setIsSubmitting(true);
 
     try {
       // Send email via API
@@ -119,8 +103,6 @@ export default function Home() {
         description: "Failed to send message. Please try again.",
         variant: "destructive"
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -862,20 +844,12 @@ export default function Home() {
                 </div>
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full text-dark-primary font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ backgroundColor: isSubmitting ? '#00dd77' : '#00ff88' }}
-                  onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00dd77')}
-                  onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00ff88')}
+                  className="w-full text-white font-semibold py-3 px-6"
+                  style={{ backgroundColor: '#00ff88' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
                 >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <TypewriterLoader />
-                      <span>Sending...</span>
-                    </div>
-                  ) : (
-                    'Send Message'
-                  )}
+                  Send Message
                 </Button>
               </form>
             </motion.div>
