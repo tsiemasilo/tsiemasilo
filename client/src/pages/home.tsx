@@ -43,6 +43,7 @@ export default function Home() {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   // Close mobile menu when clicking on links
@@ -72,6 +73,8 @@ export default function Home() {
       });
       return;
     }
+
+    setIsSubmitting(true);
 
     try {
       // Send email via SMTP Netlify Function
@@ -103,6 +106,8 @@ export default function Home() {
         description: "Failed to send message. Please try again.",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -851,15 +856,35 @@ export default function Home() {
                     placeholder="Tell me about your project..."
                   />
                 </div>
-                <Button
-                  type="submit"
-                  className="w-full text-dark-primary font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
-                  style={{ backgroundColor: '#00ff88' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
+                <motion.div
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  Send Message
-                </Button>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full text-dark-primary font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed"
+                    style={{ 
+                      backgroundColor: isSubmitting ? '#666' : '#00ff88',
+                      transform: isSubmitting ? 'scale(0.98)' : 'scale(1)'
+                    }}
+                    onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00dd77')}
+                    onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00ff88')}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <motion.div
+                          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        />
+                        Sending...
+                      </div>
+                    ) : (
+                      "Send Message"
+                    )}
+                  </Button>
+                </motion.div>
               </form>
             </motion.div>
             
