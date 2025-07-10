@@ -802,55 +802,65 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div {...fadeInUp}>
-              <div className="bg-gradient-to-br from-stone-100 to-stone-200 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-2xl border border-stone-300 dark:border-gray-700">
-                <form onSubmit={handleFormSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="block text-sm font-semibold mb-3 text-gray-800 dark:text-gray-200">Full Name</Label>
-                    <Input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-200 shadow-sm"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="block text-sm font-semibold mb-3 text-gray-800 dark:text-gray-200">Email Address</Label>
-                    <Input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-200 shadow-sm"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message" className="block text-sm font-semibold mb-3 text-gray-800 dark:text-gray-200">Your Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={5}
-                      required
-                      className="w-full px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none transition-all duration-200 shadow-sm"
-                      placeholder="Tell me about your project or how I can help you..."
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              </div>
+              <form onSubmit={handleFormSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Name</Label>
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary transition-all duration-200"
+                    style={{
+                      '--tw-ring-color': '#00ff88'
+                    } as React.CSSProperties}
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Email</Label>
+                  <Input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary transition-all duration-200"
+                    style={{
+                      '--tw-ring-color': '#00ff88'
+                    } as React.CSSProperties}
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Message</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={5}
+                    required
+                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary resize-none transition-all duration-200"
+                    style={{
+                      '--tw-ring-color': '#00ff88'
+                    } as React.CSSProperties}
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full text-dark-primary font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
+                  style={{ backgroundColor: '#00ff88' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
+                >
+                  Send Message
+                </Button>
+              </form>
             </motion.div>
             
             {/* Contact Info */}
