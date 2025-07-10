@@ -74,8 +74,8 @@ export default function Home() {
     }
 
     try {
-      // Send email via Netlify Function
-      const response = await fetch('/.netlify/functions/send-email', {
+      // Send email via Formspree (reliable service)
+      const response = await fetch('https://formspree.io/f/xkgwbqpw', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,6 +84,8 @@ export default function Home() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          _replyto: formData.email,
+          _subject: `Portfolio Contact: ${formData.name}`
         }),
       });
 
