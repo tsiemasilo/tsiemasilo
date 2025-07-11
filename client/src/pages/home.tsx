@@ -207,7 +207,7 @@ export default function Home() {
     }
   ];
 
-  const projectCategories = ['All', 'WEB DESIGN', 'GAMES', 'WEB APPLICATION', 'APPS DESIGN'];
+  const projectCategories = ['All', 'WEB DESIGN', 'GAMES', 'WEB APPLICATION', 'APPS DESIGN']; // Updated
   
   const projects = [
     {
