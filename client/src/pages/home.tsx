@@ -96,18 +96,29 @@ export default function Home() {
     setIsSubmitting(true);
 
     try {
-      // Send email via serverless function
-      const response = await fetch('/.netlify/functions/smtp-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        }),
-      });
+      // Try multiple endpoints as fallback
+      let response;
+      const emailData = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      };
+
+      // Try smtp-email first, then contact as fallback
+      try {
+        response = await fetch('/.netlify/functions/smtp-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(emailData),
+        });
+      } catch {
+        // Fallback to contact function
+        response = await fetch('/.netlify/functions/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(emailData),
+        });
+      }
 
       if (response.ok) {
         // Start email sent animation sequence after typewriter completes
