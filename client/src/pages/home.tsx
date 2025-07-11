@@ -211,6 +211,15 @@ export default function Home() {
   
   const projects = [
     {
+      title: "Network Management System",
+      description: "Professional network monitoring dashboard for tracking system agents, connectivity status, and network performance metrics in real-time with comprehensive health monitoring.",
+      image: "/network-management-screenshot.png",
+      technologies: ["React", "Network Monitoring", "Dashboard", "Real-time Analytics"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://front-nms.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "No Shedding - Load Shedding Solutions",
       description: "A comprehensive e-commerce platform for electrical equipment and UPS systems with product categories, cart functionality, and payment integration.",
       image: "/noshedding-screenshot.png",
