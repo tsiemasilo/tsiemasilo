@@ -1,130 +1,79 @@
-# Tsie Masilo - Portfolio Website
+# Tsie Masilo - Professional Portfolio
 
-A modern, responsive developer portfolio website showcasing professional projects with advanced interactive features and seamless user experience.
+A modern, responsive developer portfolio website showcasing professional projects with interactive features and seamless user experience.
 
-## 🚀 Live Demo
+## 🚀 Features
 
-**Development**: Running on Replit  
-**Production**: Deploy to Netlify using `tsie-portfolio-clean.tar.gz`
-
-## 👨‍💻 About
-
-Hi, I'm **Tsie Masilo** - a Junior Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter.
-
-**Contact Information:**
-- 📧 Email: tsiemasilo@gmail.com
-- 📱 WhatsApp: 082 806 9569
-- 🔗 LinkedIn: [linkedin.com/in/tsiemasilo](https://linkedin.com/in/tsiemasilo)
-- 🐙 GitHub: [github.com/tsiemasilo](https://github.com/tsiemasilo)
-
-## 🎯 Featured Projects
-
-### 1. Network Management System
-Professional network monitoring dashboard with real-time agent tracking, connectivity monitoring, and comprehensive health metrics for enterprise networks.
-- **Live URL**: https://front-nms.netlify.app/
-- **Technologies**: React, Dashboard UI, Real-time Monitoring
-
-### 2. AI Call Analyzer
-Advanced AI-powered call center quality analysis platform featuring comprehensive dashboard, analytics, and automated performance insights.
-- **Live URL**: https://aicallanalyzer.netlify.app/
-- **Technologies**: React, AI Analytics, Dashboard UI
-
-### 3. Business Lead Finder
-Comprehensive lead generation tool for businesses with advanced filtering, contact management, and automated prospecting features.
-- **Live URL**: https://business-lead-finder.netlify.app/
-- **Technologies**: React, API Integration, Data Management
-
-### 4. Mobile Apps Portfolio
-🚀 Exciting mobile applications currently in development. Stay tuned for innovative Android and iOS apps!
+- **Responsive Design**: Mobile-first approach with professional dark theme
+- **Interactive Navigation**: 3D hover effects and smooth animations
+- **Project Showcase**: Featured web applications with live demos
+- **Contact Form**: Fully functional email system with professional templates
+- **Modern Stack**: React, TypeScript, Tailwind CSS, Netlify Functions
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework**: React 18 with TypeScript
-- **Routing**: Wouter for client-side routing
-- **State Management**: TanStack React Query
-- **UI Framework**: shadcn/ui components (Radix UI)
-- **Styling**: Tailwind CSS with custom dark theme
-- **Animations**: Framer Motion
-- **Build Tool**: Vite
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **Vite** for development and build
+- **Wouter** for routing
 
 ### Backend
-- **Runtime**: Node.js with Express.js
-- **Language**: TypeScript
-- **Database**: PostgreSQL with Drizzle ORM
-- **Email**: Nodemailer with Gmail SMTP
-- **Session Management**: Express sessions
+- **Netlify Functions** for serverless email handling
+- **Nodemailer** with Gmail SMTP
+- **Node.js** with Express.js
 
-### Deployment
-- **Development**: Replit
-- **Production**: Netlify with serverless functions
-- **Email Functions**: Netlify Functions with NodeMailer
+### UI Components
+- **Radix UI** primitives
+- **shadcn/ui** component library
+- **Lucide React** for icons
 
-## 🎨 Features
+## 🎯 Projects Featured
 
-- **Dark Theme**: Professional dark theme with bright green accents (#00ff88)
-- **Responsive Design**: Mobile-first approach with smooth animations
-- **Contact Form**: Fully functional SMTP-powered contact form
-- **Email Integration**: Professional HTML email formatting
-- **Social Media Integration**: Direct links to GitHub, LinkedIn, WhatsApp
-- **Interactive Animations**: Smooth transitions and hover effects
-- **SEO Optimized**: Meta tags and semantic HTML structure
+### Web Applications
+1. **Network Management System** - Real-time monitoring dashboard
+2. **AI Call Analyzer** - AI-powered call center quality analysis
+3. **Business Lead Finder** - Lead generation and management platform
 
-## 🚀 Getting Started
+### Mobile Apps
+- Portfolio section with upcoming mobile applications
 
-### Development Setup
+## 📧 Contact System
 
-```bash
-# Clone the repository
-git clone https://github.com/tsiemasilo/tsiemasilo.git
-cd tsiemasilo
+The portfolio includes a fully functional contact form with:
+- Professional email templates
+- Gmail SMTP integration
+- Success animations and feedback
+- Spam protection and validation
 
-# Install dependencies
-npm install
+## 🌐 Deployment
 
-# Start development server
-npm run dev
-```
+Deployed on Netlify with:
+- Automatic GitHub integration
+- Serverless function handling
+- Custom domain support
+- SSL/TLS encryption
 
-### Production Build
+## 📱 Social Links
 
-```bash
-# Build for production
-npm run build
+- **GitHub**: Professional code repositories
+- **LinkedIn**: Professional networking
+- **Indeed**: Career and job history
+- **WhatsApp**: Direct contact (082 806 9569)
 
-# Start production server
-npm start
-```
+## 🎨 Design
 
-### Quick Deployment
+Professional dark theme with:
+- Bright green accent colors (#00ff88)
+- Responsive grid layouts
+- Modern typography
+- Accessibility-focused design
 
-For immediate deployment, use the pre-built static version:
-1. Download `tsie-portfolio-clean.tar.gz`
-2. Extract and upload to Netlify
-3. Configure environment variables for email functionality
+## 📝 License
 
-## 📧 Contact Form Configuration
-
-The contact form uses Gmail SMTP. For production deployment, configure these environment variables:
-
-```env
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-```
-
-## 📱 Contact Me
-
-Ready to collaborate on your next project? Let's create something extraordinary together!
-
-- **Email**: tsiemasilo@gmail.com
-- **WhatsApp**: +27 82 806 9569
-- **LinkedIn**: [Connect with me](https://linkedin.com/in/tsiemasilo)
-- **GitHub**: [Follow my work](https://github.com/tsiemasilo)
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+© 2025 Tsie Masilo. All rights reserved.
 
 ---
 
-*Built with ❤️ by Tsie Masilo*
+*Built with passion and attention to detail*

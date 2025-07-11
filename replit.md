@@ -1,233 +1,114 @@
-# Developer Portfolio Application
+# Tsie Masilo - Professional Portfolio
 
 ## Overview
 
-This is a full-stack web application built as a developer portfolio website. The application uses a modern tech stack with React/TypeScript on the frontend, Express.js on the backend, and PostgreSQL with Drizzle ORM for data persistence. The UI is styled with Tailwind CSS and shadcn/ui components, creating a professional dark-themed portfolio interface.
+A modern, responsive developer portfolio website built with React and TypeScript, featuring interactive project showcases, a functional contact system, and a professional dark theme. The application demonstrates full-stack capabilities with a React frontend and Express.js backend, designed to showcase professional projects and facilitate client communication.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
-User name: Tsie Masilo
-Portfolio brand: "Hello World" 
-Personal profile image: Added user's personal photo with 3D hover effects and shimmer animations
 
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: React 18 with TypeScript
-- **Routing**: Wouter for client-side routing
-- **State Management**: TanStack React Query for server state management
-- **UI Framework**: shadcn/ui components built on Radix UI primitives
-- **Styling**: Tailwind CSS with custom dark theme variables
-- **Animations**: Framer Motion for smooth transitions and animations
-- **Build Tool**: Vite for fast development and optimized builds
+- **React 18** with TypeScript for type safety and modern React features
+- **Vite** as the build tool and development server for fast development
+- **Tailwind CSS** for utility-first styling with custom dark theme
+- **Framer Motion** for smooth animations and interactive transitions
+- **Wouter** for lightweight client-side routing
+- **Component-based architecture** using shadcn/ui and Radix UI primitives
 
 ### Backend Architecture
-- **Runtime**: Node.js with Express.js framework
-- **Language**: TypeScript with ES modules
-- **Database ORM**: Drizzle ORM for type-safe database operations
-- **Session Management**: Built-in session handling with connect-pg-simple
-- **API Structure**: RESTful API with `/api` prefix routing
+- **Express.js** server with TypeScript support
+- **Serverless deployment** ready with Netlify Functions
+- **RESTful API** design with `/api` prefix for all endpoints
+- **Email service integration** for contact form functionality
+- **Database-ready** with Drizzle ORM configuration for PostgreSQL
 
-### Data Storage
-- **Database**: PostgreSQL (configured for Neon serverless)
-- **ORM**: Drizzle ORM with migrations support
-- **Schema**: Centralized schema definition in `shared/schema.ts`
-- **Development Storage**: In-memory storage fallback for development
+### Database Strategy
+- **Drizzle ORM** configured for PostgreSQL with type-safe queries
+- **Neon Database** integration ready (@neondatabase/serverless)
+- **Migration system** set up with drizzle-kit
+- **Schema-first approach** with shared types between frontend and backend
 
 ## Key Components
 
-### Database Schema
-- **Users Table**: Basic user management with username/password authentication
-- **Migrations**: Automated database migrations using Drizzle Kit
-- **Type Safety**: Zod validation schemas generated from database schema
+### Contact System
+- **Nodemailer integration** with Gmail SMTP for email delivery
+- **Professional email templates** with HTML formatting
+- **Form validation** with proper error handling
+- **Multiple email service options** (Gmail SMTP, SendGrid backup)
+- **CORS-enabled** API endpoints for cross-origin requests
 
-### Authentication & Authorization
-- **Session-based**: Traditional session-based authentication approach
-- **Password Storage**: Plain text storage (should be enhanced with hashing)
-- **User Management**: Basic CRUD operations for user entities
+### UI Component Library
+- **shadcn/ui** component system with consistent design tokens
+- **Radix UI primitives** for accessible, unstyled components
+- **Custom theme system** with CSS variables for dark mode
+- **Responsive design** with mobile-first approach
+- **Interactive animations** using Framer Motion
 
-### UI Components
-- **Design System**: Comprehensive shadcn/ui component library
-- **Theme**: Dark theme with green accent colors (hsl(158, 64%, 52%))
-- **Responsive**: Mobile-first responsive design approach
-- **Accessibility**: Built-in accessibility features from Radix UI
-
-### Portfolio Features
-- **Landing Page**: Professional portfolio homepage with animations
-- **Contact Form**: Fully functional SMTP-powered contact form with Gmail integration
-- **Email System**: Professional HTML email formatting with reply-to functionality
-- **Mobile Navigation**: Responsive navigation with mobile menu
-- **Social Links**: Integration points for GitHub, LinkedIn, Indeed
+### Project Showcase
+- **Featured projects** with live demo links
+- **Category filtering** for different project types
+- **Interactive project cards** with hover effects
+- **External link integration** for GitHub and live demos
 
 ## Data Flow
 
-1. **Client Requests**: Frontend makes API calls using TanStack React Query
-2. **API Routing**: Express.js routes handle requests with `/api` prefix
-3. **Data Layer**: Drizzle ORM manages database interactions
-4. **Response**: JSON responses sent back to client
-5. **State Updates**: React Query manages cache updates and UI synchronization
+### Contact Form Flow
+1. User fills out contact form with name, email, and message
+2. Frontend validates form data and sends POST request to `/api/send-email`
+3. Backend validates data and formats professional email template
+4. Email sent via Nodemailer with Gmail SMTP or SendGrid fallback
+5. Success/error response returned to frontend with toast notifications
 
-### Error Handling
-- **Global Error Boundary**: Centralized error handling in Express middleware
-- **Client-side**: React Query error states and toast notifications
-- **Development**: Runtime error overlay for development debugging
+### Development Workflow
+1. **Frontend development** served by Vite dev server with hot reload
+2. **Backend API** runs on Express.js with TypeScript compilation
+3. **Database operations** handled through Drizzle ORM with type safety
+4. **Static assets** served from client/public directory
 
 ## External Dependencies
 
 ### Core Dependencies
-- **@neondatabase/serverless**: Serverless PostgreSQL driver
-- **@tanstack/react-query**: Server state management
-- **drizzle-orm**: Type-safe ORM
-- **framer-motion**: Animation library
-- **wouter**: Lightweight React router
+- **React ecosystem**: React 18, React DOM, React Query for state management
+- **TypeScript**: Full type safety across frontend and backend
+- **Styling**: Tailwind CSS, class-variance-authority, clsx utilities
+- **Animations**: Framer Motion for smooth interactions
+- **Forms**: React Hook Form with Zod validation resolvers
 
-### UI Dependencies
-- **@radix-ui/***: Comprehensive primitive component library
-- **tailwindcss**: Utility-first CSS framework
-- **class-variance-authority**: Component variant management
-- **lucide-react**: Icon library
+### Backend Services
+- **Email delivery**: Nodemailer with Gmail SMTP, SendGrid as backup
+- **Database**: Neon PostgreSQL with Drizzle ORM
+- **Authentication**: Ready for session-based auth with connect-pg-simple
 
-### Development Tools
-- **tsx**: TypeScript execution for development
-- **esbuild**: Fast bundling for production
-- **drizzle-kit**: Database migration tooling
+### UI Libraries
+- **Radix UI**: Accessible component primitives
+- **Lucide React**: Consistent icon library
+- **React Icons**: Additional icon sets (SimpleIcons for brand logos)
 
 ## Deployment Strategy
 
+### Production Deployment
+- **Netlify Functions** for serverless backend API
+- **Static site hosting** for optimized frontend build
+- **Environment variables** for email credentials and database URLs
+- **Build optimization** with Vite's production build system
+
+### Development Environment
+- **Local development** with Express.js server and Vite dev server
+- **Hot module replacement** for rapid development
+- **TypeScript compilation** with strict type checking
+- **Database migrations** managed through Drizzle Kit
+
 ### Build Process
-1. **Frontend Build**: Vite builds React application to `dist/public`
-2. **Backend Build**: esbuild bundles server code to `dist/index.js`
-3. **Static Assets**: Frontend assets served from Express in production
+1. **Frontend build**: Vite compiles React app to static files
+2. **Backend build**: ESBuild bundles Express.js server for deployment
+3. **Type checking**: TypeScript validates all code before build
+4. **Asset optimization**: Vite optimizes images, CSS, and JavaScript
 
-### Environment Configuration
-- **Development**: Hot reloading with Vite middleware integration
-- **Production**: Static file serving with optimized bundles
-- **Database**: Environment-based connection string configuration
-
-### Scripts
-- `npm run dev`: Development server with hot reloading
-- `npm run build`: Production build for both frontend and backend
-- `npm run start`: Production server startup
-- `npm run db:push`: Database schema deployment
-
-### Hosting Considerations
-- **Database**: Requires PostgreSQL instance (configured for Neon)
-- **Node.js**: Requires Node.js runtime environment
-- **Environment Variables**: `DATABASE_URL` required for database connection
-- **Static Assets**: Frontend assets bundled and served by Express
-
-## Recent Changes: Latest modifications with dates
-
-### July 10, 2025 - SMTP Contact Form Implementation
-- **Contact Form**: Successfully implemented and tested SMTP email functionality
-- **Email Integration**: Gmail SMTP with nodemailer for reliable email delivery
-- **Deployment**: Working solution deployed to Netlify with proper function dependencies
-- **Testing**: Verified email delivery on development server before deployment
-- **User Feedback**: Contact form confirmed working with success toast notifications
-
-### July 10, 2025 - Email Animation Sequence Implementation
-- **Typewriter Animation**: Full-screen overlay with original blue colors (#5C86FF, #275EFE)
-- **Email Envelope Animation**: Sequential blue envelope with floating papers effect
-- **Animation Flow**: Typewriter (2.5s) → Email envelope (3s) → Form reset
-- **Visual Feedback**: Removed toast notifications, animations provide complete user feedback
-- **Standard Sizing**: Fixed animation dimensions - typewriter (92px×56px), envelope (120px×70px)
-- **Deployment**: Complete animation sequence deployed to Netlify with proper timing
-
-### July 10, 2025 - Code Documentation Enhancement
-- **CSS Comments**: Added comprehensive comments to animation CSS explaining keyframes, effects, and timing
-- **SMTP Function**: Added detailed comments to serverless email function explaining CORS, validation, and Gmail SMTP
-- **Code Maintainability**: Enhanced code readability with professional documentation standards
-- **Technical Details**: Documented animation mechanics, email delivery process, and error handling
-- **Professional Standards**: Removed AI/platform references for cleaner, more professional codebase
-
-### July 10, 2025 - Professional Title Update
-- **Title Change**: Updated main title from "Full-Stack Developer" to "Junior Full-Stack Developer"
-- **Professional Positioning**: Adjusted hero section subtitle to better reflect current career level
-- **Hot Reload**: Change applied immediately via Vite's hot module replacement
-- **Deployment Ready**: Updated title ready for next Netlify deployment
-
-### July 10, 2025 - AI Call Analyzer Web Application Added
-- **New Project**: Added AI Call Analyzer to web applications portfolio section
-- **Project Details**: AI-powered call center quality analysis platform with comprehensive dashboard
-- **Technologies**: React, AI Analytics, Audio Processing, Dashboard UI
-- **Live URL**: https://aicallanalyzer.netlify.app/
-- **Screenshot**: Added project screenshot to public assets folder
-- **Category**: Added under "WEB APPLICATION" category with other professional web applications
-
-### July 10, 2025 - Coming Soon Feature for Apps Design
-- **Task Management Update**: Replaced Task Management App with "Mobile Apps Portfolio" coming soon message
-- **Coming Soon Overlay**: Added visual overlay with glowing "Coming Soon" text and blur effect
-- **Custom Messaging**: Added "🚀 Exciting apps in development" message instead of demo links
-- **UI Enhancement**: Implemented pulse animation and professional styling for coming soon state
-- **Portfolio Strategy**: Better positioning for future mobile app releases
-
-### July 10, 2025 - Portfolio Cleanup
-- **Removed Puzzle Game**: Cleaned up games section by removing placeholder puzzle game project
-- **Streamlined Portfolio**: Focused on completed and live projects only
-
-### July 10, 2025 - WhatsApp Integration
-- **WhatsApp Icon**: Added WhatsApp icon to social media section with direct messaging link
-- **Contact Enhancement**: Icon opens WhatsApp with phone number (082 806 9569) for immediate contact
-- **User Experience**: Seamless integration matching existing social media icon styling
-- **Netlify Update**: Updated deployment package with WhatsApp integration included
-
-### July 11, 2025 - Final Deployment Package Update
-- **Complete Netlify Package**: Updated netlify-updated-final.tar.gz with all latest changes
-- **Network Management System**: Confirmed as first web application with proper screenshot
-- **WhatsApp Integration**: Verified working social media integration for instant contact (082 806 9569)
-- **AI Call Analyzer**: Web application properly positioned in portfolio
-- **Coming Soon Mobile Apps**: Professional overlay maintained for mobile apps section
-- **All Screenshots**: Complete asset package with all project screenshots included
-- **Deployment Documentation**: Created comprehensive deployment notes with instructions
-- **File Size**: 12MB package ready for Netlify deployment with all assets included
-- **Static HTML**: Simple deployment approach guaranteeing immediate visibility of all changes
-
-### July 11, 2025 - Contact Form TESTED & WORKING (Ready for Deployment)
-- **Testing Complete**: Email function successfully tested - real email sent to tsiemasilo@gmail.com
-- **All Issues Fixed**: Fixed nodemailer.createTransporter to createTransport, CommonJS syntax confirmed
-- **Test Results**: Function returns 200 response, Gmail SMTP working, HTML formatting verified
-- **Package**: Created TESTED-WORKING-contact-form.tar.gz (13MB) with fully validated functions
-- **Status**: Ready for deployment - contact form will work immediately after GitHub push
-
-### July 11, 2025 - Netlify Configuration Updated for Full-Stack Deployment
-- **Netlify Functions**: Created netlify/functions/api.js for serverless backend deployment
-- **Dependencies**: Added serverless-http package for Express app compatibility
-- **Configuration**: Updated netlify.toml build commands for proper deployment
-- **Backend Export**: Modified server/index.ts to export Express app for Netlify functions
-- **Email System**: Maintained complete email functionality with nodemailer and @sendgrid/mail
-- **Deployment Status**: Ready for automatic Netlify deployment from GitHub updates
-
-### July 11, 2025 - GitHub Repository Successfully Updated
-- **Repository**: https://github.com/tsiemasilo/tsiemasilo.git updated successfully  
-- **Commit Hash**: 072013c (Complete portfolio update with all latest features)
-- **Changes**: 118 files changed, 292 insertions(+), 9507 deletions(-)
-- **All Features Verified**: Complete portfolio with all working features:
-  - Network Management System (positioned first)
-  - WhatsApp integration (082 806 9569)
-  - AI Call Analyzer web application
-  - Coming Soon mobile apps section with proper styling
-- **Major Cleanup**: Removed attached_assets, github-deploy, netlify folders and old deployment files
-- **Professional Structure**: Clean codebase with comprehensive README and documentation
-- **Push Method**: Manual push from local machine after network connectivity issues resolved
-
-### July 11, 2025 - Complete Project Cleanup & Final Deployment Package
-- **Project Cleanup**: Removed all old deployment archives, attached assets, and temporary files
-- **Clean Codebase**: Zero errors found in TypeScript compilation and runtime
-- **Verified Features**: All key features confirmed working in development:
-  - Network Management System (positioned first)
-  - WhatsApp integration (082 806 9569)
-  - AI Call Analyzer web application
-  - Coming Soon mobile apps section with proper styling
-- **Email System**: SMTP functionality tested and working perfectly
-- **Final Package**: Created ultra-clean deployment package (tsie-portfolio-clean.tar.gz, 4.9KB)
-- **Static HTML Version**: Professional responsive design with all animations and functionality
-- **Production Ready**: Guaranteed deployment success with minimal dependencies
-
-### July 10, 2025 - Network Management System Addition
-- **New Web Application**: Added Network Management System to portfolio as first web application
-- **Live URL**: https://front-nms.netlify.app/ - professional network monitoring dashboard
-- **Project Features**: Real-time agent tracking, connectivity monitoring, health metrics
-- **Priority Positioning**: Set as first project in web applications section
-- **Screenshot Updated**: Network management dashboard screenshot properly updated in deployment package
-- **Deployment Ready**: Updated Netlify package with correct screenshot (83KB file)
+### Configuration Management
+- **Environment-specific configs** for development and production
+- **Database connection** through environment variables
+- **Email service configuration** with fallback options
+- **CORS settings** for cross-origin API requests
