@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
 // Create reusable transporter object using SMTP transport
 const createTransporter = () => {
@@ -17,7 +17,7 @@ const createTransporter = () => {
   });
 };
 
-export const handler = async (event, context) => {
+exports.handler = async (event, context) => {
   // Set CORS headers for all responses
   const headers = {
     'Access-Control-Allow-Origin': '*',
