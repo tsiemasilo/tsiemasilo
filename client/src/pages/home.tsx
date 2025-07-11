@@ -514,7 +514,7 @@ export default function Home() {
               Hi, I'm <span className="gradient-text">Tsie Masilo</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-              Junior Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter. [UPDATED]
+              Junior Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
               <Button 
