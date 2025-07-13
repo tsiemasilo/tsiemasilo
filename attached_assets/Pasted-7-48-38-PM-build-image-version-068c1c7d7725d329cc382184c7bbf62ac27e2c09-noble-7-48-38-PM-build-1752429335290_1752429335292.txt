@@ -1,0 +1,151 @@
+7:48:38 PM: build-image version: 068c1c7d7725d329cc382184c7bbf62ac27e2c09 (noble)
+7:48:38 PM: buildbot version: 1ad41682c3cb8ba50e6cec4a3cd94c50f999b538
+7:48:39 PM: Fetching cached dependencies
+7:48:39 PM: Starting to download cache of 389.5MB (Last modified: 2025-07-11 11:09:15 +0000 UTC)
+7:48:40 PM: Finished downloading cache in 1.362s
+7:48:40 PM: Starting to extract cache
+7:48:49 PM: Finished extracting cache in 9.42s
+7:48:49 PM: Finished fetching cache in 10.84s
+7:48:49 PM: Starting to prepare the repo for build
+7:48:50 PM: Preparing Git Reference refs/heads/main
+7:48:51 PM: Custom build command detected. Proceeding with the specified command: 'npm install && npm run build && cd netlify/functions && npm install'
+7:48:52 PM: Starting to install dependencies
+7:48:52 PM: Started restoring cached python cache
+7:48:52 PM: Finished restoring cached python cache
+7:48:52 PM: Started restoring cached ruby cache
+7:48:53 PM: Finished restoring cached ruby cache
+7:48:53 PM: Started restoring cached go cache
+7:48:53 PM: Finished restoring cached go cache
+7:48:53 PM: Using PHP version
+7:48:54 PM: Started restoring cached Node.js version
+7:48:54 PM: Finished restoring cached Node.js version
+7:48:55 PM: v18.20.8 is already installed.
+7:48:55 PM: Now using node v18.20.8 (npm v10.8.2)
+7:48:55 PM: Enabling Node.js Corepack
+7:48:55 PM: Started restoring cached bun cache
+7:48:55 PM: Finished restoring cached bun cache
+7:48:55 PM: Started restoring cached build plugins
+7:48:55 PM: Finished restoring cached build plugins
+7:48:55 PM: Started restoring cached corepack dependencies
+7:48:55 PM: Finished restoring cached corepack dependencies
+7:48:55 PM: No npm workspaces detected
+7:48:55 PM: Started restoring cached node modules
+7:48:55 PM: Finished restoring cached node modules
+7:48:55 PM: Installing npm packages using npm version 10.8.2
+7:48:56 PM: up to date in 574ms
+7:48:56 PM: npm packages installed
+7:48:56 PM: Successfully installed dependencies
+7:48:56 PM: Starting build script
+7:48:56 PM: Detected 1 framework(s)
+7:48:57 PM: "vite" at version "5.4.19"
+7:48:57 PM: Section completed: initializing
+7:48:58 PM: ​
+7:48:58 PM: Netlify Build                                                 
+7:48:58 PM: ────────────────────────────────────────────────────────────────
+7:48:58 PM: ​
+7:48:58 PM: ❯ Version
+7:48:58 PM:   @netlify/build 34.2.3
+7:48:58 PM: ​
+7:48:58 PM: ❯ Flags
+7:48:58 PM:   accountId: 6786aa5b927658b4b62b93d6
+7:48:58 PM:   baseRelDir: true
+7:48:58 PM:   buildId: 6873f1700624130008786500
+7:48:58 PM:   deployId: 6873f1700624130008786502
+7:48:58 PM: ​
+7:48:58 PM: ❯ Current directory
+7:48:58 PM:   /opt/build/repo
+7:48:58 PM: ​
+7:48:58 PM: ❯ Config file
+7:48:58 PM:   /opt/build/repo/netlify.toml
+7:48:58 PM: ​
+7:48:58 PM: ❯ Context
+7:48:58 PM:   production
+7:48:58 PM: ​
+7:48:58 PM: ❯ Installing extensions
+7:48:58 PM:    - neon
+7:49:00 PM: ​
+7:49:00 PM: ❯ Loading extensions
+7:49:00 PM:    - neon
+7:49:01 PM: ​
+7:49:01 PM: build.command from netlify.toml                               
+7:49:01 PM: ────────────────────────────────────────────────────────────────
+7:49:01 PM: ​
+7:49:01 PM: $ npm install && npm run build && cd netlify/functions && npm install
+7:49:02 PM: up to date, audited 502 packages in 1s
+7:49:02 PM: 65 packages are looking for funding
+7:49:02 PM:   run `npm fund` for details
+7:49:02 PM: 9 vulnerabilities (1 low, 8 moderate)
+7:49:02 PM: To address issues that do not require attention, run:
+7:49:02 PM:   npm audit fix
+7:49:02 PM: To address all issues (including breaking changes), run:
+7:49:02 PM:   npm audit fix --force
+7:49:02 PM: Run `npm audit` for details.
+7:49:02 PM: > rest-express@1.0.0 build
+7:49:02 PM: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+7:49:03 PM: vite v5.4.19 building for production...
+7:49:03 PM: transforming...
+7:49:03 PM: Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+7:49:03 PM:   npx update-browserslist-db@latest
+7:49:03 PM:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+7:49:07 PM: ✓ 2008 modules transformed.
+7:49:07 PM: rendering chunks...
+7:49:07 PM: computing gzip size...
+7:49:07 PM: ../dist/public/index.html                   1.45 kB │ gzip:   0.67 kB
+7:49:07 PM: ../dist/public/assets/index-Cf4RgaFV.css   88.88 kB │ gzip:  16.83 kB
+7:49:07 PM: ../dist/public/assets/index-B51eoUXf.js   417.17 kB │ gzip: 135.12 kB
+7:49:07 PM: ✓ built in 4.38s
+7:49:07 PM:   dist/index.js  7.8kb
+7:49:07 PM: ⚡ Done in 2ms
+7:49:09 PM: added 29 packages, and audited 30 packages in 2s
+7:49:09 PM: 6 packages are looking for funding
+7:49:09 PM:   run `npm fund` for details
+7:49:09 PM: found 0 vulnerabilities
+7:49:09 PM: ​
+7:49:09 PM: (build.command completed in 8s)
+7:49:09 PM: ​
+7:49:09 PM: Functions bundling                                            
+7:49:09 PM: ────────────────────────────────────────────────────────────────
+7:49:09 PM: ​
+7:49:09 PM: Packaging Functions from netlify/functions directory:
+7:49:09 PM:  - api.js
+7:49:09 PM:  - contact.js
+7:49:09 PM:  - smtp-email.js
+7:49:09 PM: ​
+7:49:18 PM: ✘ [ERROR] Top-level await is currently not supported with the "cjs" output format
+7:49:18 PM:     vite.config.ts:13:10:
+7:49:18 PM:       13 │           await import("@replit/vite-plugin-cartographer").then((m...
+7:49:18 PM:          ╵           ~~~~~
+7:49:18 PM: ​
+7:49:18 PM: Bundling of function "api" failed                             
+7:49:18 PM: ────────────────────────────────────────────────────────────────
+7:49:18 PM: ​
+7:49:18 PM:   Error message
+7:49:18 PM:   Build failed with 1 error:
+7:49:18 PM:   vite.config.ts:13:10: ERROR: Top-level await is currently not supported with the "cjs" output format
+7:49:18 PM: ​
+7:49:18 PM:   Error location
+7:49:18 PM:   While bundling function "api"
+7:49:18 PM: ​
+7:49:18 PM:   Resolved config
+7:49:18 PM:   build:
+7:49:18 PM:     command: npm install && npm run build && cd netlify/functions && npm install
+7:49:18 PM:     commandOrigin: config
+7:49:18 PM:     environment:
+7:49:18 PM:       - EMAIL_PASS
+7:49:18 PM:       - EMAIL_USER
+7:49:18 PM:       - NODE_VERSION
+7:49:18 PM:     publish: /opt/build/repo/dist/public
+7:49:18 PM:     publishOrigin: config
+7:49:18 PM:   functionsDirectory: /opt/build/repo/netlify/functions
+7:49:18 PM:   redirects:
+7:49:19 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+7:49:19 PM:     - from: /api/*
+      status: 200
+      to: /.netlify/functions/api/:splat
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+7:49:19 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+7:49:19 PM: Failing build: Failed to build site
+7:49:19 PM: Finished processing build request in 40.599s
