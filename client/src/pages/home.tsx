@@ -240,6 +240,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "ERP System Demo",
+      description: "Enterprise Resource Planning system with comprehensive dashboard for business operations, inventory management, sales tracking, and customer relationship management with real-time analytics.",
+      image: "/erp-system-screenshot.png",
+      technologies: ["React", "ERP Integration", "Business Operations", "Dashboard Analytics"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://erpsystemdemo.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Tsie Movie Card",
       description: "Interactive movie discovery platform featuring dynamic movie cards with detailed information, ratings, and search functionality. Modern UI with responsive design and smooth animations.",
       image: "/tsie-movie-card.png",
