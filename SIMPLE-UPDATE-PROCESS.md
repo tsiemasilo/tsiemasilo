@@ -1,15 +1,28 @@
-# Simple GitHub Update Process
+# Simple Update Process for Windows
 
-## Your Repository: https://github.com/tsiemasilo/tsiemasilo.git
+## The Problem:
+- You're in the Linux workspace, not your Windows local repository
+- The workspace doesn't have GitHub connection set up
+- You need to update your local Windows repository
 
-## What You Need to Do:
+## Solution: Update Your Local Repository
 
-### Option 1: Direct File Updates (Easiest)
-1. Go to your repository: https://github.com/tsiemasilo/tsiemasilo
-2. Navigate to `client/src/pages/home.tsx`
-3. Click the pencil icon (Edit)
-4. Find line 244 (after the "No Shedding" project)
-5. Add this code:
+### Step 1: Open Command Prompt on Windows
+Press `Win + R`, type `cmd`, press Enter
+
+### Step 2: Navigate to Your Repository
+```cmd
+cd "C:\Users\Tsie Masilo\Desktop\PORTFOLIO\tsiemasilo"
+```
+
+### Step 3: Check Current Status
+```cmd
+git status
+git log --oneline -5
+```
+
+### Step 4: Add ERP System Demo to home.tsx
+Open `client\src\pages\home.tsx` in any text editor and add this after the No Shedding project:
 
 ```javascript
     {
@@ -23,23 +36,24 @@
     },
 ```
 
-6. Commit the changes
-7. Upload the ERP screenshot to `client/public/` folder
-
-### Option 2: Clone and Push Locally
-```bash
-git clone https://github.com/tsiemasilo/tsiemasilo.git
-cd tsiemasilo
-# Make the changes above
+### Step 5: Add and Commit
+```cmd
 git add .
 git commit -m "Add ERP System Demo to portfolio"
+```
+
+### Step 6: Push to GitHub
+```cmd
 git push origin main
 ```
 
-## ERP System Demo Details:
-- **URL**: https://erpsystemdemo.netlify.app/
-- **Position**: After "No Shedding" project
-- **Category**: WEB APPLICATION
-- **Technologies**: React, ERP Integration, Business Operations, Dashboard Analytics
+If it asks for credentials, use:
+- Username: tsiemasilo
+- Password: Your GitHub personal access token
 
-The ERP System Demo will appear as the 3rd project in your web applications section once updated.
+## Alternative: Download Complete Package
+1. Download `FORCE-GITHUB-UPDATE.tar.gz` from this workspace
+2. Extract it to replace your current repository
+3. Push to GitHub
+
+The ERP System Demo will then appear as the 3rd project in your web applications section.
