@@ -12,6 +12,7 @@ interface Visitor {
   ipAddress: string;
   userAgent: string;
   country: string | null;
+  region: string | null;
   city: string | null;
   browser: string | null;
   os: string | null;
@@ -21,14 +22,22 @@ interface Visitor {
   timestamp: string;
   sessionId: string | null;
   timeSpent: number | null;
+  organization: string | null;
+  isp: string | null;
+  domain: string | null;
+  companyName: string | null;
+  businessType: string | null;
+  isBusinessVisitor: boolean;
 }
 
 interface VisitorStats {
   totalVisitors: number;
   todayVisitors: number;
   uniqueVisitors: number;
+  businessVisitors: number;
   topPages: Array<{ page: string; count: number }>;
   topCountries: Array<{ country: string; count: number }>;
+  topCompanies: Array<{ company: string; count: number }>;
   recentVisitors: Visitor[];
 }
 
@@ -85,7 +94,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
           <Card className="bg-gray-900 border-gray-800">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Total Visitors</CardTitle>
@@ -124,6 +133,18 @@ export default function AdminDashboard() {
 
           <Card className="bg-gray-900 border-gray-800">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">Business Visitors</CardTitle>
+              <TrendingUp className="h-4 w-4 text-yellow-400" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-yellow-400">
+                {statsLoading ? '...' : stats?.businessVisitors || 0}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-900 border-gray-800">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Live Tracking</CardTitle>
               <TrendingUp className="h-4 w-4 text-[#00ff88]" />
             </CardHeader>
@@ -136,9 +157,12 @@ export default function AdminDashboard() {
         </div>
 
         <Tabs defaultValue="visitors" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-900">
+          <TabsList className="grid w-full grid-cols-4 bg-gray-900">
             <TabsTrigger value="visitors" className="data-[state=active]:bg-[#00ff88] data-[state=active]:text-black">
               Recent Visitors
+            </TabsTrigger>
+            <TabsTrigger value="companies" className="data-[state=active]:bg-[#00ff88] data-[state=active]:text-black">
+              Companies
             </TabsTrigger>
             <TabsTrigger value="pages" className="data-[state=active]:bg-[#00ff88] data-[state=active]:text-black">
               Top Pages
@@ -164,6 +188,9 @@ export default function AdminDashboard() {
                           <div className="flex items-center space-x-2">
                             {getDeviceIcon(visitor.device)}
                             <span className="font-medium">{visitor.ipAddress}</span>
+                            {visitor.isBusinessVisitor && (
+                              <Badge className="bg-yellow-500 text-black">Business</Badge>
+                            )}
                             <Badge variant="outline" className="border-[#00ff88] text-[#00ff88]">
                               {visitor.browser || 'Unknown'}
                             </Badge>
@@ -175,9 +202,21 @@ export default function AdminDashboard() {
                             {formatTimestamp(visitor.timestamp)}
                           </span>
                         </div>
+                        {(visitor.companyName || visitor.organization) && (
+                          <div className="mb-2 text-sm">
+                            <span className="text-yellow-400 font-medium">Company: </span>
+                            <span className="text-white">{visitor.companyName || visitor.organization}</span>
+                            {visitor.businessType && (
+                              <span className="text-gray-400 ml-2">({visitor.businessType})</span>
+                            )}
+                          </div>
+                        )}
                         <div className="flex items-center justify-between text-sm text-gray-400">
                           <div className="flex items-center space-x-4">
                             <span>Page: {visitor.page}</span>
+                            {visitor.city && visitor.country && (
+                              <span>📍 {visitor.city}, {visitor.country}</span>
+                            )}
                             {visitor.referrer && (
                               <span>From: {visitor.referrer}</span>
                             )}
@@ -189,6 +228,37 @@ export default function AdminDashboard() {
                             )}
                           </div>
                         </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="companies" className="space-y-4">
+            <Card className="bg-gray-900 border-gray-800">
+              <CardHeader>
+                <CardTitle className="text-[#00ff88]">Business Visitors</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {statsLoading ? (
+                    <div className="text-center py-8">Loading company data...</div>
+                  ) : stats?.topCompanies.length === 0 ? (
+                    <div className="text-center py-8 text-gray-400">
+                      <Users className="w-12 h-12 mx-auto mb-4" />
+                      <p>No business visitors identified yet</p>
+                      <p className="text-sm">Company identification will appear as visitors arrive</p>
+                    </div>
+                  ) : (
+                    stats?.topCompanies.map((company, index) => (
+                      <div key={company.company} className="flex items-center justify-between p-3 border border-gray-700 rounded">
+                        <div className="flex items-center space-x-3">
+                          <span className="text-[#00ff88] font-bold">#{index + 1}</span>
+                          <span className="text-yellow-400">{company.company}</span>
+                        </div>
+                        <Badge className="bg-yellow-500 text-black">{company.count} visits</Badge>
                       </div>
                     ))
                   )}

@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { sendContactEmail, type EmailData } from "./email";
+import { getComprehensiveGeoData } from "./ipGeoService";
 
 // Utility function to detect device info from user agent
 function parseUserAgent(userAgent: string | undefined) {
@@ -42,6 +43,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const { browser, os, device } = parseUserAgent(userAgent);
       
+      // Get comprehensive geo and business data
+      const geoData = await getComprehensiveGeoData(ipAddress);
+      
       const visitorData = {
         ipAddress,
         userAgent,
@@ -52,8 +56,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         page: page || '/',
         sessionId: sessionId || null,
         timeSpent: timeSpent || null,
-        country: null, // We'll enhance this later with IP geolocation
-        city: null,
+        // Enhanced business identification fields
+        country: geoData.country,
+        region: geoData.region,
+        city: geoData.city,
+        organization: geoData.organization,
+        isp: geoData.isp,
+        domain: geoData.domain,
+        companyName: geoData.companyName,
+        businessType: geoData.businessType,
+        isBusinessVisitor: geoData.isBusinessVisitor,
         metadata: null
       };
       

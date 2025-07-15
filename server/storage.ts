@@ -14,8 +14,10 @@ export interface IStorage {
     totalVisitors: number;
     todayVisitors: number;
     uniqueVisitors: number;
+    businessVisitors: number;
     topPages: Array<{ page: string; count: number }>;
     topCountries: Array<{ country: string; count: number }>;
+    topCompanies: Array<{ company: string; count: number }>;
     recentVisitors: Visitor[];
   }>;
   getAllVisitors(): Promise<Visitor[]>;
@@ -58,12 +60,19 @@ export class MemStorage implements IStorage {
       userAgent: insertVisitor.userAgent || null,
       country: insertVisitor.country || null,
       city: insertVisitor.city || null,
+      region: insertVisitor.region || null,
       browser: insertVisitor.browser || null,
       os: insertVisitor.os || null,
       device: insertVisitor.device || null,
       referrer: insertVisitor.referrer || null,
       sessionId: insertVisitor.sessionId || null,
       timeSpent: insertVisitor.timeSpent || null,
+      organization: insertVisitor.organization || null,
+      isp: insertVisitor.isp || null,
+      domain: insertVisitor.domain || null,
+      companyName: insertVisitor.companyName || null,
+      businessType: insertVisitor.businessType || null,
+      isBusinessVisitor: insertVisitor.isBusinessVisitor || false,
       metadata: insertVisitor.metadata || null,
       id, 
       timestamp: new Date()
@@ -76,8 +85,10 @@ export class MemStorage implements IStorage {
     totalVisitors: number;
     todayVisitors: number;
     uniqueVisitors: number;
+    businessVisitors: number;
     topPages: Array<{ page: string; count: number }>;
     topCountries: Array<{ country: string; count: number }>;
+    topCompanies: Array<{ company: string; count: number }>;
     recentVisitors: Visitor[];
   }> {
     const allVisitors = Array.from(this.visitors.values());
@@ -89,6 +100,7 @@ export class MemStorage implements IStorage {
     );
     
     const uniqueIPs = new Set(allVisitors.map(v => v.ipAddress));
+    const businessVisitors = allVisitors.filter(v => v.isBusinessVisitor).length;
     
     // Top pages
     const pageCount = new Map<string, number>();
@@ -112,12 +124,26 @@ export class MemStorage implements IStorage {
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
     
+    // Top companies
+    const companyCount = new Map<string, number>();
+    allVisitors.forEach(v => {
+      if (v.companyName) {
+        companyCount.set(v.companyName, (companyCount.get(v.companyName) || 0) + 1);
+      }
+    });
+    const topCompanies = Array.from(companyCount.entries())
+      .map(([company, count]) => ({ company, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
+    
     return {
       totalVisitors: allVisitors.length,
       todayVisitors: todayVisitors.length,
       uniqueVisitors: uniqueIPs.size,
+      businessVisitors,
       topPages,
       topCountries,
+      topCompanies,
       recentVisitors: allVisitors
         .sort((a, b) => (b.timestamp?.getTime() || 0) - (a.timestamp?.getTime() || 0))
         .slice(0, 50)
