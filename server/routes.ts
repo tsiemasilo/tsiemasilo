@@ -117,6 +117,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Test endpoint for real IP geolocation
+  app.post("/api/test-geolocation", async (req, res) => {
+    try {
+      const { ip } = req.body;
+      if (!ip) {
+        return res.status(400).json({ error: "IP address required" });
+      }
+      
+      console.log(`Testing geolocation for IP: ${ip}`);
+      const geoData = await getComprehensiveGeoData(ip);
+      console.log('Real geolocation result:', geoData);
+      
+      res.json({ success: true, geoData });
+    } catch (error) {
+      console.error("Geolocation test error:", error);
+      res.status(500).json({ error: "Failed to get geolocation data" });
+    }
+  });
+
   // Hidden dashboard API endpoints
   app.get("/api/admin/visitors/stats", async (req, res) => {
     try {
