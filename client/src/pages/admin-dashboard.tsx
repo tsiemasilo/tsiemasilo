@@ -157,9 +157,12 @@ export default function AdminDashboard() {
         </div>
 
         <Tabs defaultValue="visitors" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-4 bg-gray-900">
+          <TabsList className="grid w-full grid-cols-5 bg-gray-900">
             <TabsTrigger value="visitors" className="data-[state=active]:bg-[#00ff88] data-[state=active]:text-black">
               Recent Visitors
+            </TabsTrigger>
+            <TabsTrigger value="personal" className="data-[state=active]:bg-[#00ff88] data-[state=active]:text-black">
+              Personal ID
             </TabsTrigger>
             <TabsTrigger value="companies" className="data-[state=active]:bg-[#00ff88] data-[state=active]:text-black">
               Companies
@@ -188,6 +191,9 @@ export default function AdminDashboard() {
                           <div className="flex items-center space-x-2">
                             {getDeviceIcon(visitor.device)}
                             <span className="font-medium">{visitor.ipAddress}</span>
+                            {visitor.fullName && (
+                              <Badge className="bg-blue-500 text-white">👤 {visitor.fullName}</Badge>
+                            )}
                             {visitor.isBusinessVisitor && (
                               <Badge className="bg-yellow-500 text-black">Business</Badge>
                             )}
@@ -202,12 +208,32 @@ export default function AdminDashboard() {
                             {formatTimestamp(visitor.timestamp)}
                           </span>
                         </div>
+                        {(visitor.fullName || visitor.firstName || visitor.lastName) && (
+                          <div className="mb-2 text-sm">
+                            <span className="text-blue-400 font-medium">Name: </span>
+                            <span className="text-white">
+                              {visitor.fullName || `${visitor.firstName || ''} ${visitor.lastName || ''}`.trim()}
+                            </span>
+                            {visitor.email && (
+                              <span className="text-gray-400 ml-2">({visitor.email})</span>
+                            )}
+                          </div>
+                        )}
                         {(visitor.companyName || visitor.organization) && (
                           <div className="mb-2 text-sm">
                             <span className="text-yellow-400 font-medium">Company: </span>
                             <span className="text-white">{visitor.companyName || visitor.organization}</span>
                             {visitor.businessType && (
                               <span className="text-gray-400 ml-2">({visitor.businessType})</span>
+                            )}
+                          </div>
+                        )}
+                        {visitor.deviceName && (
+                          <div className="mb-2 text-sm">
+                            <span className="text-green-400 font-medium">Device: </span>
+                            <span className="text-white">{visitor.deviceName}</span>
+                            {visitor.screenResolution && (
+                              <span className="text-gray-400 ml-2">{visitor.screenResolution}</span>
                             )}
                           </div>
                         )}
@@ -230,6 +256,106 @@ export default function AdminDashboard() {
                         </div>
                       </div>
                     ))
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="personal" className="space-y-4">
+            <Card className="bg-gray-900 border-gray-800">
+              <CardHeader>
+                <CardTitle className="text-[#00ff88]">Personal Identification</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {visitorsLoading ? (
+                    <div className="text-center py-8">Loading personal data...</div>
+                  ) : (
+                    visitors?.filter(v => v.fullName || v.firstName || v.lastName || v.email || v.deviceName).slice(0, 15).map((visitor) => (
+                      <div key={visitor.id} className="border border-blue-500 rounded-lg p-4 bg-blue-900/20">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-blue-400 font-bold">👤</span>
+                            <span className="font-medium text-blue-300">
+                              {visitor.fullName || `${visitor.firstName || ''} ${visitor.lastName || ''}`.trim() || 'Unknown User'}
+                            </span>
+                            {visitor.email && (
+                              <Badge className="bg-blue-500 text-white">✉️ {visitor.email}</Badge>
+                            )}
+                            {visitor.isBusinessVisitor && (
+                              <Badge className="bg-yellow-500 text-black">Business</Badge>
+                            )}
+                          </div>
+                          <span className="text-sm text-gray-400">
+                            {formatTimestamp(visitor.timestamp)}
+                          </span>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-gray-400">IP: </span>
+                            <span className="text-white">{visitor.ipAddress}</span>
+                          </div>
+                          {visitor.deviceName && (
+                            <div>
+                              <span className="text-gray-400">Device: </span>
+                              <span className="text-white">{visitor.deviceName}</span>
+                            </div>
+                          )}
+                          {visitor.screenResolution && (
+                            <div>
+                              <span className="text-gray-400">Screen: </span>
+                              <span className="text-white">{visitor.screenResolution}</span>
+                            </div>
+                          )}
+                          {visitor.timezone && (
+                            <div>
+                              <span className="text-gray-400">Timezone: </span>
+                              <span className="text-white">{visitor.timezone}</span>
+                            </div>
+                          )}
+                          {visitor.language && (
+                            <div>
+                              <span className="text-gray-400">Language: </span>
+                              <span className="text-white">{visitor.language}</span>
+                            </div>
+                          )}
+                          {visitor.batteryLevel && (
+                            <div>
+                              <span className="text-gray-400">Battery: </span>
+                              <span className="text-white">{visitor.batteryLevel}%</span>
+                              {visitor.isCharging && <span className="text-green-400 ml-1">⚡</span>}
+                            </div>
+                          )}
+                        </div>
+                        
+                        {(visitor.companyName || visitor.organization) && (
+                          <div className="mt-2 text-sm border-t border-gray-700 pt-2">
+                            <span className="text-yellow-400 font-medium">Company: </span>
+                            <span className="text-white">{visitor.companyName || visitor.organization}</span>
+                            {visitor.businessType && (
+                              <span className="text-gray-400 ml-2">({visitor.businessType})</span>
+                            )}
+                          </div>
+                        )}
+                        
+                        <div className="mt-2 text-sm text-gray-400">
+                          <span>Page: {visitor.page}</span>
+                          {visitor.city && visitor.country && (
+                            <span className="ml-4">📍 {visitor.city}, {visitor.country}</span>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  )}
+                  
+                  {!visitorsLoading && visitors?.filter(v => v.fullName || v.firstName || v.lastName || v.email || v.deviceName).length === 0 && (
+                    <div className="text-center py-8 text-gray-400">
+                      <Users className="w-12 h-12 mx-auto mb-4" />
+                      <p>No personal identification data available yet</p>
+                      <p className="text-sm">Advanced fingerprinting will identify visitors as they arrive</p>
+                    </div>
                   )}
                 </div>
               </CardContent>

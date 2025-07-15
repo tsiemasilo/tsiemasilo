@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { generateAdvancedFingerprint, generateDeviceId, type DeviceFingerprint } from '@/lib/deviceFingerprinting';
 
 // Generate a unique session ID
 function generateSessionId(): string {
@@ -30,6 +31,27 @@ export function useVisitorTracking() {
           const referrer = document.referrer || null;
           const page = window.location.pathname;
           
+          // Generate advanced fingerprint for personal identification
+          const fingerprint = await generateAdvancedFingerprint();
+          const deviceId = generateDeviceId(fingerprint);
+          
+          // Extract personal information from fingerprint
+          const personalData = {
+            deviceName: fingerprint.personalIdentifiers.deviceName,
+            userName: fingerprint.personalIdentifiers.userName,
+            computerName: fingerprint.personalIdentifiers.computerName,
+            deviceId: deviceId,
+            screenResolution: `${fingerprint.screen.width}x${fingerprint.screen.height}`,
+            timezone: fingerprint.timezone,
+            language: fingerprint.navigator.language,
+            platform: fingerprint.navigator.platform,
+            deviceMemory: fingerprint.navigator.deviceMemory,
+            hardwareConcurrency: fingerprint.navigator.hardwareConcurrency,
+            batteryLevel: fingerprint.battery?.level ? Math.round(fingerprint.battery.level * 100) : null,
+            isCharging: fingerprint.battery?.charging || null,
+            networkType: fingerprint.personalIdentifiers.networkName,
+          };
+          
           const response = await fetch('/api/track-visitor', {
             method: 'POST',
             headers: {
@@ -38,6 +60,8 @@ export function useVisitorTracking() {
             body: JSON.stringify({
               page,
               referrer,
+              fingerprint: fingerprint,
+              personalData: personalData,
               sessionId,
               timeSpent: null
             })

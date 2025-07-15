@@ -37,7 +37,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Visitor tracking endpoint
   app.post("/api/track-visitor", async (req, res) => {
     try {
-      const { page, referrer, sessionId, timeSpent } = req.body;
+      const { page, referrer, sessionId, timeSpent, fingerprint, personalData } = req.body;
       const userAgent = req.headers['user-agent'] || '';
       const ipAddress = req.ip || req.connection.remoteAddress || 'unknown';
       
@@ -45,6 +45,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Get comprehensive geo and business data
       const geoData = await getComprehensiveGeoData(ipAddress);
+      
+      // Extract personal information using advanced identification service
+      const { extractPersonalInfo } = await import('./personalIdentificationService');
+      const personalInfo = await extractPersonalInfo(req, fingerprint);
       
       const visitorData = {
         ipAddress,
@@ -66,11 +70,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
         companyName: geoData.companyName,
         businessType: geoData.businessType,
         isBusinessVisitor: geoData.isBusinessVisitor,
-        metadata: null
+        // Personal identification fields
+        firstName: personalInfo.firstName || null,
+        lastName: personalInfo.lastName || null,
+        fullName: personalInfo.fullName || null,
+        email: personalInfo.email || null,
+        deviceName: personalInfo.deviceName || personalData?.deviceName || null,
+        deviceId: personalInfo.deviceId || personalData?.deviceId || null,
+        screenResolution: personalInfo.screenResolution || personalData?.screenResolution || null,
+        timezone: personalInfo.timezone || personalData?.timezone || null,
+        language: personalInfo.language || personalData?.language || null,
+        platform: personalInfo.platform || personalData?.platform || null,
+        networkType: personalInfo.networkType || personalData?.networkType || null,
+        connectionSpeed: personalInfo.connectionSpeed || null,
+        batteryLevel: personalInfo.batteryLevel || personalData?.batteryLevel || null,
+        isCharging: personalInfo.isCharging || personalData?.isCharging || null,
+        deviceMemory: personalInfo.deviceMemory || personalData?.deviceMemory || null,
+        hardwareConcurrency: personalInfo.hardwareConcurrency || personalData?.hardwareConcurrency || null,
+        socialMediaHandle: personalInfo.socialMediaHandle || null,
+        linkedInProfile: personalInfo.linkedInProfile || null,
+        githubProfile: personalInfo.githubProfile || null,
+        twitterHandle: personalInfo.twitterHandle || null,
+        metadata: { geoData, personalInfo, fingerprint }
       };
       
-      await storage.trackVisitor(visitorData);
-      res.json({ success: true });
+      const visitor = await storage.trackVisitor(visitorData);
+      
+      console.log('Advanced visitor tracked:', {
+        ip: ipAddress,
+        fullName: visitor.fullName,
+        deviceName: visitor.deviceName,
+        companyName: visitor.companyName,
+        personalInfo: personalInfo
+      });
+      
+      res.json({ success: true, visitor });
     } catch (error) {
       console.error("Visitor tracking error:", error);
       res.status(500).json({ error: "Failed to track visitor" });
