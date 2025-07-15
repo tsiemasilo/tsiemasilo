@@ -27,12 +27,7 @@ interface DeviceFingerprint {
   sessionStorage: boolean;
   indexedDB: boolean;
   webSQL: boolean;
-  battery?: {
-    level: number;
-    charging: boolean;
-    chargingTime: number;
-    dischargingTime: number;
-  };
+
   personalIdentifiers: {
     deviceName?: string;
     userName?: string;
@@ -261,20 +256,7 @@ export async function generateAdvancedFingerprint(): Promise<DeviceFingerprint> 
     personalIdentifiers: await extractPersonalIdentifiers()
   };
   
-  // Try to get battery information
-  if ('getBattery' in navigator) {
-    try {
-      const battery = await (navigator as any).getBattery();
-      fingerprint.battery = {
-        level: battery.level,
-        charging: battery.charging,
-        chargingTime: battery.chargingTime,
-        dischargingTime: battery.dischargingTime
-      };
-    } catch (e) {
-      // Battery API might not be available
-    }
-  }
+  // Battery API removed for privacy compliance
   
   return fingerprint;
 }

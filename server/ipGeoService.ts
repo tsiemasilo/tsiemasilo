@@ -6,12 +6,18 @@ export interface GeoLocationData {
   country?: string;
   region?: string;
   city?: string;
+  address?: string;
+  postalCode?: string;
+  latitude?: number;
+  longitude?: number;
   organization?: string;
   isp?: string;
   domain?: string;
   companyName?: string;
   businessType?: string;
   isBusinessVisitor: boolean;
+  nearbyBusinesses?: string[];
+  currentBusiness?: string;
 }
 
 // Free IP geolocation APIs with business identification
@@ -156,6 +162,90 @@ function isBusinessIP(org: string | null): boolean {
   return businessKeywords.some(keyword => orgLower.includes(keyword));
 }
 
+// Get nearby businesses using coordinates
+async function getNearbyBusinesses(latitude: number, longitude: number): Promise<string[]> {
+  const businesses: string[] = [];
+  
+  try {
+    // Use OpenStreetMap Nominatim API to find nearby businesses
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1&limit=10&extratags=1`,
+      {
+        headers: {
+          'User-Agent': 'Portfolio-Analytics/1.0'
+        }
+      }
+    );
+    
+    if (response.ok) {
+      const data = await response.json();
+      
+      for (const item of data) {
+        if (item.display_name && item.type && item.type !== 'house') {
+          // Extract business names from the display name
+          const parts = item.display_name.split(',');
+          if (parts.length > 0) {
+            const businessName = parts[0].trim();
+            if (businessName && !businessName.match(/^\d+$/)) {
+              businesses.push(businessName);
+            }
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.log('Nearby businesses lookup failed:', error);
+  }
+  
+  return businesses.slice(0, 5); // Return top 5 nearby businesses
+}
+
+// Determine current business location based on IP organization and coordinates
+async function getCurrentBusiness(latitude: number, longitude: number, organization?: string): Promise<string | null> {
+  // If organization suggests a specific business, use it
+  if (organization) {
+    const companyName = extractCompanyName(organization);
+    if (companyName && !companyName.toLowerCase().includes('broadband') && !companyName.toLowerCase().includes('internet')) {
+      return companyName;
+    }
+  }
+  
+  try {
+    // Use reverse geocoding to get address details
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1&extratags=1`,
+      {
+        headers: {
+          'User-Agent': 'Portfolio-Analytics/1.0'
+        }
+      }
+    );
+    
+    if (response.ok) {
+      const data = await response.json();
+      
+      // Check if the location is a business
+      if (data.extratags && data.extratags.name) {
+        return data.extratags.name;
+      }
+      
+      // Check address components for business names
+      if (data.address) {
+        const businessKeys = ['office', 'shop', 'commercial', 'retail', 'building', 'amenity'];
+        for (const key of businessKeys) {
+          if (data.address[key]) {
+            return data.address[key];
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.log('Current business lookup failed:', error);
+  }
+  
+  return null;
+}
+
 // Main function to get comprehensive geo data
 export async function getComprehensiveGeoData(ip: string): Promise<GeoLocationData> {
   const result: GeoLocationData = {
@@ -198,6 +288,21 @@ export async function getComprehensiveGeoData(ip: string): Promise<GeoLocationDa
     } catch (error) {
       console.log(`API ${api.name} failed for IP ${ip}:`, error.message);
       continue;
+    }
+  }
+  
+  // Get nearby businesses and current business if we have coordinates
+  if (result.latitude && result.longitude) {
+    try {
+      const [nearbyBusinesses, currentBusiness] = await Promise.all([
+        getNearbyBusinesses(result.latitude, result.longitude),
+        getCurrentBusiness(result.latitude, result.longitude, result.organization)
+      ]);
+      
+      result.nearbyBusinesses = nearbyBusinesses;
+      result.currentBusiness = currentBusiness;
+    } catch (error) {
+      console.log('Business lookup failed:', error);
     }
   }
   

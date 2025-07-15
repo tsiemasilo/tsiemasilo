@@ -321,11 +321,16 @@ export default function AdminDashboard() {
                               <span className="text-white">{visitor.language}</span>
                             </div>
                           )}
-                          {visitor.batteryLevel && (
+                          {visitor.address && (
                             <div>
-                              <span className="text-gray-400">Battery: </span>
-                              <span className="text-white">{visitor.batteryLevel}%</span>
-                              {visitor.isCharging && <span className="text-green-400 ml-1">⚡</span>}
+                              <span className="text-gray-400">Address: </span>
+                              <span className="text-white">{visitor.address}</span>
+                            </div>
+                          )}
+                          {visitor.currentBusiness && (
+                            <div>
+                              <span className="text-gray-400">Current Business: </span>
+                              <span className="text-yellow-300">{visitor.currentBusiness}</span>
                             </div>
                           )}
                         </div>
@@ -342,10 +347,17 @@ export default function AdminDashboard() {
                         
                         <div className="mt-2 text-sm text-gray-400">
                           <span>Page: {visitor.page}</span>
-                          {visitor.city && visitor.country && (
-                            <span className="ml-4">📍 {visitor.city}, {visitor.country}</span>
+                          {visitor.address && (
+                            <span className="ml-4">📍 {visitor.address}</span>
                           )}
                         </div>
+                        
+                        {visitor.nearbyBusinesses && visitor.nearbyBusinesses.length > 0 && (
+                          <div className="mt-2 text-sm">
+                            <span className="text-purple-400 font-medium">Nearby Businesses: </span>
+                            <span className="text-white">{visitor.nearbyBusinesses.slice(0, 3).join(', ')}</span>
+                          </div>
+                        )}
                       </div>
                     ))
                   )}

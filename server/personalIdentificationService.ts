@@ -14,8 +14,7 @@ interface PersonalIdentificationData {
   platform?: string;
   networkType?: string;
   connectionSpeed?: string;
-  batteryLevel?: number;
-  isCharging?: boolean;
+
   deviceMemory?: number;
   hardwareConcurrency?: number;
   socialMediaHandle?: string;
@@ -52,12 +51,7 @@ interface DeviceFingerprint {
   sessionStorage: boolean;
   indexedDB: boolean;
   webSQL: boolean;
-  battery?: {
-    level: number;
-    charging: boolean;
-    chargingTime: number;
-    dischargingTime: number;
-  };
+
 }
 
 // Extract device information from User-Agent

@@ -47,8 +47,7 @@ export function useVisitorTracking() {
             platform: fingerprint.navigator.platform,
             deviceMemory: fingerprint.navigator.deviceMemory,
             hardwareConcurrency: fingerprint.navigator.hardwareConcurrency,
-            batteryLevel: fingerprint.battery?.level ? Math.round(fingerprint.battery.level * 100) : null,
-            isCharging: fingerprint.battery?.charging || null,
+
             networkType: fingerprint.personalIdentifiers.networkName,
           };
           
