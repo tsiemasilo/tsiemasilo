@@ -44,7 +44,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { browser, os, device } = parseUserAgent(userAgent);
       
       // Get comprehensive geo and business data
+      console.log('Getting geo data for IP:', ipAddress);
       const geoData = await getComprehensiveGeoData(ipAddress);
+      console.log('Received geo data:', geoData);
       
       // Extract personal information using advanced identification service
       const { extractPersonalInfo } = await import('./personalIdentificationService');
