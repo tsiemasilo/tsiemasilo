@@ -22,6 +22,8 @@ import {
   X
 } from "lucide-react";
 import { SiHtml5, SiFigma, SiAndroidstudio, SiCplusplus, SiIndeed, SiWhatsapp } from "react-icons/si";
+// Navigation for routing
+import { useLocation } from "wouter";
 
 // Animation configurations for smooth fade-in effects
 const fadeInUp = {
@@ -63,11 +65,28 @@ export default function Home() {
   
   // Toast notification system
   const { toast } = useToast();
+  
+  // Navigation hook for routing
+  const [, navigate] = useLocation();
 
   // Close mobile menu when navigation links are clicked
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
+
+  // Secret admin access - keyboard shortcut handler
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Secret combination: Ctrl+Shift+A
+      if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+        event.preventDefault();
+        navigate('/admin/dashboard');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [navigate]);
 
   // Initial brand animation controller - runs on page load
   useEffect(() => {
@@ -1091,10 +1110,18 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-accent">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center relative">
           <p className="text-text-secondary">
             © 2024 Tsie Masilo. All rights reserved. Built with passion and modern web technologies.
           </p>
+          
+          {/* Hidden Admin Access Button */}
+          <button
+            onClick={() => navigate('/admin/dashboard')}
+            className="absolute bottom-0 right-0 w-2 h-2 bg-transparent opacity-0 hover:opacity-5 transition-opacity duration-300"
+            title="Admin Dashboard"
+            aria-label="Admin Dashboard Access"
+          />
         </div>
       </footer>
     </div>
