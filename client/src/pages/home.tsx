@@ -241,6 +241,15 @@ export default function Home() {
   
   const projects = [
     {
+      title: "AI CHATBOT",
+      description: "Intelligent conversational AI chatbot interface with natural language processing capabilities. Features modern chat UI, real-time messaging, and responsive design for seamless user interactions.",
+      image: "/ai-chatbot-screenshot.png",
+      technologies: ["React", "AI/ML", "Natural Language Processing", "Chat Interface"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://tsiemasilochatbot.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Network Management System",
       description: "Professional network monitoring dashboard for tracking system agents, connectivity status, and network performance metrics in real-time with comprehensive health monitoring.",
       image: "/network-management-screenshot.png",
@@ -301,15 +310,6 @@ export default function Home() {
       technologies: ["React", "AI Analytics", "Audio Processing", "Dashboard UI"],
       category: "WEB APPLICATION",
       liveUrl: "https://aicallanalyzer.netlify.app/",
-      codeUrl: "#"
-    },
-    {
-      title: "AI CHATBOT",
-      description: "Intelligent conversational AI chatbot interface with natural language processing capabilities. Features modern chat UI, real-time messaging, and responsive design for seamless user interactions.",
-      image: "/ai-chatbot-screenshot.png",
-      technologies: ["React", "AI/ML", "Natural Language Processing", "Chat Interface"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://tsiemasilochatbot.netlify.app/",
       codeUrl: "#"
     },
     {
