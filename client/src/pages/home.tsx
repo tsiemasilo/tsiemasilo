@@ -304,6 +304,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "AI CHATBOT",
+      description: "Intelligent conversational AI chatbot interface with natural language processing capabilities. Features modern chat UI, real-time messaging, and responsive design for seamless user interactions.",
+      image: "/ai-chatbot-screenshot.png",
+      technologies: ["React", "AI/ML", "Natural Language Processing", "Chat Interface"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://tsiemasilochatbot.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Mobile Apps Portfolio",
       description: "Exciting mobile applications are in development. Check back soon for innovative app solutions featuring modern design and seamless user experiences.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
