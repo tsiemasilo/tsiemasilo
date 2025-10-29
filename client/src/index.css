@@ -444,7 +444,7 @@
 @media (max-width: 768px) {
   .project-card {
     max-width: 100%;
-    height: 540px;
+    height: 600px;
     margin: 0 auto 24px;
   }
 }
@@ -452,7 +452,7 @@
 @media (max-width: 480px) {
   .project-card {
     max-width: 100%;
-    height: 520px;
+    height: 580px;
     margin: 0 auto 20px;
   }
   
@@ -462,6 +462,13 @@
   
   .project-image {
     height: 160px !important;
+  }
+  
+  .project-description {
+    font-size: 14px;
+    -webkit-line-clamp: 3;
+    min-height: 63px;
+    max-height: 70px;
   }
 }
 
@@ -727,7 +734,7 @@
     0 4px 16px rgba(0, 255, 136, 0.1);
   width: 100%;
   max-width: 420px;
-  height: 580px;
+  height: 620px;
   margin: 0 auto;
 }
 
@@ -908,17 +915,25 @@
 .project-description {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
-  line-height: 1.4;
-  flex-grow: 1;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 84px;
+  max-height: 90px;
 }
 
 .project-tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   flex-shrink: 0;
+  max-height: 80px;
+  overflow-y: auto;
 }
 
 .project-tech-tag {
