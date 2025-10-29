@@ -241,6 +241,15 @@ export default function Home() {
   
   const projects = [
     {
+      title: "Face ID Recognition",
+      description: "Advanced biometric authentication system featuring facial recognition technology for secure user registration and login. Modern interface with new user registration, existing user authentication, and admin panel for managing registered users.",
+      image: "/face-recognition-screenshot.png",
+      technologies: ["React", "Biometric Authentication", "Face Recognition", "Security", "User Management"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://facebiometrics.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "AI CHATBOT",
       description: "Intelligent conversational AI chatbot interface with natural language processing capabilities. Features modern chat UI, real-time messaging, and responsive design for seamless user interactions.",
       image: "/ai-chatbot-screenshot.png",
@@ -310,15 +319,6 @@ export default function Home() {
       technologies: ["React", "AI Analytics", "Audio Processing", "Dashboard UI"],
       category: "WEB APPLICATION",
       liveUrl: "https://aicallanalyzer.netlify.app/",
-      codeUrl: "#"
-    },
-    {
-      title: "Face ID Recognition",
-      description: "Advanced biometric authentication system featuring facial recognition technology for secure user registration and login. Modern interface with new user registration, existing user authentication, and admin panel for managing registered users.",
-      image: "/face-recognition-screenshot.png",
-      technologies: ["React", "Biometric Authentication", "Face Recognition", "Security", "User Management"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://facebiometrics.netlify.app/",
       codeUrl: "#"
     },
     {
