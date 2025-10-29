@@ -313,6 +313,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Face ID Recognition",
+      description: "Advanced biometric authentication system featuring facial recognition technology for secure user registration and login. Modern interface with new user registration, existing user authentication, and admin panel for managing registered users.",
+      image: "/face-recognition-screenshot.png",
+      technologies: ["React", "Biometric Authentication", "Face Recognition", "Security", "User Management"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://facebiometrics.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Mobile Apps Portfolio",
       description: "Exciting mobile applications are in development. Check back soon for innovative app solutions featuring modern design and seamless user experiences.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
