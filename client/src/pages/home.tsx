@@ -370,7 +370,7 @@ export default function Home() {
     {
       title: "Ping Pong",
       description: "Modern two-player arcade ping pong game featuring smooth gameplay, real-time scoring, keyboard controls (W/S and arrow keys), and stylish gradient UI with start, pause, and restart functionality.",
-      image: "/ping-pong-game.png",
+      image: "/ping-pong-game-new.png",
       technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Game Physics", "2-Player"],
       category: "GAMES",
       liveUrl: "https://tsiepingpong.netlify.app/",
