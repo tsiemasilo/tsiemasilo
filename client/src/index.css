@@ -929,22 +929,21 @@
 .project-tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 14px;
   flex-shrink: 0;
-  max-height: 80px;
-  overflow-y: auto;
 }
 
 .project-tech-tag {
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 14px;
+  font-size: 13px;
   font-weight: 500;
   background: rgba(0, 255, 136, 0.2);
   color: #00ff88;
   border: 1px solid rgba(0, 255, 136, 0.3);
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .project-card:hover .project-tech-tag {
