@@ -465,7 +465,7 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-2">
-                {['home', 'about', 'services', 'projects', 'contact'].map((section, index) => (
+                {['home', 'projects', 'about', 'services', 'contact'].map((section, index) => (
                   <motion.button
                     key={section}
                     onClick={() => scrollToSection(section)} 
@@ -534,7 +534,7 @@ export default function Home() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {['home', 'about', 'services', 'projects', 'contact'].map((section, index) => (
+                {['home', 'projects', 'about', 'services', 'contact'].map((section, index) => (
                   <motion.button
                     key={section}
                     onClick={() => { scrollToSection(section); handleNavClick(); }} 
@@ -600,105 +600,6 @@ export default function Home() {
                 Get In Touch
               </Button>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 mobile-section-padding mobile-spacing">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-12 sm:mb-16"
-            {...fadeInUp}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-            <div className="w-16 sm:w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
-            <motion.div 
-              {...fadeInUp}
-              className="relative"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl profile-image-container">
-                <img 
-                  src="/assets/profile.jpg" 
-                  alt="Tsie Masilo - Professional portrait" 
-                  className="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-300 hover:scale-105"
-                  style={{ objectPosition: '50% 20%', transform: 'scale(1.0)' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
-                <div className="absolute inset-0 border rounded-2xl" style={{ borderColor: 'rgba(0, 255, 136, 0.2)' }}></div>
-              </div>
-            </motion.div>
-            
-            <motion.div {...fadeInUp}>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 gradient-text">Crafting Digital Solutions</h3>
-              <p className="text-text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                I'm a passionate developer with expertise in modern web technologies. I love turning complex problems into simple, beautiful, and intuitive solutions. When I'm not coding, you'll find me exploring new technologies or contributing to open-source projects.
-              </p>
-              <p className="text-text-secondary mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                With a strong foundation in both front-end and back-end development, I create end-to-end solutions that are not only functional but also provide exceptional user experiences.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
-                  <div className="text-xs sm:text-sm text-text-secondary">Projects</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
-                  <div className="text-xs sm:text-sm text-text-secondary">Years Experience</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            {...fadeInUp}
-          >
-            <div className="text-white font-semibold mb-2 flex items-center justify-center gap-2">
-              <div className="w-8 h-px bg-white"></div>
-              <span>•</span>
-              <span>My Services</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#00ff88' }}>What Can I Do Best ?</h2>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            {services.map((service, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-6 sm:p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
-                  <CardContent className="p-0">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                      style={{ backgroundColor: '#00ff88' }}
-                    >
-                      <service.icon className="text-white text-xl" size={24} />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4 text-white">{service.title}</h3>
-                    <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: '#00ff88' }}></div>
-                    <p className="text-gray-300 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </section>
@@ -885,6 +786,105 @@ export default function Home() {
           )}
           
           
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 mobile-section-padding mobile-spacing">
+        <div className="max-w-6xl mx-auto">
+          <motion.div 
+            className="text-center mb-12 sm:mb-16"
+            {...fadeInUp}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+            <div className="w-16 sm:w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+            <motion.div 
+              {...fadeInUp}
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl profile-image-container">
+                <img 
+                  src="/assets/profile.jpg" 
+                  alt="Tsie Masilo - Professional portrait" 
+                  className="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-300 hover:scale-105"
+                  style={{ objectPosition: '50% 20%', transform: 'scale(1.0)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/30 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 border rounded-2xl" style={{ borderColor: 'rgba(0, 255, 136, 0.2)' }}></div>
+              </div>
+            </motion.div>
+            
+            <motion.div {...fadeInUp}>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 gradient-text">Crafting Digital Solutions</h3>
+              <p className="text-text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                I'm a passionate developer with expertise in modern web technologies. I love turning complex problems into simple, beautiful, and intuitive solutions. When I'm not coding, you'll find me exploring new technologies or contributing to open-source projects.
+              </p>
+              <p className="text-text-secondary mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                With a strong foundation in both front-end and back-end development, I create end-to-end solutions that are not only functional but also provide exceptional user experiences.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
+                  <div className="text-xs sm:text-sm text-text-secondary">Projects</div>
+                </div>
+                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
+                  <div className="text-xs sm:text-sm text-text-secondary">Years Experience</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
+        <div className="max-w-6xl mx-auto">
+          <motion.div 
+            className="text-center mb-16"
+            {...fadeInUp}
+          >
+            <div className="text-white font-semibold mb-2 flex items-center justify-center gap-2">
+              <div className="w-8 h-px bg-white"></div>
+              <span>•</span>
+              <span>My Services</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#00ff88' }}>What Can I Do Best ?</h2>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {services.map((service, index) => (
+              <motion.div key={index} variants={fadeInUp}>
+                <Card className="p-6 sm:p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
+                  <CardContent className="p-0">
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
+                      style={{ backgroundColor: '#00ff88' }}
+                    >
+                      <service.icon className="text-white text-xl" size={24} />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4 text-white">{service.title}</h3>
+                    <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: '#00ff88' }}></div>
+                    <p className="text-gray-300 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
