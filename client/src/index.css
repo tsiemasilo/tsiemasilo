@@ -245,6 +245,171 @@
 
 
 
+/* Matrix Code Rain Background */
+.matrix-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.12;
+}
+
+.matrix-pattern {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -100%;
+  width: 20px;
+  height: 100%;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: bold;
+  animation: matrixFall linear infinite;
+  white-space: nowrap;
+}
+
+.matrix-column::before {
+  content: "01001010101100110100101011001101001010101011001101001010110011010010";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    #00ff88 0%,
+    #00ff88 10%,
+    #00dd66 20%,
+    #00bb44 35%,
+    #009933 50%,
+    #007722 65%,
+    #005511 80%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  writing-mode: vertical-lr;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+.matrix-column:nth-child(1) { left: 0px; animation-delay: -2.5s; animation-duration: 4s; }
+.matrix-column:nth-child(2) { left: 30px; animation-delay: -3.2s; animation-duration: 5s; }
+.matrix-column:nth-child(3) { left: 60px; animation-delay: -1.8s; animation-duration: 3.5s; }
+.matrix-column:nth-child(4) { left: 90px; animation-delay: -2.9s; animation-duration: 4.5s; }
+.matrix-column:nth-child(5) { left: 120px; animation-delay: -1.5s; animation-duration: 4s; }
+.matrix-column:nth-child(6) { left: 150px; animation-delay: -3.8s; animation-duration: 5.5s; }
+.matrix-column:nth-child(7) { left: 180px; animation-delay: -2.1s; animation-duration: 3.8s; }
+.matrix-column:nth-child(8) { left: 210px; animation-delay: -2.7s; animation-duration: 4.2s; }
+.matrix-column:nth-child(9) { left: 240px; animation-delay: -3.4s; animation-duration: 4.8s; }
+.matrix-column:nth-child(10) { left: 270px; animation-delay: -1.9s; animation-duration: 3.7s; }
+.matrix-column:nth-child(11) { left: 300px; animation-delay: -3.6s; animation-duration: 5.2s; }
+.matrix-column:nth-child(12) { left: 330px; animation-delay: -2.3s; animation-duration: 4.1s; }
+.matrix-column:nth-child(13) { left: 360px; animation-delay: -3.1s; animation-duration: 4.6s; }
+.matrix-column:nth-child(14) { left: 390px; animation-delay: -2.6s; animation-duration: 3.9s; }
+.matrix-column:nth-child(15) { left: 420px; animation-delay: -3.7s; animation-duration: 5.1s; }
+.matrix-column:nth-child(16) { left: 450px; animation-delay: -2.8s; animation-duration: 4.3s; }
+.matrix-column:nth-child(17) { left: 480px; animation-delay: -3.3s; animation-duration: 4.7s; }
+.matrix-column:nth-child(18) { left: 510px; animation-delay: -2.2s; animation-duration: 3.6s; }
+.matrix-column:nth-child(19) { left: 540px; animation-delay: -3.9s; animation-duration: 5.3s; }
+.matrix-column:nth-child(20) { left: 570px; animation-delay: -2.4s; animation-duration: 4.4s; }
+.matrix-column:nth-child(21) { left: 600px; animation-delay: -1.7s; animation-duration: 3.4s; }
+.matrix-column:nth-child(22) { left: 630px; animation-delay: -3.5s; animation-duration: 4.9s; }
+.matrix-column:nth-child(23) { left: 660px; animation-delay: -2s; animation-duration: 4s; }
+.matrix-column:nth-child(24) { left: 690px; animation-delay: -4s; animation-duration: 5.4s; }
+.matrix-column:nth-child(25) { left: 720px; animation-delay: -1.6s; animation-duration: 3.3s; }
+.matrix-column:nth-child(26) { left: 750px; animation-delay: -3s; animation-duration: 4.5s; }
+.matrix-column:nth-child(27) { left: 780px; animation-delay: -3.8s; animation-duration: 5s; }
+.matrix-column:nth-child(28) { left: 810px; animation-delay: -2.5s; animation-duration: 3.8s; }
+.matrix-column:nth-child(29) { left: 840px; animation-delay: -3.2s; animation-duration: 4.6s; }
+.matrix-column:nth-child(30) { left: 870px; animation-delay: -2.7s; animation-duration: 4.2s; }
+.matrix-column:nth-child(31) { left: 900px; animation-delay: -1.8s; animation-duration: 3.7s; }
+.matrix-column:nth-child(32) { left: 930px; animation-delay: -3.6s; animation-duration: 5.1s; }
+.matrix-column:nth-child(33) { left: 960px; animation-delay: -2.1s; animation-duration: 4.1s; }
+.matrix-column:nth-child(34) { left: 990px; animation-delay: -3.4s; animation-duration: 4.7s; }
+.matrix-column:nth-child(35) { left: 1020px; animation-delay: -2.8s; animation-duration: 3.9s; }
+.matrix-column:nth-child(36) { left: 1050px; animation-delay: -3.7s; animation-duration: 5.2s; }
+.matrix-column:nth-child(37) { left: 1080px; animation-delay: -2.3s; animation-duration: 4.3s; }
+.matrix-column:nth-child(38) { left: 1110px; animation-delay: -1.9s; animation-duration: 3.5s; }
+.matrix-column:nth-child(39) { left: 1140px; animation-delay: -3.5s; animation-duration: 4.8s; }
+.matrix-column:nth-child(40) { left: 1170px; animation-delay: -2.6s; animation-duration: 4.4s; }
+.matrix-column:nth-child(41) { left: 1200px; animation-delay: -1.4s; animation-duration: 3.8s; }
+.matrix-column:nth-child(42) { left: 1230px; animation-delay: -3.1s; animation-duration: 4.6s; }
+.matrix-column:nth-child(43) { left: 1260px; animation-delay: -2.7s; animation-duration: 4.2s; }
+.matrix-column:nth-child(44) { left: 1290px; animation-delay: -3.8s; animation-duration: 5.1s; }
+.matrix-column:nth-child(45) { left: 1320px; animation-delay: -2.2s; animation-duration: 3.9s; }
+.matrix-column:nth-child(46) { left: 1350px; animation-delay: -3.5s; animation-duration: 4.7s; }
+.matrix-column:nth-child(47) { left: 1380px; animation-delay: -2.8s; animation-duration: 4.3s; }
+.matrix-column:nth-child(48) { left: 1410px; animation-delay: -3.3s; animation-duration: 4.8s; }
+.matrix-column:nth-child(49) { left: 1440px; animation-delay: -2.1s; animation-duration: 3.6s; }
+.matrix-column:nth-child(50) { left: 1470px; animation-delay: -3.6s; animation-duration: 5.2s; }
+.matrix-column:nth-child(51) { left: 1500px; animation-delay: -2.5s; animation-duration: 4.1s; }
+.matrix-column:nth-child(52) { left: 1530px; animation-delay: -3.2s; animation-duration: 4.5s; }
+.matrix-column:nth-child(53) { left: 1560px; animation-delay: -2.9s; animation-duration: 4.9s; }
+.matrix-column:nth-child(54) { left: 1590px; animation-delay: -3.7s; animation-duration: 5.3s; }
+.matrix-column:nth-child(55) { left: 1620px; animation-delay: -2.3s; animation-duration: 3.7s; }
+.matrix-column:nth-child(56) { left: 1650px; animation-delay: -3.4s; animation-duration: 4.6s; }
+.matrix-column:nth-child(57) { left: 1680px; animation-delay: -2.6s; animation-duration: 4.2s; }
+.matrix-column:nth-child(58) { left: 1710px; animation-delay: -3.9s; animation-duration: 5.4s; }
+.matrix-column:nth-child(59) { left: 1740px; animation-delay: -2.4s; animation-duration: 3.8s; }
+.matrix-column:nth-child(60) { left: 1770px; animation-delay: -3.1s; animation-duration: 4.4s; }
+
+.matrix-column:nth-child(odd)::before {
+  content: "0110100101001011010011001010110100101011001101001010110011010010101";
+}
+
+.matrix-column:nth-child(even)::before {
+  content: "1001011010110100110101001011010011010100101101001101010010110100110";
+}
+
+.matrix-column:nth-child(3n)::before {
+  content: "{ } ( ) => const let function return import export class async await";
+}
+
+.matrix-column:nth-child(5n)::before {
+  content: "< div /> <span> {props} useState useEffect render() npm run dev";
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .matrix-container {
+    opacity: 0.08;
+  }
+  .matrix-column {
+    font-size: 14px;
+    line-height: 16px;
+    width: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .matrix-container {
+    opacity: 0.06;
+  }
+  .matrix-column {
+    font-size: 12px;
+    line-height: 14px;
+    width: 16px;
+  }
+}
+
 /* Mobile Responsive Project Cards */
 .project-card {
   perspective: 1000px;
