@@ -241,6 +241,15 @@ export default function Home() {
   
   const projects = [
     {
+      title: "Mint App",
+      description: "A financial tools platform offering money management features designed to help users take control of their finances. Features a clean, modern interface with secure login and account creation.",
+      image: "/mint-app-screenshot.png",
+      technologies: ["React", "FinTech", "Financial Management", "Authentication"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://app.mymint.co.za/",
+      codeUrl: "#"
+    },
+    {
       title: "Face ID Recognition",
       description: "Advanced biometric authentication system featuring facial recognition technology for secure user registration and login. Modern interface with new user registration, existing user authentication, and admin panel for managing registered users.",
       image: "/face-recognition-screenshot.png",
@@ -319,15 +328,6 @@ export default function Home() {
       technologies: ["React", "AI Analytics", "Audio Processing", "Dashboard UI"],
       category: "WEB APPLICATION",
       liveUrl: "https://aicallanalyzer.netlify.app/",
-      codeUrl: "#"
-    },
-    {
-      title: "Mint App",
-      description: "A financial tools platform offering money management features designed to help users take control of their finances. Features a clean, modern interface with secure login and account creation.",
-      image: "/mint-app-screenshot.png",
-      technologies: ["React", "FinTech", "Financial Management", "Authentication"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://app.mymint.co.za/",
       codeUrl: "#"
     },
     {
