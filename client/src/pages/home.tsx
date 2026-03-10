@@ -393,61 +393,146 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-dark-primary text-text-primary">
-      {/* 4D Brand Animation Overlay */}
+      {/* Startup Animation Overlay */}
       <AnimatePresence>
         {showBrandAnimation && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-dark-primary"
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
+            style={{ background: 'radial-gradient(ellipse at center, #0a1628 0%, #050d1a 50%, #000000 100%)' }}
           >
-            {/* Matrix Background for Animation */}
-            <div className="matrix-container absolute inset-0">
-              <div className="matrix-pattern">
-                {Array.from({ length: 60 }, (_, i) => (
-                  <div key={i} className="matrix-column"></div>
-                ))}
-              </div>
+            {/* Floating Particles */}
+            <div className="absolute inset-0">
+              {Array.from({ length: 40 }, (_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    width: Math.random() * 4 + 1,
+                    height: Math.random() * 4 + 1,
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    background: i % 3 === 0 ? '#00ff88' : i % 3 === 1 ? '#0088ff' : '#ffffff',
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: [0, 0.8, 0],
+                    scale: [0, 1.5, 0],
+                    y: [0, -60 - Math.random() * 40],
+                  }}
+                  transition={{
+                    duration: 2 + Math.random() * 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                    ease: "easeOut",
+                  }}
+                />
+              ))}
             </div>
-            
-            <motion.div
-              className="brand-animation-container relative z-10"
-              initial={{ 
-                scale: 0,
-                rotateX: -90,
-                rotateY: 0,
-                z: -1000,
-                opacity: 0
-              }}
-              animate={{ 
-                scale: [0, 1.2, 1],
-                rotateX: [90, 0, 0],
-                rotateY: [0, 360, 0],
-                z: [1000, 0, 0],
-                opacity: 1
-              }}
-              exit={{
-                scale: 0.3,
-                x: typeof window !== 'undefined' && window.innerWidth < 768 ? -150 : -600,
-                y: typeof window !== 'undefined' && window.innerWidth < 768 ? -250 : -300,
-                rotateZ: 360,
-                opacity: 1
-              }}
-              transition={{ 
-                duration: 1,
-                ease: "easeOut",
-                exit: { duration: 1, ease: "easeInOut" }
-              }}
-              style={{ 
-                perspective: "1000px",
-                transformStyle: "preserve-3d"
-              }}
-            >
-              <h1 className="text-6xl sm:text-8xl font-bold gradient-text text-center">
-                Hello World
-              </h1>
-            </motion.div>
+
+            {/* Orbiting Rings */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="absolute border border-[#00ff88]/20 rounded-full"
+                style={{ width: 300, height: 300 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute border border-[#0088ff]/15 rounded-full"
+                style={{ width: 400, height: 400 }}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute border border-[#00ff88]/10 rounded-full"
+                style={{ width: 500, height: 500 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+
+            {/* Center Content */}
+            <div className="relative z-10 flex flex-col items-center gap-6">
+              {/* Code Brackets */}
+              <div className="flex items-center gap-3 sm:gap-5">
+                <motion.span
+                  className="text-5xl sm:text-7xl font-mono font-light"
+                  style={{ color: '#00ff88' }}
+                  initial={{ x: -80, opacity: 0, rotateY: -90 }}
+                  animate={{ x: 0, opacity: 1, rotateY: 0 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                >
+                  {'<'}
+                </motion.span>
+
+                <motion.div
+                  className="flex flex-col items-center"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <motion.h1
+                    className="text-4xl sm:text-6xl font-bold tracking-tight text-white"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    style={{
+                      textShadow: '0 0 30px rgba(0, 255, 136, 0.3), 0 0 60px rgba(0, 136, 255, 0.15)',
+                    }}
+                  >
+                    Tsie Masilo
+                  </motion.h1>
+                </motion.div>
+
+                <motion.span
+                  className="text-5xl sm:text-7xl font-mono font-light"
+                  style={{ color: '#00ff88' }}
+                  initial={{ x: 80, opacity: 0, rotateY: 90 }}
+                  animate={{ x: 0, opacity: 1, rotateY: 0 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                >
+                  {'/>'}
+                </motion.span>
+              </div>
+
+              {/* Subtitle with typing cursor */}
+              <motion.div
+                className="flex items-center gap-1"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+              >
+                <span className="text-sm sm:text-lg font-mono tracking-[0.3em] uppercase" style={{ color: '#0088ff' }}>
+                  Full Stack Developer
+                </span>
+                <motion.span
+                  className="inline-block w-[2px] h-5 sm:h-6 ml-1"
+                  style={{ backgroundColor: '#00ff88' }}
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
+                />
+              </motion.div>
+
+              {/* Loading Bar */}
+              <motion.div
+                className="w-48 sm:w-64 h-[2px] rounded-full overflow-hidden mt-4"
+                style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+              >
+                <motion.div
+                  className="h-full rounded-full"
+                  style={{ background: 'linear-gradient(90deg, #00ff88, #0088ff)' }}
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ delay: 1.5, duration: 1.3, ease: "easeInOut" }}
+                />
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
