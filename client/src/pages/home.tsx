@@ -737,6 +737,7 @@ export default function Home() {
           { name: "Figma", left: "30%", top: "18%", size: 40, color: "#F24E1E", path: "M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zm0 12.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zm0-5.5h3.5a3.5 3.5 0 110 7H12V9zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z" },
           { name: "Git", left: "65%", top: "78%", size: 44, color: "#F05032", path: "M23.546 10.93L13.067.452a1.55 1.55 0 00-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 012.327 2.341l2.66 2.66a1.838 1.838 0 11-1.103 1.03L12.84 8.902v5.367a1.838 1.838 0 11-1.512-.244V8.562a1.838 1.838 0 01-.998-2.41L7.6 3.422.452 10.57a1.55 1.55 0 000 2.188l10.48 10.48a1.55 1.55 0 002.186 0l10.43-10.12a1.55 1.55 0 000-2.188z" },
           { name: "Flutter", left: "48%", top: "22%", size: 44, color: "#02569B", path: "M14.314 0L2.3 12 6.13 15.83 22.127 0H14.314zm0 11.16L7.39 18.17l3.47 3.47L14.314 24h7.814l-7.15-6.42 6.41-6.42H14.314z" },
+          { name: "Supabase", left: "38%", top: "78%", size: 48, color: "#3ECF8E", path: "M11.9 23.1c-.5.6-1.5.2-1.5-.6V13h8.8c1 0 1.5 1.1.9 1.8L11.9 23.1zM12.1.9c.5-.6 1.5-.2 1.5.6V11H4.8c-1 0-1.5-1.1-.9-1.8L12.1.9z" },
         ].map((tech, i) => (
           <motion.div
             key={tech.name}
@@ -780,21 +781,6 @@ export default function Home() {
             scale: heroScale,
           }}
         >
-          {/* Greeting Tag */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff88]/30 bg-[#00ff88]/5 mb-6 sm:mb-8"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={brandAnimationComplete ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <motion.span
-              className="w-2 h-2 rounded-full bg-[#00ff88]"
-              animate={{ opacity: [1, 0.4, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <span className="text-sm font-mono text-[#00ff88]/80">Available for work</span>
-          </motion.div>
-
           {/* Main Heading with Staggered Character Animation */}
           <motion.div
             className="overflow-hidden mb-4 sm:mb-6"
