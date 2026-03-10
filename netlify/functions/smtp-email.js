@@ -8,11 +8,8 @@ const createTransporter = () => {
     port: 587,
     secure: false,
     auth: {
-      user: process.env.EMAIL_USER || 'tsiemasilo@gmail.com',
-      pass: process.env.EMAIL_PASS || 'dsphdodzkajngcbn'
-    },
-    tls: {
-      rejectUnauthorized: false
+      user: process.env.EMAIL_USER || '',
+      pass: process.env.EMAIL_PASS || ''
     }
   });
 };

@@ -117,6 +117,19 @@
     50% { transform: translateY(-2px); }
   }
 
+  @keyframes techIconFloat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(6px, -12px) rotate(3deg); }
+    40% { transform: translate(-4px, -20px) rotate(-2deg); }
+    60% { transform: translate(8px, -8px) rotate(4deg); }
+    80% { transform: translate(-6px, -16px) rotate(-3deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+
+  .tech-icon-float {
+    animation: techIconFloat ease-in-out infinite;
+  }
+
   .nav-item-3d {
     position: relative;
     display: inline-block;

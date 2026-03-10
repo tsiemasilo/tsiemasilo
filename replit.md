@@ -89,31 +89,42 @@ Preferred communication style: Simple, everyday language.
 
 ## Deployment Strategy
 
-### Production Deployment
-- **Netlify Functions** for serverless backend API
-- **Static site hosting** for optimized frontend build
-- **Environment variables** for email credentials and database URLs
-- **Build optimization** with Vite's production build system
+### Replit Deployment
+- **Autoscale deployment** via Replit's built-in deployment system
+- **Build**: `npm run build` (Vite frontend + esbuild server bundle)
+- **Production run**: `node ./dist/index.js` serving on port 5000
+- **Environment variables**: `DATABASE_URL` (auto-provisioned), `EMAIL_USER` and `EMAIL_PASS` (need manual setup in Secrets)
 
 ### Development Environment
-- **Local development** with Express.js server and Vite dev server
-- **Hot module replacement** for rapid development
+- **Dev command**: `npm run dev` runs Express + Vite middleware on port 5000
+- **Hot module replacement** for rapid frontend development
 - **TypeScript compilation** with strict type checking
-- **Database migrations** managed through Drizzle Kit
+- **Database migrations** managed through Drizzle Kit (`npm run db:push`)
 
 ### Build Process
-1. **Frontend build**: Vite compiles React app to static files
-2. **Backend build**: ESBuild bundles Express.js server for deployment
-3. **Type checking**: TypeScript validates all code before build
-4. **Asset optimization**: Vite optimizes images, CSS, and JavaScript
+1. **Frontend build**: Vite compiles React app to `dist/public/`
+2. **Backend build**: esbuild bundles Express server to `dist/index.js` (ESM format)
+3. **Asset optimization**: Vite optimizes images, CSS, and JavaScript
 
 ### Configuration Management
-- **Environment-specific configs** for development and production
-- **Database connection** through environment variables
-- **Email service configuration** with fallback options
-- **CORS settings** for cross-origin API requests
+- **Database**: PostgreSQL via `DATABASE_URL` environment variable (Replit-managed)
+- **Email**: Gmail SMTP via `EMAIL_USER` and `EMAIL_PASS` secrets (no hardcoded credentials)
+- **Storage**: Currently uses in-memory storage (MemStorage) for visitor tracking; DB schema ready for migration
+
+## Tech Stack Animation
+- **FloatingTechIcon component**: Extracted for proper React hooks usage
+- **Scroll parallax**: Framer Motion `useTransform` + `useSpring` per icon with unique `speed` values
+- **Floating bob**: CSS `@keyframes techIconFloat` animation (independent of scroll parallax)
+- **14 tech icons**: React, Node, TypeScript, JavaScript, Tailwind, Python, MongoDB, PostgreSQL, CSS3, HTML5, Figma, Git, Flutter, Supabase
 
 ## Recent Changes
+
+### Replit Migration
+- Fixed React hooks violation: extracted `FloatingTechIcon` component from `.map()` callback
+- Removed hardcoded email credentials from `server/email.ts` and Netlify functions
+- Fixed deployment config: corrected ESM output path (`dist/index.js` not `dist/index.cjs`)
+- Added CSS `@keyframes techIconFloat` for smooth icon bobbing animation
+- Cleaned up unused `floatY1/2/3` motion values
 
 ### July 15, 2025 - Enhanced Real IP Geolocation System
 - **Removed mock data**: Eliminated all demonstration/test data for genuine visitor tracking
