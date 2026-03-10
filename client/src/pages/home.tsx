@@ -322,6 +322,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Mint App",
+      description: "A financial tools platform offering money management features designed to help users take control of their finances. Features a clean, modern interface with secure login and account creation.",
+      image: "/mint-app-screenshot.png",
+      technologies: ["React", "FinTech", "Financial Management", "Authentication"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://app.mymint.co.za/",
+      codeUrl: "#"
+    },
+    {
       title: "Mobile Apps Portfolio",
       description: "Exciting mobile applications are in development. Check back soon for innovative app solutions featuring modern design and seamless user experiences.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
