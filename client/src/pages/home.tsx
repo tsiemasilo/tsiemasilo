@@ -299,6 +299,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Edight",
+      description: "A comprehensive IT solutions company website offering services, training, and support. Features a modern professional design with stats dashboard, service showcases, and responsive layout.",
+      image: "/edight-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+      category: "WEB DESIGN",
+      liveUrl: "https://edight.co.za/",
+      codeUrl: "#"
+    },
+    {
       title: "Network Management System",
       description: "Professional network monitoring dashboard for tracking system agents, connectivity status, and network performance metrics in real-time with comprehensive health monitoring.",
       image: "/network-management-screenshot.png",
