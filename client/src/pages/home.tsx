@@ -1,7 +1,5 @@
-// React hooks for component state management
-import { useState, useEffect } from "react";
-// Framer Motion for smooth animations and transitions
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring, useInView } from "framer-motion";
 // Custom UI components for consistent styling
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -66,8 +64,41 @@ export default function Home() {
   // Toast notification system
   const { toast } = useToast();
   
-  // Navigation hook for routing
   const [, navigate] = useLocation();
+
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const heroBgY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const ringRotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const floatY1 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const floatY2 = useTransform(scrollYProgress, [0, 1], [0, -250]);
+  const floatY3 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      mouseX.set((clientX - centerX) / centerX * 20);
+      mouseY.set((clientY - centerY) / centerY * 20);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
 
   // Close mobile menu when navigation links are clicked
   const handleNavClick = () => {
@@ -392,7 +423,7 @@ export default function Home() {
     : projects.filter(project => project.category === activeProjectCategory);
 
   return (
-    <div className="min-h-screen bg-dark-primary text-text-primary">
+    <div className="min-h-screen bg-dark-primary text-text-primary relative">
       {/* Startup Animation Overlay */}
       <AnimatePresence>
         {showBrandAnimation && (
@@ -649,39 +680,187 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 relative overflow-hidden mobile-section-padding">
-        {/* Matrix Background */}
-        <div className="matrix-container">
-          <div className="matrix-pattern">
-            {Array.from({ length: 60 }, (_, i) => (
-              <div key={i} className="matrix-column"></div>
-            ))}
+      <section
+        ref={heroRef}
+        id="home"
+        className="min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 relative overflow-hidden mobile-section-padding"
+      >
+        {/* Parallax Background Layer */}
+        <motion.div className="absolute inset-0" style={{ y: heroBgY }}>
+          {/* Matrix Background */}
+          <div className="matrix-container">
+            <div className="matrix-pattern">
+              {Array.from({ length: 60 }, (_, i) => (
+                <div key={i} className="matrix-column"></div>
+              ))}
+            </div>
           </div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.div {...fadeInUp}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-              Hi, I'm <span className="gradient-text">Tsie Masilo</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-              Junior Full-Stack Developer & UI/UX Designer passionate about creating digital experiences that matter.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
-              <Button 
+        </motion.div>
+
+        {/* Animated Gradient Mesh Background */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          style={{ y: heroBgY }}
+        >
+          <div className="hero-gradient-mesh" />
+        </motion.div>
+
+        {/* Floating Geometric Elements - Parallax Layers */}
+        <motion.div
+          className="absolute top-[15%] left-[8%] w-20 h-20 sm:w-28 sm:h-28 border border-[#00ff88]/20 rounded-full"
+          style={{
+            y: floatY1,
+            x: smoothMouseX,
+            rotate: ringRotate,
+          }}
+        />
+        <motion.div
+          className="absolute top-[25%] right-[10%] w-16 h-16 sm:w-20 sm:h-20 border border-[#0088ff]/15 rounded-lg"
+          style={{
+            y: floatY2,
+            x: smoothMouseX,
+            rotate: ringRotate,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-[20%] left-[15%] w-10 h-10 sm:w-14 sm:h-14"
+          style={{
+            y: floatY3,
+            x: smoothMouseY,
+          }}
+        >
+          <div className="w-full h-full border border-[#00ff88]/15 rotate-45" />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[30%] right-[12%] w-24 h-24 sm:w-32 sm:h-32 border border-[#0088ff]/10 rounded-full"
+          style={{
+            y: floatY1,
+            rotate: ringRotate,
+          }}
+        />
+
+        {/* Floating Tech Dots */}
+        {Array.from({ length: 6 }, (_, i) => (
+          <motion.div
+            key={`dot-${i}`}
+            className="absolute w-1.5 h-1.5 rounded-full hidden sm:block"
+            style={{
+              background: i % 2 === 0 ? '#00ff88' : '#0088ff',
+              left: `${15 + i * 14}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              y: i % 2 === 0 ? floatY2 : floatY3,
+            }}
+            animate={{
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Main Hero Content - Parallax */}
+        <motion.div
+          className="max-w-5xl mx-auto text-center relative z-10"
+          style={{
+            y: heroTextY,
+            opacity: heroOpacity,
+            scale: heroScale,
+          }}
+        >
+          {/* Greeting Tag */}
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff88]/30 bg-[#00ff88]/5 mb-6 sm:mb-8"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={brandAnimationComplete ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <motion.span
+              className="w-2 h-2 rounded-full bg-[#00ff88]"
+              animate={{ opacity: [1, 0.4, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <span className="text-sm font-mono text-[#00ff88]/80">Available for work</span>
+          </motion.div>
+
+          {/* Main Heading with Staggered Character Animation */}
+          <motion.div
+            className="overflow-hidden mb-4 sm:mb-6"
+            initial={{ opacity: 0 }}
+            animate={brandAnimationComplete ? { opacity: 1 } : {}}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight"
+              initial={{ y: 80 }}
+              animate={brandAnimationComplete ? { y: 0 } : {}}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            >
+              Hi, I'm{' '}
+              <span className="relative inline-block">
+                <span className="gradient-text">Tsie Masilo</span>
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-[3px] rounded-full"
+                  style={{ background: 'linear-gradient(90deg, #00ff88, #0088ff)' }}
+                  initial={{ width: '0%' }}
+                  animate={brandAnimationComplete ? { width: '100%' } : {}}
+                  transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+                />
+              </span>
+            </motion.h1>
+          </motion.div>
+
+          {/* Subtitle with Reveal */}
+          <motion.div className="overflow-hidden mb-2 sm:mb-3">
+            <motion.p
+              className="text-lg sm:text-xl md:text-2xl font-light"
+              style={{ color: '#00ff88' }}
+              initial={{ y: 50, opacity: 0 }}
+              animate={brandAnimationComplete ? { y: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Full-Stack Developer & UI/UX Designer
+            </motion.p>
+          </motion.div>
+
+          <motion.div className="overflow-hidden mb-8 sm:mb-10">
+            <motion.p
+              className="text-sm sm:text-base md:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed px-4 sm:px-0"
+              initial={{ y: 40, opacity: 0 }}
+              animate={brandAnimationComplete ? { y: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Passionate about creating digital experiences that matter. Turning complex problems into simple, beautiful, and intuitive solutions.
+            </motion.p>
+          </motion.div>
+
+          {/* CTA Buttons with Staggered Entry */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0"
+            initial={{ opacity: 0, y: 30 }}
+            animate={brandAnimationComplete ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+              <Button
                 onClick={() => scrollToSection('projects')}
-                className="text-white mobile-btn font-semibold w-full sm:w-auto"
-                style={{ backgroundColor: '#00ff88', padding: '14px 28px' }}
+                className="text-white mobile-btn font-semibold w-full sm:w-auto hero-btn-primary"
+                style={{ backgroundColor: '#00ff88', padding: '14px 32px' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#00dd77'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00ff88'}
               >
                 View My Work
               </Button>
-              <Button 
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+              <Button
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="mobile-btn font-semibold w-full sm:w-auto"
-                style={{ borderColor: '#00ff88', color: '#00ff88', padding: '14px 28px' }}
+                className="mobile-btn font-semibold w-full sm:w-auto hero-btn-outline"
+                style={{ borderColor: '#00ff88', color: '#00ff88', padding: '14px 32px' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#00ff88';
                   e.currentTarget.style.color = 'white';
@@ -693,9 +872,55 @@ export default function Home() {
               >
                 Get In Touch
               </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Tech Stack Ticker */}
+          <motion.div
+            className="mt-12 sm:mt-16 flex items-center justify-center gap-6 flex-wrap"
+            initial={{ opacity: 0 }}
+            animate={brandAnimationComplete ? { opacity: 1 } : {}}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            <span className="text-xs text-text-secondary uppercase tracking-widest">Tech Stack</span>
+            <div className="flex items-center gap-4 sm:gap-5">
+              {['React', 'Node.js', 'TypeScript', 'Tailwind', 'PostgreSQL'].map((tech, i) => (
+                <motion.span
+                  key={tech}
+                  className="text-xs sm:text-sm font-mono text-text-secondary/60 hover:text-[#00ff88] transition-colors cursor-default"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={brandAnimationComplete ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 1.3 + i * 0.1 }}
+                  whileHover={{ scale: 1.1, color: '#00ff88' }}
+                >
+                  {tech}
+                </motion.span>
+              ))}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          style={{ opacity: scrollIndicatorOpacity }}
+          initial={{ opacity: 0 }}
+          animate={brandAnimationComplete ? { opacity: 1 } : {}}
+          transition={{ delay: 1.5 }}
+        >
+          <span className="text-xs text-text-secondary/50 uppercase tracking-widest">Scroll</span>
+          <motion.div
+            className="w-5 h-8 rounded-full border border-text-secondary/30 flex justify-center pt-1.5"
+            animate={{ borderColor: ['rgba(255,255,255,0.2)', 'rgba(0,255,136,0.4)', 'rgba(255,255,255,0.2)'] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <motion.div
+              className="w-1 h-2 rounded-full bg-[#00ff88]"
+              animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Projects Section */}
@@ -703,13 +928,28 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="text-white font-semibold mb-2 flex items-center justify-center gap-2">
-              <div className="w-8 h-px bg-white"></div>
+            <motion.div
+              className="text-white font-semibold mb-2 flex items-center justify-center gap-2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                className="h-px bg-white"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
               <span>•</span>
               <span>Portfolio</span>
-            </div>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: '#00ff88' }}>My Creative Work</h2>
             
             {/* Project Category Navigation */}
@@ -888,18 +1128,30 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-12 sm:mb-16"
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-            <div className="w-16 sm:w-20 h-1 mx-auto" style={{ backgroundColor: '#00ff88' }}></div>
+            <motion.div
+              className="h-1 mx-auto"
+              style={{ backgroundColor: '#00ff88' }}
+              initial={{ width: 0 }}
+              whileInView={{ width: 80 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            />
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <motion.div 
-              {...fadeInUp}
               className="relative"
+              initial={{ opacity: 0, x: -50, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl profile-image-container">
                 <img 
@@ -913,7 +1165,12 @@ export default function Home() {
               </div>
             </motion.div>
             
-            <motion.div {...fadeInUp}>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
               <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 gradient-text">Crafting Digital Solutions</h3>
               <p className="text-text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                 I'm a passionate developer with expertise in modern web technologies. I love turning complex problems into simple, beautiful, and intuitive solutions. When I'm not coding, you'll find me exploring new technologies or contributing to open-source projects.
@@ -942,13 +1199,28 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             className="text-center mb-16"
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="text-white font-semibold mb-2 flex items-center justify-center gap-2">
-              <div className="w-8 h-px bg-white"></div>
+            <motion.div
+              className="text-white font-semibold mb-2 flex items-center justify-center gap-2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                className="h-px bg-white"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
               <span>•</span>
               <span>My Services</span>
-            </div>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#00ff88' }}>What Can I Do Best ?</h2>
           </motion.div>
           
@@ -987,10 +1259,20 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <motion.div 
             className="text-center mb-12 sm:mb-16"
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
-            <div className="w-16 sm:w-20 h-1 mx-auto mb-4" style={{ backgroundColor: '#00ff88' }}></div>
+            <motion.div
+              className="h-1 mx-auto mb-4"
+              style={{ backgroundColor: '#00ff88' }}
+              initial={{ width: 0 }}
+              whileInView={{ width: 80 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            />
             <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
               Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
             </p>

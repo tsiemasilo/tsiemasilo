@@ -245,6 +245,72 @@
 
 
 
+/* Hero Section Gradient Mesh */
+.hero-gradient-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 50%, rgba(0, 255, 136, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 350px at 80% 30%, rgba(0, 136, 255, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+  animation: meshShift 12s ease-in-out infinite alternate;
+}
+
+@keyframes meshShift {
+  0% {
+    background:
+      radial-gradient(ellipse 600px 400px at 20% 50%, rgba(0, 255, 136, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 350px at 80% 30%, rgba(0, 136, 255, 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 50% 80%, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+  }
+  50% {
+    background:
+      radial-gradient(ellipse 700px 450px at 40% 40%, rgba(0, 136, 255, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 450px 400px at 70% 60%, rgba(0, 255, 136, 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 350px at 30% 70%, rgba(0, 136, 255, 0.04) 0%, transparent 70%);
+  }
+  100% {
+    background:
+      radial-gradient(ellipse 550px 380px at 60% 45%, rgba(0, 255, 136, 0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 300px at 25% 55%, rgba(0, 136, 255, 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 450px 400px at 75% 35%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+  }
+}
+
+/* Hero Button Effects */
+.hero-btn-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.15), 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.hero-btn-primary:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-btn-outline {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.hero-btn-outline:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2), 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Section scroll reveal base */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Matrix Code Rain Background */
 .matrix-container {
   position: absolute;
