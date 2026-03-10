@@ -1023,19 +1023,15 @@ export default function Home() {
           
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
             key={activeProjectCategory}
           >
             {filteredProjects.map((project, index) => (
               <motion.div 
                 key={`${project.title}-${activeProjectCategory}`} 
-                variants={fadeInUp}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="project-card"
               >
                 {/* Animated Blob Effect */}
@@ -1180,14 +1176,23 @@ export default function Home() {
               </p>
               
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>15+</div>
-                  <div className="text-xs sm:text-sm text-text-secondary">Projects</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 bg-dark-secondary rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>3+</div>
-                  <div className="text-xs sm:text-sm text-text-secondary">Years Experience</div>
-                </div>
+                {[
+                  { value: "15+", label: "Projects" },
+                  { value: "3+", label: "Years Experience" },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    className="text-center p-3 sm:p-4 bg-dark-secondary rounded-xl border border-[#00ff88]/10 hover:border-[#00ff88]/25 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + i * 0.15, duration: 0.5, type: "spring" }}
+                    whileHover={{ scale: 1.05, y: -4 }}
+                  >
+                    <div className="text-xl sm:text-2xl font-bold" style={{ color: '#00ff88' }}>{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-text-secondary">{stat.label}</div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -1195,8 +1200,13 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing">
-        <div className="max-w-6xl mx-auto">
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary mobile-section-padding mobile-spacing relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00ff88]/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00ff88]/20 to-transparent" />
+        </div>
+
+        <div className="max-w-6xl mx-auto relative">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 40 }}
@@ -1205,58 +1215,95 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="text-white font-semibold mb-2 flex items-center justify-center gap-2"
+              className="text-white font-semibold mb-3 flex items-center justify-center gap-2"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
               <motion.div
-                className="h-px bg-white"
+                className="h-px bg-[#00ff88]/50"
                 initial={{ width: 0 }}
                 whileInView={{ width: 32 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               />
-              <span>•</span>
-              <span>My Services</span>
+              <span className="text-[#00ff88]/70 text-xs uppercase tracking-[0.2em] font-mono">What I Offer</span>
+              <motion.div
+                className="h-px bg-[#00ff88]/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#00ff88' }}>What Can I Do Best ?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#00ff88' }}>My Services</h2>
+            <motion.p
+              className="text-text-secondary max-w-xl mx-auto text-sm sm:text-base"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              Delivering end-to-end digital solutions with a focus on quality and user experience
+            </motion.p>
           </motion.div>
           
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {services.map((service, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-6 sm:p-8 card-hover border-none" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
-                  <CardContent className="p-0">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                      style={{ backgroundColor: '#00ff88' }}
-                    >
-                      <service.icon className="text-white text-xl" size={24} />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4 text-white">{service.title}</h3>
-                    <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: '#00ff88' }}></div>
-                    <p className="text-gray-300 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <motion.div
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="h-full"
+                >
+                  <Card className="p-6 sm:p-8 border border-[#00ff88]/10 hover:border-[#00ff88]/30 transition-all duration-300 h-full service-card-glow" style={{ backgroundColor: 'hsl(213, 27%, 8%)' }}>
+                    <CardContent className="p-0 flex flex-col h-full">
+                      <motion.div 
+                        className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 relative"
+                        style={{ background: 'linear-gradient(135deg, #00ff88, #00cc6a)' }}
+                        whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <service.icon className="text-white" size={22} />
+                        <div className="absolute inset-0 rounded-xl bg-[#00ff88]/20 blur-lg -z-10" />
+                      </motion.div>
+                      <h3 className="text-lg font-semibold mb-3 text-white">{service.title}</h3>
+                      <motion.div
+                        className="h-0.5 mb-3 rounded-full"
+                        style={{ background: 'linear-gradient(90deg, #00ff88, transparent)' }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: 40 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                      />
+                      <p className="text-gray-400 leading-relaxed text-sm flex-grow">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-dark-secondary mobile-section-padding mobile-spacing">
-        <div className="max-w-4xl mx-auto">
+      <section id="contact" className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 mobile-section-padding mobile-spacing relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00ff88]/20 to-transparent" />
+          <div className="absolute top-[20%] right-[5%] w-64 h-64 bg-[#00ff88]/3 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[10%] left-[5%] w-48 h-48 bg-[#0088ff]/3 rounded-full blur-[80px]" />
+        </div>
+
+        <div className="max-w-5xl mx-auto relative">
           <motion.div 
             className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 40 }}
@@ -1264,209 +1311,213 @@ export default function Home() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
             <motion.div
-              className="h-1 mx-auto mb-4"
-              style={{ backgroundColor: '#00ff88' }}
-              initial={{ width: 0 }}
-              whileInView={{ width: 80 }}
+              className="flex items-center justify-center gap-2 mb-3"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                className="h-px bg-[#00ff88]/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
+              <span className="text-[#00ff88]/70 text-xs uppercase tracking-[0.2em] font-mono">Contact</span>
+              <motion.div
+                className="h-px bg-[#00ff88]/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
+            </motion.div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Let's Work Together</h2>
+            <motion.div
+              className="h-1 mx-auto mb-5 rounded-full"
+              style={{ background: 'linear-gradient(90deg, transparent, #00ff88, transparent)' }}
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: 120, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             />
-            <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
+            <motion.p
+              className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
               Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
-            </p>
+            </motion.p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Contact Form */}
-            <motion.div {...fadeInUp}>
-              <form onSubmit={handleFormSubmit} className="space-y-6">
-                <div>
-                  <Label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Name</Label>
-                  <Input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary transition-all duration-200"
-                    style={{
-                      '--tw-ring-color': '#00ff88'
-                    } as React.CSSProperties}
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Email</Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary transition-all duration-200"
-                    style={{
-                      '--tw-ring-color': '#00ff88'
-                    } as React.CSSProperties}
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={5}
-                    required
-                    className="w-full px-4 py-3 bg-dark-primary border border-dark-accent rounded-lg focus:ring-2 focus:border-transparent text-white placeholder:text-text-secondary resize-none transition-all duration-200"
-                    style={{
-                      '--tw-ring-color': '#00ff88'
-                    } as React.CSSProperties}
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-                <motion.div
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full text-dark-primary font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed"
-                    style={{ 
-                      backgroundColor: isSubmitting ? '#666' : '#00ff88',
-                      transform: isSubmitting ? 'scale(0.98)' : 'scale(1)'
-                    }}
-                    onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00dd77')}
-                    onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00ff88')}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="bg-dark-secondary/50 backdrop-blur-sm border border-[#00ff88]/10 rounded-2xl p-6 sm:p-8">
+                <form onSubmit={handleFormSubmit} className="space-y-5">
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </motion.div>
-              </form>
+                    <Label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Name</Label>
+                    <Input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-dark-primary/80 border border-dark-accent/50 rounded-xl focus:ring-2 focus:border-[#00ff88]/30 text-white placeholder:text-text-secondary transition-all duration-300 hover:border-[#00ff88]/20"
+                      style={{ '--tw-ring-color': '#00ff88' } as React.CSSProperties}
+                      placeholder="Your name"
+                    />
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Email</Label>
+                    <Input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-dark-primary/80 border border-dark-accent/50 rounded-xl focus:ring-2 focus:border-[#00ff88]/30 text-white placeholder:text-text-secondary transition-all duration-300 hover:border-[#00ff88]/20"
+                      style={{ '--tw-ring-color': '#00ff88' } as React.CSSProperties}
+                      placeholder="your.email@example.com"
+                    />
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <Label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#00ff88' }}>Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={5}
+                      required
+                      className="w-full px-4 py-3 bg-dark-primary/80 border border-dark-accent/50 rounded-xl focus:ring-2 focus:border-[#00ff88]/30 text-white placeholder:text-text-secondary resize-none transition-all duration-300 hover:border-[#00ff88]/20"
+                      style={{ '--tw-ring-color': '#00ff88' } as React.CSSProperties}
+                      placeholder="Tell me about your project..."
+                    />
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full text-dark-primary font-semibold py-3 px-6 rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hero-btn-primary"
+                      style={{ 
+                        backgroundColor: isSubmitting ? '#666' : '#00ff88',
+                      }}
+                      onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00dd77')}
+                      onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#00ff88')}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </motion.div>
+                </form>
+              </div>
             </motion.div>
             
             {/* Contact Info */}
-            <motion.div {...fadeInUp}>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            >
               <div className="space-y-8">
                 <div>
                   <h3 className="text-xl font-semibold mb-6 gradient-text">Get In Touch</h3>
                   <div className="space-y-4">
-                    <div className="flex items-center">
-                      <div 
-                        className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
-                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
+                    {[
+                      { icon: Mail, label: "Email", value: "tsiemasilo@gmail.com" },
+                      { icon: Phone, label: "Phone", value: "082 806 9569 (WhatsApp only)" },
+                      { icon: MapPin, label: "Location", value: "Johannesburg/Midrand, South Africa" },
+                    ].map((item, i) => (
+                      <motion.div
+                        key={item.label}
+                        className="flex items-center group"
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
                       >
-                        <Mail style={{ color: '#00ff88' }} size={20} />
-                      </div>
-                      <div>
-                        <div className="font-medium">Email</div>
-                        <div className="text-text-secondary">tsiemasilo@gmail.com</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center">
-                      <div 
-                        className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
-                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
-                      >
-                        <Phone style={{ color: '#00ff88' }} size={20} />
-                      </div>
-                      <div>
-                        <div className="font-medium">Phone</div>
-                        <div className="text-text-secondary">082 806 9569 (WhatsApp only)</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center">
-                      <div 
-                        className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
-                        style={{ backgroundColor: 'rgba(0, 255, 136, 0.2)' }}
-                      >
-                        <MapPin style={{ color: '#00ff88' }} size={20} />
-                      </div>
-                      <div>
-                        <div className="font-medium">Location</div>
-                        <div className="text-text-secondary">Johannesburg/Midrand, South Africa</div>
-                      </div>
-                    </div>
+                        <motion.div 
+                          className="w-12 h-12 rounded-xl flex items-center justify-center mr-4 border border-[#00ff88]/20 transition-all duration-300 group-hover:border-[#00ff88]/50"
+                          style={{ backgroundColor: 'rgba(0, 255, 136, 0.08)' }}
+                          whileHover={{ scale: 1.1, backgroundColor: 'rgba(0, 255, 136, 0.15)' }}
+                        >
+                          <item.icon style={{ color: '#00ff88' }} size={20} />
+                        </motion.div>
+                        <div>
+                          <div className="font-medium text-sm text-text-secondary">{item.label}</div>
+                          <div className="text-white">{item.value}</div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
                 
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
                   <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
-                  <div className="flex space-x-4">
-                    <a 
-                      href="https://github.com/tsiemasilo"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#00ff88';
-                        e.currentTarget.style.borderColor = '#00ff88';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
-                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
-                      }}
-                    >
-                      <Github className="text-text-secondary group-hover:text-white" size={20} />
-                    </a>
-                    <a 
-                      href="https://www.linkedin.com/in/tsie-masilo/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#00ff88';
-                        e.currentTarget.style.borderColor = '#00ff88';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
-                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
-                      }}
-                    >
-                      <Linkedin className="text-text-secondary group-hover:text-white" size={20} />
-                    </a>
-                    <a 
-                      href="https://profile.indeed.com/?hl=en_ZA&co=ZA&from=gnav-homepage"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#00ff88';
-                        e.currentTarget.style.borderColor = '#00ff88';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
-                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
-                      }}
-                    >
-                      <SiIndeed className="text-text-secondary group-hover:text-white" size={20} />
-                    </a>
-                    <a 
-                      href="https://wa.me/27828069569"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-dark-primary border border-dark-accent rounded-lg flex items-center justify-center transition-all duration-200 group"
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#00ff88';
-                        e.currentTarget.style.borderColor = '#00ff88';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--dark-primary)';
-                        e.currentTarget.style.borderColor = 'var(--dark-accent)';
-                      }}
-                    >
-                      <SiWhatsapp className="text-text-secondary group-hover:text-white" size={20} />
-                    </a>
+                  <div className="flex space-x-3">
+                    {[
+                      { href: "https://github.com/tsiemasilo", icon: Github, label: "GitHub" },
+                      { href: "https://www.linkedin.com/in/tsie-masilo/", icon: Linkedin, label: "LinkedIn" },
+                      { href: "https://profile.indeed.com/?hl=en_ZA&co=ZA&from=gnav-homepage", icon: SiIndeed, label: "Indeed" },
+                      { href: "https://wa.me/27828069569", icon: SiWhatsapp, label: "WhatsApp" },
+                    ].map((social, i) => (
+                      <motion.a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 bg-dark-primary/80 border border-[#00ff88]/15 rounded-xl flex items-center justify-center transition-all duration-300 group hover:bg-[#00ff88] hover:border-[#00ff88]"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 + i * 0.08, type: "spring", stiffness: 300 }}
+                        whileHover={{ y: -4, scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <social.icon className="text-text-secondary group-hover:text-white transition-colors" size={20} />
+                      </motion.a>
+                    ))}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -1503,13 +1554,24 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-accent">
+      <motion.footer
+        className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-accent/50"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-6xl mx-auto text-center relative">
-          <p className="text-text-secondary">
+          <motion.p
+            className="text-text-secondary text-sm"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             © 2024 Tsie Masilo. All rights reserved. Built with passion and modern web technologies.
-          </p>
+          </motion.p>
           
-          {/* Hidden Admin Access Button */}
           <button
             onClick={() => navigate('/admin/dashboard')}
             className="absolute bottom-0 right-0 w-2 h-2 bg-transparent opacity-0 hover:opacity-5 transition-opacity duration-300"
@@ -1517,7 +1579,7 @@ export default function Home() {
             aria-label="Admin Dashboard Access"
           />
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }

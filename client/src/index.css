@@ -299,16 +299,14 @@
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.2), 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Section scroll reveal base */
-.section-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* Service Card Glow Effect */
+.service-card-glow {
+  position: relative;
+  transition: box-shadow 0.3s ease;
 }
 
-.section-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.service-card-glow:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.08), 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Matrix Code Rain Background */
