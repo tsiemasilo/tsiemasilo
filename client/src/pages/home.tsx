@@ -1133,7 +1133,7 @@ export default function Home() {
               
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {[
-                  { value: "15+", label: "Projects" },
+                  { value: "30+", label: "Projects" },
                   { value: "3+", label: "Years Experience" },
                 ].map((stat, i) => (
                   <motion.div
