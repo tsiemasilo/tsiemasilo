@@ -308,6 +308,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "LS Scales",
+      description: "A data-driven digital advertising agency website for Meta campaign specialists. Features bold design with campaign performance metrics, case studies, and a modern dark UI focused on e-commerce marketing.",
+      image: "/ls-scales-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "Responsive Design", "Netlify"],
+      category: "WEB DESIGN",
+      liveUrl: "https://ls-scales.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Network Management System",
       description: "Professional network monitoring dashboard for tracking system agents, connectivity status, and network performance metrics in real-time with comprehensive health monitoring.",
       image: "/network-management-screenshot.png",
