@@ -355,7 +355,7 @@ export default function Home() {
       description: "A professional financial services platform for a 100% black-owned, registered credit provider and FSP. Features secure authentication, account management, and a clean UI focused on accessible financial services.",
       image: "/zwane-financial-screenshot.png",
       technologies: ["HTML", "CSS3", "JavaScript", "Authentication", "Responsive Design"],
-      category: "WEB DESIGN",
+      category: "WEB APPLICATION",
       liveUrl: "https://zwane-official-three.vercel.app/auth/login.html",
       codeUrl: "#"
     },
