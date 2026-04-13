@@ -1,0 +1,146 @@
+4:01:24 PM: build-image version: ff61fcb8dbf5b218dca2a14739abbdf3ed67b5d9 (noble-new-builds)
+4:01:24 PM: buildbot version: ff61fcb8dbf5b218dca2a14739abbdf3ed67b5d9
+4:01:24 PM: Fetching cached dependencies
+4:01:24 PM: Failed to fetch cache, continuing with build
+4:01:24 PM: Starting to prepare the repo for build
+4:01:24 PM: No cached dependencies found. Cloning fresh repo
+4:01:24 PM: git clone --filter=blob:none https://github.com/tsiemasilo/tsiemasilo
+4:01:24 PM: Preparing Git Reference refs/heads/main
+4:01:27 PM: Custom build command detected. Proceeding with the specified command: 'npm install && npm run build && cd netlify/functions && npm install'
+4:01:27 PM: Installing dependencies
+4:01:27 PM: mise ~/.config/mise/config.toml tools: python@3.14.3
+4:01:27 PM: mise ~/.config/mise/config.toml tools: ruby@3.4.8
+4:01:27 PM: mise ~/.config/mise/config.toml tools: go@1.26.1
+4:01:28 PM: v18.20.8 is already installed.
+4:01:28 PM: Now using node v18.20.8 (npm v10.8.2)
+4:01:28 PM: Enabling Node.js Corepack
+4:01:28 PM: No npm workspaces detected
+4:01:28 PM: Installing npm packages using npm version 10.8.2
+4:01:32 PM: npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+4:01:32 PM: npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+4:01:35 PM: added 519 packages in 7s
+4:01:35 PM: npm packages installed
+4:01:36 PM: Successfully installed dependencies
+4:01:36 PM: Detected 1 framework(s)
+4:01:36 PM: "vite" at version "5.4.19"
+4:01:36 PM: Starting build script
+4:01:36 PM: Section completed: initializing
+4:01:38 PM: ​
+4:01:38 PM: Netlify Build                                                 
+4:01:38 PM: ────────────────────────────────────────────────────────────────
+4:01:38 PM: ​
+4:01:38 PM: ❯ Version
+4:01:38 PM:   @netlify/build 35.12.0
+4:01:38 PM: ​
+4:01:38 PM: ❯ Flags
+4:01:38 PM:   accountId: 6786aa5b927658b4b62b93d6
+4:01:38 PM:   baseRelDir: true
+4:01:38 PM:   buildId: 69dcf7331e72b70008e3ec10
+4:01:38 PM:   deployId: 69dcf7331e72b70008e3ec12
+4:01:38 PM: ​
+4:01:38 PM: ❯ Current directory
+4:01:38 PM:   /opt/build/repo
+4:01:38 PM: ​
+4:01:38 PM: ❯ Config file
+4:01:38 PM:   /opt/build/repo/netlify.toml
+4:01:38 PM: ​
+4:01:38 PM: ❯ Context
+4:01:38 PM:   production
+4:01:38 PM: ​
+4:01:38 PM: ❯ Installing extensions
+4:01:38 PM:    - neon
+4:01:54 PM: ​
+4:01:54 PM: ❯ Loading extensions
+4:01:54 PM:    - neon
+4:01:55 PM: ​
+4:01:55 PM: build.command from netlify.toml                               
+4:01:55 PM: ────────────────────────────────────────────────────────────────
+4:01:55 PM: ​
+4:01:55 PM: $ npm install && npm run build && cd netlify/functions && npm install
+4:01:57 PM: up to date, audited 520 packages in 2s
+4:01:57 PM: 68 packages are looking for funding
+4:01:57 PM:   run `npm fund` for details
+4:01:57 PM: 23 vulnerabilities (3 low, 9 moderate, 9 high, 2 critical)
+4:01:57 PM: To address issues that do not require attention, run:
+4:01:57 PM:   npm audit fix
+4:01:57 PM: To address all issues (including breaking changes), run:
+4:01:57 PM:   npm audit fix --force
+4:01:57 PM: Run `npm audit` for details.
+4:01:57 PM: > rest-express@1.0.0 build
+4:01:57 PM: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+4:01:58 PM: vite v5.4.19 building for production...
+4:01:58 PM: transforming...
+4:01:58 PM: Browserslist: browsers data (caniuse-lite) is 18 months old. Please run:
+4:01:58 PM:   npx update-browserslist-db@latest
+4:01:58 PM:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+4:02:02 PM: ✓ 2016 modules transformed.
+4:02:02 PM: rendering chunks...
+4:02:02 PM: computing gzip size...
+4:02:02 PM: ../dist/public/index.html                   1.45 kB │ gzip:   0.67 kB
+4:02:02 PM: ../dist/public/assets/index-DZuV6DNF.css   96.51 kB │ gzip:  17.41 kB
+4:02:02 PM: ../dist/public/assets/index-BMJtVLSf.js   487.13 kB │ gzip: 156.51 kB
+4:02:02 PM: ✓ built in 4.30s
+4:02:02 PM:   dist/index.js  32.9kb
+4:02:02 PM: ⚡ Done in 6ms
+4:02:04 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+4:02:04 PM: added 29 packages, and audited 30 packages in 1s
+4:02:04 PM: 6 packages are looking for funding
+4:02:04 PM:   run `npm fund` for details
+4:02:04 PM: 1 moderate severity vulnerability
+4:02:04 PM: To address all issues (including breaking changes), run:
+4:02:04 PM:   npm audit fix --force
+4:02:04 PM: Run `npm audit` for details.
+4:02:04 PM: ​
+4:02:04 PM: (build.command completed in 8.7s)
+4:02:04 PM: ​
+4:02:04 PM: Functions bundling                                            
+4:02:04 PM: ────────────────────────────────────────────────────────────────
+4:02:04 PM: ​
+4:02:04 PM: Packaging Functions from netlify/functions directory:
+4:02:04 PM:  - api.js
+4:02:04 PM:  - contact.js
+4:02:04 PM:  - smtp-email.js
+4:02:04 PM: ​
+4:02:04 PM: ​
+4:02:04 PM: Dependencies installation error                               
+4:02:04 PM: ────────────────────────────────────────────────────────────────
+4:02:04 PM: ​
+4:02:04 PM:   Error message
+4:02:04 PM:   A Netlify Function is using "cors" but that dependency has not been installed yet.
+4:02:04 PM: ​
+4:02:04 PM:   By default, dependencies inside a Netlify Function's "package.json" are not automatically installed.
+  There are several ways to fix this problem:
+4:02:04 PM:     - Removing your Function's "package.json" and adding the dependencies to the project's top-level "package.json" instead. This is the fastest and safest solution.
+4:02:04 PM:     - Running "npm install" or "yarn" inside your Netlify Function in your build command.
+4:02:04 PM:     - Adding the following plugin to your "netlify.toml":
+4:02:04 PM: ​
+4:02:04 PM:   [[plugins]]
+4:02:04 PM:   package = "@netlify/plugin-functions-install-core"
+4:02:04 PM: ​​
+4:02:04 PM:   In file "/opt/build/repo/netlify/functions/api.js"
+4:02:04 PM:   Cannot find module 'cors'
+4:02:04 PM:   Require stack:
+4:02:04 PM:   - /opt/buildhome/node-deps/node_modules/@netlify/zip-it-and-ship-it/dist/runtimes/node/bundlers/zisi/resolve.js
+4:02:04 PM: ​
+4:02:04 PM:   Resolved config
+4:02:04 PM:   build:
+4:02:04 PM:     command: npm install && npm run build && cd netlify/functions && npm install
+4:02:04 PM:     commandOrigin: config
+4:02:04 PM:     environment:
+4:02:04 PM:       - EMAIL_PASS
+4:02:04 PM:       - EMAIL_USER
+4:02:04 PM:       - NODE_VERSION
+4:02:04 PM:     publish: /opt/build/repo/dist/public
+4:02:04 PM:     publishOrigin: config
+4:02:04 PM:   functionsDirectory: /opt/build/repo/netlify/functions
+4:02:04 PM:   redirects:
+4:02:04 PM:     - from: /api/*
+      status: 200
+      to: /.netlify/functions/api/:splat
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+4:02:04 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+4:02:04 PM: Failing build: Failed to build site
+4:02:05 PM: Finished processing build request in 41.26s
