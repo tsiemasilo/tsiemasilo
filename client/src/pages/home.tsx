@@ -369,6 +369,24 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Business LeadFinder",
+      description: "Comprehensive business discovery dashboard for finding local businesses without websites, featuring automated verification, search parameters, and lead export functionality for outreach opportunities.",
+      image: "/business-leadfinder-screenshot.png",
+      technologies: ["React", "Business APIs", "Data Analytics", "Search Filters"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://businessleadfinder.netlify.app/",
+      codeUrl: "#"
+    },
+    {
+      title: "Tsie Movie Card",
+      description: "Interactive movie discovery platform featuring dynamic movie cards with detailed information, ratings, and search functionality. Modern UI with responsive design and smooth animations.",
+      image: "/tsie-movie-card.png",
+      technologies: ["React", "JavaScript", "CSS", "Movie API", "Responsive Design"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://tsiemoviecard.netlify.app",
+      codeUrl: "#"
+    },
+    {
       title: "Network Management System",
       description: "Professional network monitoring dashboard for tracking system agents, connectivity status, and network performance metrics in real-time with comprehensive health monitoring.",
       image: "/network-management-screenshot.png",
@@ -396,30 +414,12 @@ export default function Home() {
       codeUrl: "#"
     },
     {
-      title: "Tsie Movie Card",
-      description: "Interactive movie discovery platform featuring dynamic movie cards with detailed information, ratings, and search functionality. Modern UI with responsive design and smooth animations.",
-      image: "/tsie-movie-card.png",
-      technologies: ["React", "JavaScript", "CSS", "Movie API", "Responsive Design"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://tsiemoviecard.netlify.app",
-      codeUrl: "#"
-    },
-    {
       title: "GovTech Competition Platform",
       description: "Event management platform with QR code registration and prize draw functionality for seamless attendee experience.",
       image: "/govtech-competition.png",
       technologies: ["JavaScript", "QR Code API", "Event Management", "Responsive Design"],
       category: "WEB APPLICATION",
       liveUrl: "https://govtechcompetition.netlify.app/",
-      codeUrl: "#"
-    },
-    {
-      title: "Business LeadFinder",
-      description: "Comprehensive business discovery dashboard for finding local businesses without websites, featuring automated verification, search parameters, and lead export functionality for outreach opportunities.",
-      image: "/business-leadfinder-screenshot.png",
-      technologies: ["React", "Business APIs", "Data Analytics", "Search Filters"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://businessleadfinder.netlify.app/",
       codeUrl: "#"
     },
     {
