@@ -351,6 +351,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Zwane Financial Services",
+      description: "A professional financial services platform for a 100% black-owned, registered credit provider and FSP. Features secure authentication, account management, and a clean UI focused on accessible financial services.",
+      image: "/zwane-financial-screenshot.png",
+      technologies: ["HTML", "CSS3", "JavaScript", "Authentication", "Responsive Design"],
+      category: "WEB DESIGN",
+      liveUrl: "https://zwane-official-three.vercel.app/auth/login.html",
+      codeUrl: "#"
+    },
+    {
       title: "Edight",
       description: "A comprehensive IT solutions company website offering services, training, and support. Features a modern professional design with stats dashboard, service showcases, and responsive layout.",
       image: "/edight-screenshot.png",
@@ -366,15 +375,6 @@ export default function Home() {
       technologies: ["React", "CSS3", "JavaScript", "Responsive Design", "Netlify"],
       category: "WEB DESIGN",
       liveUrl: "https://ls-scales.netlify.app/",
-      codeUrl: "#"
-    },
-    {
-      title: "Zwane Financial Services",
-      description: "A professional financial services platform for a 100% black-owned, registered credit provider and FSP. Features secure authentication, account management, and a clean UI focused on accessible financial services.",
-      image: "/zwane-financial-screenshot.png",
-      technologies: ["HTML", "CSS3", "JavaScript", "Authentication", "Responsive Design"],
-      category: "WEB DESIGN",
-      liveUrl: "https://zwane-official-three.vercel.app/auth/login.html",
       codeUrl: "#"
     },
     {
