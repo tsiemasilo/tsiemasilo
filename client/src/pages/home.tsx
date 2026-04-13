@@ -378,6 +378,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Mr. Bubbles Car Wash",
+      description: "Professional car wash service platform with tiered pricing packages, rewards programme, and business partnership options. Features a clean, bubbly UI with service selection, pricing cards, and contact functionality.",
+      image: "/mrbubbles-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "Responsive Design", "Service Platform"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://mrbubblescarwash.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Edight",
       description: "A comprehensive IT solutions company website offering services, training, and support. Features a modern professional design with stats dashboard, service showcases, and responsive layout.",
       image: "/edight-screenshot.png",
