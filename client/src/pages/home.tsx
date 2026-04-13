@@ -333,6 +333,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "KANU Dashboard",
+      description: "Compensation Intelligence platform for commercial body construction. Features salary benchmarking, pay scale design, remuneration structure management, and real-time analytics with pay equity scoring and market trend comparisons.",
+      image: "/kanu-dashboard-screenshot.png",
+      technologies: ["React", "Dashboard Analytics", "HR Tech", "Data Visualisation", "Compensation Management"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://kanu-main.vercel.app/dashboard",
+      codeUrl: "#"
+    },
+    {
       title: "Edight",
       description: "A comprehensive IT solutions company website offering services, training, and support. Features a modern professional design with stats dashboard, service showcases, and responsive layout.",
       image: "/edight-screenshot.png",
