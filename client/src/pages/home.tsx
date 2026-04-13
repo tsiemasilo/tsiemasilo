@@ -396,6 +396,51 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "FashionFlag.SA",
+      description: "Modern fashion showcase platform featuring curated style collections, outfit inspirations, and elegant fashion photography with interactive design elements.",
+      image: "/fashionflag-screenshot.png",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+      category: "WEB DESIGN",
+      liveUrl: "https://fashionflagza.netlify.app/",
+      codeUrl: "#"
+    },
+    {
+      title: "GovTech Competition Platform",
+      description: "Event management platform with QR code registration and prize draw functionality for seamless attendee experience.",
+      image: "/govtech-competition.png",
+      technologies: ["JavaScript", "QR Code API", "Event Management", "Responsive Design"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://govtechcompetition.netlify.app/",
+      codeUrl: "#"
+    },
+    {
+      title: "AI Call Analyzer",
+      description: "AI-powered call center quality analysis platform with comprehensive dashboard for monitoring call quality metrics, agent performance, and real-time analytics with drag-and-drop audio file processing.",
+      image: "/ai-call-analyzer-screenshot.png",
+      technologies: ["React", "AI Analytics", "Audio Processing", "Dashboard UI"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://aicallanalyzer.netlify.app/",
+      codeUrl: "#"
+    },
+    {
+      title: "Masilo Web Solutions",
+      description: "A modern web development agency website with responsive design, service showcases, client testimonials, and portfolio integration.",
+      image: "/masilo-solutions-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "Netlify", "Responsive Design"],
+      category: "WEB DESIGN",
+      liveUrl: "https://masilowebsolutions.netlify.app/",
+      codeUrl: "#"
+    },
+    {
+      title: "Ping Pong",
+      description: "Modern two-player arcade ping pong game featuring smooth gameplay, real-time scoring, keyboard controls (W/S and arrow keys), and stylish gradient UI with start, pause, and restart functionality.",
+      image: "/ping-pong-game-new.png",
+      technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Game Physics", "2-Player"],
+      category: "GAMES",
+      liveUrl: "https://tsiepingpong.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Network Management System",
       description: "Professional network monitoring dashboard for tracking system agents, connectivity status, and network performance metrics in real-time with comprehensive health monitoring.",
       image: "/network-management-screenshot.png",
@@ -423,24 +468,6 @@ export default function Home() {
       codeUrl: "#"
     },
     {
-      title: "GovTech Competition Platform",
-      description: "Event management platform with QR code registration and prize draw functionality for seamless attendee experience.",
-      image: "/govtech-competition.png",
-      technologies: ["JavaScript", "QR Code API", "Event Management", "Responsive Design"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://govtechcompetition.netlify.app/",
-      codeUrl: "#"
-    },
-    {
-      title: "AI Call Analyzer",
-      description: "AI-powered call center quality analysis platform with comprehensive dashboard for monitoring call quality metrics, agent performance, and real-time analytics with drag-and-drop audio file processing.",
-      image: "/ai-call-analyzer-screenshot.png",
-      technologies: ["React", "AI Analytics", "Audio Processing", "Dashboard UI"],
-      category: "WEB APPLICATION",
-      liveUrl: "https://aicallanalyzer.netlify.app/",
-      codeUrl: "#"
-    },
-    {
       title: "Mobile Apps Portfolio",
       description: "Exciting mobile applications are in development. Check back soon for innovative app solutions featuring modern design and seamless user experiences.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
@@ -449,15 +476,6 @@ export default function Home() {
       liveUrl: "#",
       codeUrl: "#",
       comingSoon: true
-    },
-    {
-      title: "Masilo Web Solutions",
-      description: "A modern web development agency website with responsive design, service showcases, client testimonials, and portfolio integration.",
-      image: "/masilo-solutions-screenshot.png",
-      technologies: ["React", "CSS3", "JavaScript", "Netlify", "Responsive Design"],
-      category: "WEB DESIGN",
-      liveUrl: "https://masilowebsolutions.netlify.app/",
-      codeUrl: "#"
     },
     {
       title: "Lesedi 29 Construction",
@@ -469,30 +487,12 @@ export default function Home() {
       codeUrl: "#"
     },
     {
-      title: "FashionFlag.SA",
-      description: "Modern fashion showcase platform featuring curated style collections, outfit inspirations, and elegant fashion photography with interactive design elements.",
-      image: "/fashionflag-screenshot.png",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
-      category: "WEB DESIGN",
-      liveUrl: "https://fashionflagza.netlify.app/",
-      codeUrl: "#"
-    },
-    {
       title: "Do You Love Me?",
       description: "A playful interactive game featuring cute animated characters with engaging user interactions and charming visual design.",
       image: "/do-you-love-me-game.png",
       technologies: ["JavaScript", "HTML5", "CSS3", "Animations"],
       category: "GAMES",
       liveUrl: "https://tsieyouloveme.netlify.app",
-      codeUrl: "#"
-    },
-    {
-      title: "Ping Pong",
-      description: "Modern two-player arcade ping pong game featuring smooth gameplay, real-time scoring, keyboard controls (W/S and arrow keys), and stylish gradient UI with start, pause, and restart functionality.",
-      image: "/ping-pong-game-new.png",
-      technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Game Physics", "2-Player"],
-      category: "GAMES",
-      liveUrl: "https://tsiepingpong.netlify.app/",
       codeUrl: "#"
     }
   ];
