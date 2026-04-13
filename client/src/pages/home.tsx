@@ -342,6 +342,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Mint Website",
+      description: "Marketing website for Mint, a financial platform that lets users invest, borrow, and transact in one place. Features a bold hero design, clear value proposition, and smooth user journey towards sign up.",
+      image: "/mint-website-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "FinTech", "Responsive Design"],
+      category: "WEB DESIGN",
+      liveUrl: "https://www.mymint.co.za/",
+      codeUrl: "#"
+    },
+    {
       title: "Edight",
       description: "A comprehensive IT solutions company website offering services, training, and support. Features a modern professional design with stats dashboard, service showcases, and responsive layout.",
       image: "/edight-screenshot.png",
