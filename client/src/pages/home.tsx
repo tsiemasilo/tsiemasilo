@@ -360,6 +360,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "2nd Location",
+      description: "Event and venue discovery platform for finding bars, nightlife, and restaurants. Features categorised event listings with location details, ticket pricing, and a sleek dark UI for seamless event browsing.",
+      image: "/2ndlocation-screenshot.png",
+      technologies: ["React", "Event Management", "Location Services", "Responsive Design"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://2ndlocation.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "Edight",
       description: "A comprehensive IT solutions company website offering services, training, and support. Features a modern professional design with stats dashboard, service showcases, and responsive layout.",
       image: "/edight-screenshot.png",
