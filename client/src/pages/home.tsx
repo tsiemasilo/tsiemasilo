@@ -369,6 +369,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "Pulse — Workforce Management",
+      description: "Enterprise attendance and team management platform built for Alteram. Features real-time attendance tracking, transfers, terminations, asset control, and onboarding. Try the Team Leader dashboard with credentials: Username: teaml1 | Password: teaml1",
+      image: "/pulse-app-screenshot.png",
+      technologies: ["React", "Dashboard Analytics", "HR Tech", "Attendance Tracking", "Team Management"],
+      category: "WEB APPLICATION",
+      liveUrl: "https://pulseapplication.netlify.app/",
+      codeUrl: "#"
+    },
+    {
       title: "2nd Location",
       description: "Event and venue discovery platform for finding bars, nightlife, and restaurants. Features categorised event listings with location details, ticket pricing, and a sleek dark UI for seamless event browsing.",
       image: "/2ndlocation-screenshot.png",
