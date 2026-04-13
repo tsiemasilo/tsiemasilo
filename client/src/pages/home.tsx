@@ -382,7 +382,7 @@ export default function Home() {
       description: "Professional car wash service platform with tiered pricing packages, rewards programme, and business partnership options. Features a clean, bubbly UI with service selection, pricing cards, and contact functionality.",
       image: "/mrbubbles-screenshot.png",
       technologies: ["React", "CSS3", "JavaScript", "Responsive Design", "Service Platform"],
-      category: "WEB APPLICATION",
+      category: "WEB DESIGN",
       liveUrl: "https://mrbubblescarwash.netlify.app/",
       codeUrl: "#"
     },
