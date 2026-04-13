@@ -1069,15 +1069,6 @@ export default function Home() {
                             <ExternalLink size={16} />
                             Live Demo
                           </a>
-                          <a 
-                            href={project.codeUrl} 
-                            className="project-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Github size={16} />
-                            Code
-                          </a>
                         </>
                       )}
                     </div>
