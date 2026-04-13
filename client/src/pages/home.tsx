@@ -351,6 +351,15 @@ export default function Home() {
       codeUrl: "#"
     },
     {
+      title: "IEGS - Innovative Electrical Group",
+      description: "Professional electrical services website for a South African electrical company. Features services including Electrical COCs, Solar Installations, and Generators with a bold dark UI and clear calls-to-action.",
+      image: "/iegs-screenshot.png",
+      technologies: ["React", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+      category: "WEB DESIGN",
+      liveUrl: "https://innovativeelectricalgroup.co.za/",
+      codeUrl: "#"
+    },
+    {
       title: "Zwane Financial Services",
       description: "A professional financial services platform for a 100% black-owned, registered credit provider and FSP. Features secure authentication, account management, and a clean UI focused on accessible financial services.",
       image: "/zwane-financial-screenshot.png",
